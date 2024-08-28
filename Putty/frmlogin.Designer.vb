@@ -168,7 +168,7 @@ Partial Class frmlogin
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(108, 13)
         Me.Label6.TabIndex = 11
-        Me.Label6.Text = "17/08/2024 4:13 PM"
+        Me.Label6.Text = "08/28/2024 2:36 PM"
         '
         'frmlogin
         '

@@ -7,7 +7,7 @@ Public Class frmviewunposted
     Dim con As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
     Dim con1 As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
     Dim userid As String = frmlogin.txtuserid.Text
-
+    'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnback.Click
 
         Try
@@ -132,7 +132,7 @@ Public Class frmviewunposted
                 enablecheckbox()
             Else
                 'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
-                viewunposted.Parameters.AddWithValue("@section", txt_section.Text) 'add this line for usersection
+                viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
                 viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
                 viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
                 viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
