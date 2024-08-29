@@ -5,7 +5,7 @@ Public Class frm_view_dt
     Dim userid As String = frmlogin.txtuserid.Text
 
     Private Sub joblist()
-        Dim cmd As New SqlCommand("	select distinct job from IT_KPI_Dtheader Where CreatedBy = @empnum", con1)
+        Dim cmd As New SqlCommand("select distinct job from IT_KPI_Dtheader Where CreatedBy = @empnum", con1)
 
         cmd.Parameters.AddWithValue("empnum", txtempnum.Text)
         Try
@@ -170,4 +170,5 @@ Public Class frm_view_dt
             con1.Close()
         End Try
     End Sub
+
 End Class

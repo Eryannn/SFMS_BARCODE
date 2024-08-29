@@ -122,10 +122,11 @@ Partial Class frm_view_dt
         '
         'cmb_joblist
         '
+        Me.cmb_joblist.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_joblist.FormattingEnabled = True
-        Me.cmb_joblist.Location = New System.Drawing.Point(149, 83)
+        Me.cmb_joblist.Location = New System.Drawing.Point(149, 76)
         Me.cmb_joblist.Name = "cmb_joblist"
-        Me.cmb_joblist.Size = New System.Drawing.Size(163, 21)
+        Me.cmb_joblist.Size = New System.Drawing.Size(221, 32)
         Me.cmb_joblist.TabIndex = 8
         '
         'btn_filter
