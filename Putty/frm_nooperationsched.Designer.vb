@@ -357,7 +357,6 @@ Partial Class frm_nooperationsched
         Me.lbl_site.Size = New System.Drawing.Size(96, 23)
         Me.lbl_site.TabIndex = 194
         Me.lbl_site.Text = "?empname"
-        Me.lbl_site.Visible = False
         '
         'Label5
         '
@@ -385,7 +384,7 @@ Partial Class frm_nooperationsched
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(454, 726)
+        Me.ClientSize = New System.Drawing.Size(459, 726)
         Me.Controls.Add(Me.cmb_section)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lbl_site)

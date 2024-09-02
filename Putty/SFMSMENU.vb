@@ -72,13 +72,13 @@ Public Class SFMSMENU
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         frmmove.Show()
         frmmove.lblempnum.Text = lblempnum.Text
-        Me.Close()
+        Me.hide()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         frmviewunposted.Show()
         frmviewunposted.txtempnum.Text = lblempnum.Text
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
