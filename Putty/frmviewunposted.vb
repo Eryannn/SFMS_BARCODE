@@ -13,8 +13,31 @@ Public Class frmviewunposted
 
         Try
             con.Open()
-            Dim cmd As SqlCommand = New SqlCommand("UPDATE sfms_jobtran Set [Select] = 0 WHERE Createdby=@empnum", con)
-            cmd.Parameters.AddWithValue("@empnum", txtempnum.Text)
+            'ERIAN 03SEPT2024 UPDATE THE QUERY BASED ON USER'S SECTION AND MACHINE
+            Dim cmd As SqlCommand = New SqlCommand("
+            UPDATE 
+
+			            jobtran
+            SET 
+			            jobtran.[Select] = 0
+            FROM 
+	            Pallet_Tagging.dbo.sfms_jobtran jobtran
+            INNER JOIN 
+	            [PI-SP_App].dbo.job job ON 
+		            jobtran.job = job.job AND 
+		            jobtran.Suffix = job.suffix
+            LEFT JOIN 
+	            Employee emp ON 
+	            jobtran.createdby = emp.Emp_num
+            WHERE 
+		            emp.section = @section AND
+                    jobtran.trans_date BETWEEN @startdate AND @enddate AND
+                    jobtran.UF_Jobtran_Machine = @machine AND
+                    Status='U'", con)
+            cmd.Parameters.AddWithValue("@section", cmb_section.Text)
+            cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+            cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
 
             cmd.ExecuteNonQuery()
             SFMSMENU.Show()
@@ -808,7 +831,10 @@ Public Class frmviewunposted
 
 
             While readsfms.Read
+                If CInt(readsfms("a_hrs").ToString) > 0 Then
+                    MsgBox("Can post")
                     MsgBox(readsfms("a_hrs").ToString)
+                End If
             End While
             readsfms.Close()
 
