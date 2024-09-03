@@ -831,10 +831,14 @@ Public Class frmviewunposted
 
 
             While readsfms.Read
-                If CInt(readsfms("a_hrs").ToString) > 0 Then
+                If CDbl(readsfms("a_hrs").ToString) <> 0 AndAlso readsfms("trans_type").ToString <> "M" Then
                     MsgBox("Can post")
                     MsgBox(readsfms("a_hrs").ToString)
+                Else
+                    MsgBox(CInt(readsfms("a_hrs").ToString))
+                    MsgBox(readsfms("trans_type").ToString)
                 End If
+
             End While
             readsfms.Close()
 
