@@ -258,6 +258,7 @@ Partial Class frmviewunposted
         Me.btnrefresh.TabIndex = 8
         Me.btnrefresh.Text = "REFRESH"
         Me.btnrefresh.UseVisualStyleBackColor = False
+        Me.btnrefresh.Visible = False
         '
         'DataGridView1
         '
