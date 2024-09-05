@@ -39,7 +39,7 @@ Public Class frmviewposted
             jobtran.UF_Jobtran_Machine = @machine AND
             Status='P'", con)
 
-        viewunposted.Parameters.AddWithValue("@section", txt_section.Text)
+        viewunposted.Parameters.AddWithValue("@section", cmb_section.Text)
         viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
         viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
         viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)

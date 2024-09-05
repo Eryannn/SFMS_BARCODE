@@ -1043,6 +1043,49 @@ Public Class frmviewunposted
 
         Try
             con.Open()
+
+            Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
+                 jobtran.[SELECT],
+                 jobtran.job, 
+                 jobtran.Suffix, 
+                 jobtran.oper_num,
+                 jobtran.trans_date,
+                 CASE 
+                     WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
+                     WHEN jobtran.trans_type = 'S' THEN 'Setup'
+                     WHEN jobtran.trans_type = 'M' THEN 'Move'
+                     ELSE 'Lbr Run'
+                 END AS [TRX TYPE],
+                 jobtran.wcdesc,
+                 jobtran.UF_Jobtran_Machine,
+                 job.description,
+              CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
+              CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
+              CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
+              CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
+              CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
+        jobtran.Createdby,
+                 emp.Name,
+        emp.Section
+
+             FROM 
+                Pallet_Tagging.dbo.sfms_jobtran jobtran
+             INNER JOIN 
+              [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
+          LEFT JOIN
+        Employee emp on jobtran.createdby = emp.Emp_num
+             WHERE 
+                 emp.section = @section AND
+                 jobtran.trans_date BETWEEN @date1 AND @date2 AND
+                 jobtran.UF_Jobtran_Machine = @machine AND
+                 Status='U'
+             ORDER BY jobtran.trans_date DESC", con)
+
+            viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 2SEPT2024 change the viewing of table
+            viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+            viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
+
             Dim cmdupdatesfms As SqlCommand = New SqlCommand("
             UPDATE sfms_jobtran
                      SET Status = 'P'
@@ -1066,6 +1109,11 @@ Public Class frmviewunposted
             If cmdupdatesfms.ExecuteNonQuery > 0 Then
                 MsgBox("Job Posted working")
             End If
+            Dim a As New SqlDataAdapter(viewunposted)
+            Dim dt As New DataTable
+            a.Fill(dt)
+            DataGridView1.DataSource = dt
+            AutofitColumns(DataGridView1)
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
