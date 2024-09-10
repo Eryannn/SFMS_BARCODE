@@ -46,6 +46,7 @@ Partial Class frmviewunposted
         Me.btnback = New System.Windows.Forms.Button()
         Me.btnupdate = New System.Windows.Forms.Button()
         Me.btnpost = New System.Windows.Forms.Button()
+        Me.btn_selectall = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -252,7 +253,7 @@ Partial Class frmviewunposted
         Me.btnrefresh.FlatAppearance.BorderColor = System.Drawing.Color.Lime
         Me.btnrefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnrefresh.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnrefresh.Location = New System.Drawing.Point(16, 268)
+        Me.btnrefresh.Location = New System.Drawing.Point(1135, 268)
         Me.btnrefresh.Name = "btnrefresh"
         Me.btnrefresh.Size = New System.Drawing.Size(167, 52)
         Me.btnrefresh.TabIndex = 8
@@ -318,12 +319,26 @@ Partial Class frmviewunposted
         Me.btnpost.Text = "POST"
         Me.btnpost.UseVisualStyleBackColor = False
         '
+        'btn_selectall
+        '
+        Me.btn_selectall.BackColor = System.Drawing.Color.PaleGreen
+        Me.btn_selectall.FlatAppearance.BorderColor = System.Drawing.Color.Lime
+        Me.btn_selectall.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_selectall.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_selectall.Location = New System.Drawing.Point(16, 268)
+        Me.btn_selectall.Name = "btn_selectall"
+        Me.btn_selectall.Size = New System.Drawing.Size(167, 52)
+        Me.btn_selectall.TabIndex = 25
+        Me.btn_selectall.Text = "Select All"
+        Me.btn_selectall.UseVisualStyleBackColor = False
+        '
         'frmviewunposted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ClientSize = New System.Drawing.Size(1314, 683)
+        Me.Controls.Add(Me.btn_selectall)
         Me.Controls.Add(Me.btnrefresh)
         Me.Controls.Add(Me.btnpost)
         Me.Controls.Add(Me.btnupdate)
@@ -367,4 +382,5 @@ Partial Class frmviewunposted
     Friend WithEvents cmb_machine As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents cmb_section As ComboBox
+    Friend WithEvents btn_selectall As Button
 End Class

@@ -1271,6 +1271,126 @@ Public Class frmviewunposted
         cmb_machine.SelectedIndex = -1
     End Sub
 
+    'Private Sub btn_selectall_Click(sender As Object, e As EventArgs) Handles btn_selectall.Click
+    '    Try
+    '        con.Open()
+    '        Dim cmd_select_all As SqlCommand = New SqlCommand("
+    '        UPDATE
+    '            Pallet_Tagging.dbo.sfms_jobtran jobtran
+    '        SET 
+    '            jobtran.[Select] = 1
+    '        INNER JOIN 
+    '         [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
+    '     LEFT JOIN
+    '   Employee emp on jobtran.emp_num = emp.Emp_num
+    '        WHERE 
+    '            emp.section = @section AND
+    '            jobtran.trans_date BETWEEN @date1 AND @date2 AND
+    '            jobtran.UF_Jobtran_Machine = @machine AND
+    '            jobtran.Status='U'
+    '        ORDER BY jobtran.trans_date DESC
+    '            ", con)
+
+    '        cmd_select_all.Parameters.AddWithValue("@section", cmb_section.Text)
+    '        cmd_select_all.Parameters.AddWithValue("@machine", cmb_machine.Text)
+    '        cmd_select_all.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+    '        cmd_select_all.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
+    Private Sub btn_selectall_Click(sender As Object, e As EventArgs) Handles btn_selectall.Click
+        'Try
+        '    con.Open()
+        '    Dim cmd_select_all As SqlCommand = New SqlCommand("
+        'UPDATE Pallet_Tagging.dbo.sfms_jobtran
+        'SET [Select] = 1
+        'WHERE EXISTS (
+        '    SELECT 1 
+        '    FROM [PI-SP_App].dbo.job job
+        '    LEFT JOIN Employee emp ON jobtran.emp_num = emp.Emp_num
+        '    WHERE jobtran.job = job.job
+        '    AND jobtran.Suffix = job.suffix
+        '    AND emp.section = @section
+        '    AND jobtran.trans_date BETWEEN @date1 AND @date2
+        '    AND jobtran.UF_Jobtran_Machine = @machine
+        '    AND jobtran.Status = 'U'
+        ')", con)
+
+        '    cmd_select_all.Parameters.AddWithValue("@section", cmb_section.Text)
+        '    cmd_select_all.Parameters.AddWithValue("@machine", cmb_machine.Text)
+        '    cmd_select_all.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+        '    cmd_select_all.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+
+        '    cmd_select_all.ExecuteNonQuery()
+        '    con.Close()
+
+        '    ' Refresh the DataGridView
+        '    RefreshDataGridView()
+        'Catch ex As Exception
+        '    MessageBox.Show("Error: " & ex.Message)
+        'End Try
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If Not row.IsNewRow Then
+                Dim operator_section As String = row.Cells("Section").Value.ToString
+
+                If cmb_section.Text = operator_section Then
+                    Dim checkBoxCell As DataGridViewCheckBoxCell = TryCast(row.Cells("Select"), DataGridViewCheckBoxCell)
+                    If checkBoxCell IsNot Nothing Then
+                        checkBoxCell.Value = Not CBool(checkBoxCell.Value)
+                    End If
+                End If
+            End If
+        Next
+
+    End Sub
+
+    Private Function loggedinusername()
+
+        Dim createdbyuser As String = String.Empty
+
+        Using con As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
+            con.Open()
+
+            Using cmd As New SqlCommand("Select Name, Emp_num from Ptag_line WHERE Emp_num=@empnum", con)
+                cmd.Parameters.AddWithValue("@empnum", txtempnum.Text)
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+                If reader.Read() Then
+                    createdbyuser = reader("Emp_num").ToString()
+                End If
+            End Using
+        End Using
+        Return createdbyuser
+
+    End Function
+
+    Private Sub RefreshDataGridView()
+        Dim query As String = "SELECT * FROM Pallet_Tagging.dbo.sfms_jobtran " &
+                              "WHERE EXISTS ( " &
+                              "SELECT 1 " &
+                              "FROM [PI-SP_App].dbo.job job " &
+                              "LEFT JOIN Employee emp ON sfms_jobtran.emp_num = emp.Emp_num " &
+                              "WHERE sfms_jobtran.job = job.job " &
+                              "AND sfms_jobtran.Suffix = job.suffix " &
+                              "AND emp.section = @section " &
+                              "AND sfms_jobtran.trans_date BETWEEN @date1 AND @date2 " &
+                              "AND sfms_jobtran.UF_Jobtran_Machine = @machine " &
+                              "AND sfms_jobtran.Status = 'U')"
+
+        Dim cmd As SqlCommand = New SqlCommand(query, con)
+        cmd.Parameters.AddWithValue("@section", cmb_section.Text)
+        cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
+        cmd.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+        cmd.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+
+        Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
+        Dim table As DataTable = New DataTable()
+        adapter.Fill(table)
+
+        DataGridView1.DataSource = table
+    End Sub
+
 
 
 
