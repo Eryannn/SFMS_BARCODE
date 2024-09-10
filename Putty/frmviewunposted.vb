@@ -86,7 +86,8 @@ Public Class frmviewunposted
 	        CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
 			jobtran.Createdby,
             emp.Name,
-			emp.Section
+			emp.Section,
+            UF_Jobtran_DocNum
         
         FROM 
            Pallet_Tagging.dbo.sfms_jobtran jobtran
@@ -122,8 +123,8 @@ Public Class frmviewunposted
 	        CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
 	        CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
 	        CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
-            jobtran.createdby
-        
+            jobtran.createdby,
+            UF_Jobtran_DocNum
         FROM 
            Pallet_Tagging.dbo.sfms_jobtran jobtran
         INNER JOIN 
