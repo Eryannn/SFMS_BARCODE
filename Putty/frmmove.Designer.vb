@@ -77,6 +77,7 @@ Partial Class frmmove
         Me.dtptransdate = New System.Windows.Forms.DateTimePicker()
         Me.txt_docnum = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
+        Me.txt_cntrl_pt = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -642,12 +643,20 @@ Partial Class frmmove
         Me.Label20.TabIndex = 230
         Me.Label20.Text = "DOCUMENT# / PALLET# :"
         '
+        'txt_cntrl_pt
+        '
+        Me.txt_cntrl_pt.Location = New System.Drawing.Point(357, 362)
+        Me.txt_cntrl_pt.Name = "txt_cntrl_pt"
+        Me.txt_cntrl_pt.Size = New System.Drawing.Size(51, 20)
+        Me.txt_cntrl_pt.TabIndex = 232
+        '
         'frmmove
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(551, 753)
+        Me.ClientSize = New System.Drawing.Size(748, 753)
+        Me.Controls.Add(Me.txt_cntrl_pt)
         Me.Controls.Add(Me.txt_docnum)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.dtptransdate)
@@ -764,4 +773,5 @@ Partial Class frmmove
     Friend WithEvents dtptransdate As DateTimePicker
     Friend WithEvents txt_docnum As TextBox
     Friend WithEvents Label20 As Label
+    Friend WithEvents txt_cntrl_pt As TextBox
 End Class

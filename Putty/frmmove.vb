@@ -83,11 +83,74 @@ Public Class frmmove
         'cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
         'cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
-        Dim cmdchecknextoperation As SqlCommand = New SqlCommand(" SELECT min(oper_num) as next_op FROM jobroute where job = @jonumber AND suffix = @josuffix AND oper_num > @operationnum", con1)
-        cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
-        cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
-        cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
+        'Dim cmdchecknextoperation As SqlCommand = New SqlCommand(" SELECT min(oper_num) as next_op FROM jobroute where job = @jonumber AND suffix = @josuffix AND oper_num > @operationnum", con1)
+        'cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
+        'cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
+        'cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
+        Dim cmd_get_cntrlpt_nextop As SqlCommand = New SqlCommand("
+        begin tran
+
+            declare
+            @oper_num nvarchar(30)
+
+
+            SELECT 	
+            @oper_num=min(oper_num) 
+            FROM jobroute
+            where job = @jonumber AND 
+            suffix = @josuffix AND 
+            oper_num > @operationnum
+
+            select 
+			            job, 
+			            suffix, 
+			            min(oper_num) as next_op
+            INTO #jr1
+            from 
+	            jobroute 
+            where 
+			            job = @jonumber AND 
+			            suffix = @josuffix and 
+			            oper_num > @operationnum
+            group by 
+			            job,
+			            suffix
+
+            select
+			            job,
+			            suffix,
+			            oper_num,
+			            cntrl_point
+            INTO #jr2
+            FROM
+	            jobroute
+            WHERE
+			            job=@jonumber AND
+			            suffix=@josuffix AND
+			            oper_num=@oper_num
+
+            select
+			            a.job,
+			            a.suffix,
+			            a.next_op,
+			            b.cntrl_point
+            FROM
+	            #jr1 a
+		            LEFT JOIN #jr2 b ON
+			            a.job = b.job AND
+			            a.suffix = b.suffix AND
+			            a.next_op = b.oper_num
+
+            DROP TABLE #jr1, #jr2
+
+
+
+        rollback tran        
+        ", con)
+        cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@jonumber", txtjob.Text)
+        cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
+        cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
         Dim cmdum As SqlCommand = New SqlCommand("SELECT top 1 job.job, job.suffix, job.qty_released, job.description, job.whse, item.item, item.u_m FROM jobroute jr
                         LEFT JOIN job on jr.job = job.job AND
@@ -99,6 +162,7 @@ Public Class frmmove
                         jr.suffix = @suffix", con1)
         cmdum.Parameters.AddWithValue("@job", txtjob.Text)
         cmdum.Parameters.AddWithValue("@suffix", txtsuffix.Text)
+
 
         Try
             con.Open()
@@ -145,7 +209,7 @@ Public Class frmmove
                         '+ " " + readmach("DESCR").ToString
                     End While
                     readmach.Close()
-                    Dim readnextop As SqlDataReader = cmdchecknextoperation.ExecuteReader
+                    Dim readnextop As SqlDataReader = cmd_get_cntrlpt_nextop.ExecuteReader
                     If readnextop.HasRows Then
                         While readnextop.Read
                             lblnextop.Text = readnextop("next_op").ToString
