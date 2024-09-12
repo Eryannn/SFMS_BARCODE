@@ -147,7 +147,7 @@ Public Class frmmove
 
 
         rollback tran        
-        ", con)
+        ", con1)
         cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@jonumber", txtjob.Text)
         cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
         cmd_get_cntrlpt_nextop.Parameters.AddWithValue("@operationnum", txtopernum.Text)
@@ -188,6 +188,8 @@ Public Class frmmove
                 lblum2.Text = ""
                 lblum3.Text = ""
                 lblum4.Text = ""
+                txt_cntrl_pt.Clear()
+
             Else
                 btnsave.Enabled = True
             End If
@@ -213,6 +215,7 @@ Public Class frmmove
                     If readnextop.HasRows Then
                         While readnextop.Read
                             lblnextop.Text = readnextop("next_op").ToString
+                            txt_cntrl_pt.Text = readnextop("cntrl_point").ToString
                         End While
                         readnextop.Close()
                         txtlot.Text = txtjob.Text + "-1"
