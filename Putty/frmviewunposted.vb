@@ -765,6 +765,7 @@ Public Class frmviewunposted
                                          CreateDate,
                                          a_$,
                                          pay_rate,
+                                         user_code,
                                          close_job,
                                          issue_parent,
                                          complete_op,
@@ -810,6 +811,7 @@ Public Class frmviewunposted
                                          @createddate,
                                          '0',
                                          'R',
+                                         @user_code,
                                          0,
                                          0,
                                          0,
@@ -866,7 +868,7 @@ Public Class frmviewunposted
                     Else
                         cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper"))
                     End If
-                    cmdinsert.Parameters.AddWithValue("@empnum", txtempnum.Text)
+                    cmdinsert.Parameters.AddWithValue("@empnum", readsfms("emp_num").ToString)
                     cmdinsert.Parameters.AddWithValue("@starttime", readsfms("start_time").ToString)
                     cmdinsert.Parameters.AddWithValue("@endtime", readsfms("end_time").ToString)
                     cmdinsert.Parameters.AddWithValue("@qtymoved", readsfms("qty_moved").ToString)
@@ -893,7 +895,11 @@ Public Class frmviewunposted
                     End If
                     'cmdinsert.Parameters.AddWithValue("@reasoncode", readsfms("reason_code").ToString)
                     cmdinsert.Parameters.AddWithValue("@wc", readsfms("wc").ToString)
-
+                    If readsfms("wc").ToString = "P610" Then
+                        cmdinsert.Parameters.AddWithValue("@user_code", "QAI")
+                    Else
+                        cmdinsert.Parameters.AddWithValue("@user_code", DBNull.Value)
+                    End If
                     If readsfms.IsDBNull(readsfms.GetOrdinal("UF_Jobtran_TransactionType")) Then
                         cmdinsert.Parameters.AddWithValue("@uftranstype", DBNull.Value)
                     ElseIf readsfms("UF_Jobtran_TransactionType").ToString = "" Then
@@ -906,8 +912,8 @@ Public Class frmviewunposted
                     cmdinsert.Parameters.AddWithValue("@ufmachine", readsfms("Uf_Jobtran_Machine").ToString)
                     cmdinsert.Parameters.AddWithValue("@ufoutput", readsfms("Uf_Jobtran_Output").ToString)
                     cmdinsert.Parameters.AddWithValue("@ufrework", readsfms("Uf_Jobtran_Rework").ToString)
-                    cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
-
+                    'cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
+                    cmdinsert.Parameters.AddWithValue("@createdby", txtempnum.Text)
                     ' cmdinsert.Parameters.AddWithValue("@createddate", readsfms("CreateDate").ToString)
 
                     If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
