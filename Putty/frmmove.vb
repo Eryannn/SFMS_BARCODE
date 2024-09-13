@@ -333,8 +333,10 @@ Public Class frmmove
 
         If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
-        Else
+        ElseIf txt_cntrl_pt.text = 1
             txtqtymoved.Text = totalqtycompleted
+        Else
+            txtqtymoved.Text = "0"
         End If
 
     End Sub
@@ -383,8 +385,10 @@ Public Class frmmove
 
         If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
-        Else
+        ElseIf txt_cntrl_pt.Text = 1
             txtqtymoved.Text = total
+        Else
+            txtqtymoved.Text = "0"
         End If
 
     End Sub
