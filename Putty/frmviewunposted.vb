@@ -930,105 +930,112 @@ Public Class frmviewunposted
                     End If
 
                     cmdinsert.Parameters.AddWithValue("@updatedby", txtempnum.Text)
-                    cmdinsert.Parameters.AddWithValue("@ufdocnum", readsfms("UF_Jobtran_DocNum").ToString)
+
+                    If readsfms.IsDBNull(readsfms.GetOrdinal("UF_Jobtran_DocNum")) Then
+                        cmdinsert.Parameters.AddWithValue("@ufdocnum", DBNull.Value)
+                    Else
+                        cmdinsert.Parameters.AddWithValue("@ufdocnum", readsfms("UF_Jobtran_DocNum").ToString)
+                    End If
+
+                    ' cmdinsert.Parameters.AddWithValue("@ufdocnum", readsfms("UF_Jobtran_DocNum").ToString)
                     'cmdinsert.ExecuteNonQuery()
 
                     'MsgBox("posting")
                     If cmdinsert.ExecuteNonQuery > 0 Then
-                        validateinsert = True
-                    End If
-                ElseIf readsfms("trans_type").ToString = "M"
-                    cmdinsert.Parameters.Clear()
-                    cmdinsert.Parameters.AddWithValue("@job", readsfms("Job").ToString)
-                    cmdinsert.Parameters.AddWithValue("@suffix", readsfms("Suffix").ToString)
-                    cmdinsert.Parameters.AddWithValue("@transtype", readsfms("trans_type").ToString)
+                            validateinsert = True
+                        End If
+                    ElseIf readsfms("trans_type").ToString = "M"
+                        cmdinsert.Parameters.Clear()
+                        cmdinsert.Parameters.AddWithValue("@job", readsfms("Job").ToString)
+                        cmdinsert.Parameters.AddWithValue("@suffix", readsfms("Suffix").ToString)
+                        cmdinsert.Parameters.AddWithValue("@transtype", readsfms("trans_type").ToString)
 
-                    'cmdinsert.Parameters.AddWithValue("@transdate", readsfms("trans_date").ToString)
+                        'cmdinsert.Parameters.AddWithValue("@transdate", readsfms("trans_date").ToString)
 
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("trans_date")) Then
-                        cmdinsert.Parameters.Add("@transdate", SqlDbType.DateTime).Value = DBNull.Value
-                    Else
-                        Dim transDate1 As DateTime
-                        If DateTime.TryParse(readsfms("trans_date").ToString(), transDate1) Then
-                            cmdinsert.Parameters.Add("@transdate", SqlDbType.DateTime).Value = transDate1
-                        Else
-                            ' Handle invalid date format
-                            ' For example, log an error or set a default date
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("trans_date")) Then
                             cmdinsert.Parameters.Add("@transdate", SqlDbType.DateTime).Value = DBNull.Value
-                        End If
-                    End If
-
-
-                    cmdinsert.Parameters.AddWithValue("@qtycomplete", readsfms("qty_complete").ToString)
-                    cmdinsert.Parameters.AddWithValue("@qtyscrapped", readsfms("qty_scrapped").ToString)
-                    cmdinsert.Parameters.AddWithValue("@opernum", readsfms("oper_num").ToString)
-                    cmdinsert.Parameters.AddWithValue("@ahrs", readsfms("a_hrs").ToString)
-                    'cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper").ToString)
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("next_oper")) Then
-                        cmdinsert.Parameters.AddWithValue("@nextoper", DBNull.Value)
-                    Else
-                        cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper"))
-                    End If
-                    cmdinsert.Parameters.AddWithValue("@empnum", txtempnum.Text)
-                    cmdinsert.Parameters.AddWithValue("@starttime", readsfms("start_time").ToString)
-                    cmdinsert.Parameters.AddWithValue("@endtime", readsfms("end_time").ToString)
-                    cmdinsert.Parameters.AddWithValue("@qtymoved", readsfms("qty_moved").ToString)
-                    cmdinsert.Parameters.AddWithValue("@whse", readsfms("whse").ToString)
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("loc")) Then
-                        cmdinsert.Parameters.AddWithValue("@loc", DBNull.Value)
-                    Else
-                        cmdinsert.Parameters.AddWithValue("@loc", readsfms("loc"))
-                    End If
-
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("lot")) Then
-                        cmdinsert.Parameters.AddWithValue("@lot", DBNull.Value)
-                    Else
-                        cmdinsert.Parameters.AddWithValue("@lot", readsfms("lot"))
-                    End If
-
-                    cmdinsert.Parameters.AddWithValue("@shift", readsfms("shift").ToString)
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("reason_code")) Then
-                        cmdinsert.Parameters.AddWithValue("@reasoncode", DBNull.Value)
-                    Else
-                        cmdinsert.Parameters.AddWithValue("@reasoncode", readsfms("reason_code"))
-                    End If
-
-                    cmdinsert.Parameters.AddWithValue("@wc", readsfms("wc").ToString)
-                    cmdinsert.Parameters.AddWithValue("@uftranstype", readsfms("Uf_Jobtran_TransactionType").ToString)
-                    cmdinsert.Parameters.AddWithValue("@ufmachine", readsfms("Uf_Jobtran_Machine").ToString)
-                    cmdinsert.Parameters.AddWithValue("@ufoutput", readsfms("Uf_Jobtran_Output").ToString)
-                    cmdinsert.Parameters.AddWithValue("@ufrework", readsfms("Uf_Jobtran_Rework").ToString)
-                    cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
-
-
-
-                    If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
-                        cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
-                    Else
-                        Dim createddate As DateTime
-                        If DateTime.TryParse(readsfms("CreateDate").ToString(), createddate) Then
-                            cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = createddate
                         Else
-                            ' Handle invalid date format
-                            ' For example, log an error or set a default date
-                            cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
+                            Dim transDate1 As DateTime
+                            If DateTime.TryParse(readsfms("trans_date").ToString(), transDate1) Then
+                                cmdinsert.Parameters.Add("@transdate", SqlDbType.DateTime).Value = transDate1
+                            Else
+                                ' Handle invalid date format
+                                ' For example, log an error or set a default date
+                                cmdinsert.Parameters.Add("@transdate", SqlDbType.DateTime).Value = DBNull.Value
+                            End If
                         End If
+
+
+                        cmdinsert.Parameters.AddWithValue("@qtycomplete", readsfms("qty_complete").ToString)
+                        cmdinsert.Parameters.AddWithValue("@qtyscrapped", readsfms("qty_scrapped").ToString)
+                        cmdinsert.Parameters.AddWithValue("@opernum", readsfms("oper_num").ToString)
+                        cmdinsert.Parameters.AddWithValue("@ahrs", readsfms("a_hrs").ToString)
+                        'cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper").ToString)
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("next_oper")) Then
+                            cmdinsert.Parameters.AddWithValue("@nextoper", DBNull.Value)
+                        Else
+                            cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper"))
+                        End If
+                        cmdinsert.Parameters.AddWithValue("@empnum", txtempnum.Text)
+                        cmdinsert.Parameters.AddWithValue("@starttime", readsfms("start_time").ToString)
+                        cmdinsert.Parameters.AddWithValue("@endtime", readsfms("end_time").ToString)
+                        cmdinsert.Parameters.AddWithValue("@qtymoved", readsfms("qty_moved").ToString)
+                        cmdinsert.Parameters.AddWithValue("@whse", readsfms("whse").ToString)
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("loc")) Then
+                            cmdinsert.Parameters.AddWithValue("@loc", DBNull.Value)
+                        Else
+                            cmdinsert.Parameters.AddWithValue("@loc", readsfms("loc"))
+                        End If
+
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("lot")) Then
+                            cmdinsert.Parameters.AddWithValue("@lot", DBNull.Value)
+                        Else
+                            cmdinsert.Parameters.AddWithValue("@lot", readsfms("lot"))
+                        End If
+
+                        cmdinsert.Parameters.AddWithValue("@shift", readsfms("shift").ToString)
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("reason_code")) Then
+                            cmdinsert.Parameters.AddWithValue("@reasoncode", DBNull.Value)
+                        Else
+                            cmdinsert.Parameters.AddWithValue("@reasoncode", readsfms("reason_code"))
+                        End If
+
+                        cmdinsert.Parameters.AddWithValue("@wc", readsfms("wc").ToString)
+                        cmdinsert.Parameters.AddWithValue("@uftranstype", readsfms("Uf_Jobtran_TransactionType").ToString)
+                        cmdinsert.Parameters.AddWithValue("@ufmachine", readsfms("Uf_Jobtran_Machine").ToString)
+                        cmdinsert.Parameters.AddWithValue("@ufoutput", readsfms("Uf_Jobtran_Output").ToString)
+                        cmdinsert.Parameters.AddWithValue("@ufrework", readsfms("Uf_Jobtran_Rework").ToString)
+                        cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
+
+
+
+                        If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
+                            cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
+                        Else
+                            Dim createddate As DateTime
+                            If DateTime.TryParse(readsfms("CreateDate").ToString(), createddate) Then
+                                cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = createddate
+                            Else
+                                ' Handle invalid date format
+                                ' For example, log an error or set a default date
+                                cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
+                            End If
+                        End If
+
+                        cmdinsert.Parameters.AddWithValue("@updatedby", txtempnum.Text)
+                        cmdinsert.Parameters.AddWithValue("@ufdocnum", readsfms("UF_Jobtran_DocNum").ToString)
+                        'cmdinsert.ExecuteNonQuery()
+
+                        'MsgBox("Posted Successfully MOVE SETUP")
+                        If cmdinsert.ExecuteNonQuery > 0 Then
+                            validateinsert = True
+                        End If
+                        'cmdupdatesfms.ExecuteNonQuery()
+                        'MsgBox("MOVE POSTING")
+                    Else
+
+                        'MsgBox("Invalid")
                     End If
-
-                    cmdinsert.Parameters.AddWithValue("@updatedby", txtempnum.Text)
-                    cmdinsert.Parameters.AddWithValue("@ufdocnum", readsfms("UF_Jobtran_DocNum").ToString)
-                    'cmdinsert.ExecuteNonQuery()
-
-                    'MsgBox("Posted Successfully MOVE SETUP")
-                    If cmdinsert.ExecuteNonQuery > 0 Then
-                        validateinsert = True
-                    End If
-                    'cmdupdatesfms.ExecuteNonQuery()
-                    'MsgBox("MOVE POSTING")
-                Else
-
-                    'MsgBox("Invalid")
-                End If
 
             End While
             readsfms.Close()
@@ -1095,7 +1102,8 @@ Public Class frmviewunposted
 
             Dim cmdupdatesfms As SqlCommand = New SqlCommand("
             UPDATE sfms_jobtran
-                     SET Status = 'P'
+                     SET Status = 'P',
+                        [Select] = 0
             from sfms_jobtran a
                 INNER JOIN Employee b on a.CreatedBy = b.Emp_num
             WHERE 
