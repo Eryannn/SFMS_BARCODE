@@ -242,6 +242,7 @@ Public Class frmmove
                 rtbmach.Clear()
                 lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
                 lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
+                txt_cntrl_pt.Clear()
             End If
 
         Catch ex As Exception
@@ -583,6 +584,7 @@ Public Class frmmove
                 If CInt(txtqtyscrapped.Text) > 0 AndAlso cmbreasoncode.SelectedIndex = -1 Then
 
                     MsgBox("Reason Code is Required")
+                    cmbreasoncode.Focus()
                 Else
 
                     If txtwc.Text = "P230" OrElse txtwc.Text = "P921" OrElse txtwc.Text = "P922" OrElse txtwc.Text = "P924" OrElse txtwc.Text = "F210" OrElse txtwc.Text = "F221" OrElse txtwc.Text = "F230" OrElse txtwc.Text = "F921" OrElse txtwc.Text = "F922" OrElse txtwc.Text = "F924" OrElse txtwc.Text = "M210" OrElse txtwc.Text = "M221" OrElse txtwc.Text = "M230" OrElse txtwc.Text = "M921" OrElse txtwc.Text = "M922" OrElse txtwc.Text = "M924" Then
@@ -590,24 +592,24 @@ Public Class frmmove
                             'txtopernum.Clear()
                             insertcmd.ExecuteNonQuery()
                             MsgBox("Saved Successfully")
+                            txtqtygood.Focus()
 
-
-                            txtwc.Clear()
-                            txtwcdesc.Clear()
-                            rtbmach.Clear()
+                            'txtwc.Clear()
+                            ' txtwcdesc.Clear()
+                            ' rtbmach.Clear()
                             txtqtygood.Text = 0
                             txtqtyrework.Text = 0
                             txtqtycompleted.Text = 0
                             txtqtyscrapped.Text = 0
-                            txtlot.Text = 0
+                            ' txtlot.Text = 0
                             txtqtymoved.Text = 0
-                            lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
-                            lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
+                            ' lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
+                            ' lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
 
                             'btnpost.Enabled = True
-                            txtjob.Clear()
-                            txtsuffix.Clear()
-                            txtopernum.Clear()
+                            ' txtjob.Clear()
+                            ' txtsuffix.Clear()
+                            ' txtopernum.Clear()
                             btnsave.Enabled = True
 
                         Else
@@ -617,24 +619,24 @@ Public Class frmmove
                         'txtopernum.Clear()
                         insertcmd.ExecuteNonQuery()
                         MsgBox("Saved Successfully")
+                        txtqtygood.Focus()
 
-
-                        txtwc.Clear()
-                        txtwcdesc.Clear()
-                        rtbmach.Clear()
+                        ' txtwc.Clear()
+                        ' txtwcdesc.Clear()
+                        ' rtbmach.Clear()
                         txtqtygood.Text = 0
                         txtqtyrework.Text = 0
                         txtqtycompleted.Text = 0
                         txtqtyscrapped.Text = 0
-                        txtlot.Text = 0
+                        '  txtlot.Text = 0
                         txtqtymoved.Text = 0
-                        lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
-                        lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
+                        'lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
+                        ' lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
 
                         'btnpost.Enabled = True
-                        txtjob.Clear()
-                        txtsuffix.Clear()
-                        txtopernum.Clear()
+                        ' txtjob.Clear()
+                        '  txtsuffix.Clear()
+                        ' txtopernum.Clear()
                         txt_docnum.Clear()
                         btnsave.Enabled = True
                     End If

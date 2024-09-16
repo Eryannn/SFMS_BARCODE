@@ -223,7 +223,7 @@ Partial Class frmmove
         Me.txtopernum.Location = New System.Drawing.Point(193, 259)
         Me.txtopernum.Name = "txtopernum"
         Me.txtopernum.Size = New System.Drawing.Size(193, 22)
-        Me.txtopernum.TabIndex = 192
+        Me.txtopernum.TabIndex = 3
         '
         'txtsuffix
         '
@@ -231,7 +231,7 @@ Partial Class frmmove
         Me.txtsuffix.Location = New System.Drawing.Point(193, 231)
         Me.txtsuffix.Name = "txtsuffix"
         Me.txtsuffix.Size = New System.Drawing.Size(193, 22)
-        Me.txtsuffix.TabIndex = 191
+        Me.txtsuffix.TabIndex = 2
         '
         'txtjob
         '
@@ -241,7 +241,7 @@ Partial Class frmmove
         Me.txtjob.MaxLength = 10
         Me.txtjob.Name = "txtjob"
         Me.txtjob.Size = New System.Drawing.Size(193, 22)
-        Me.txtjob.TabIndex = 190
+        Me.txtjob.TabIndex = 1
         '
         'lblshift
         '
@@ -412,7 +412,7 @@ Partial Class frmmove
         Me.txtqtygood.Location = New System.Drawing.Point(193, 392)
         Me.txtqtygood.Name = "txtqtygood"
         Me.txtqtygood.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtygood.TabIndex = 210
+        Me.txtqtygood.TabIndex = 4
         Me.txtqtygood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label17
@@ -497,7 +497,7 @@ Partial Class frmmove
         Me.btnsave.Location = New System.Drawing.Point(152, 646)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(254, 24)
-        Me.btnsave.TabIndex = 217
+        Me.btnsave.TabIndex = 6
         Me.btnsave.Text = "SAVE"
         Me.btnsave.UseVisualStyleBackColor = False
         '
@@ -629,7 +629,7 @@ Partial Class frmmove
         Me.txt_docnum.Location = New System.Drawing.Point(193, 611)
         Me.txt_docnum.Name = "txt_docnum"
         Me.txt_docnum.Size = New System.Drawing.Size(193, 22)
-        Me.txt_docnum.TabIndex = 231
+        Me.txt_docnum.TabIndex = 5
         Me.txt_docnum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label20
@@ -649,6 +649,7 @@ Partial Class frmmove
         Me.txt_cntrl_pt.Name = "txt_cntrl_pt"
         Me.txt_cntrl_pt.Size = New System.Drawing.Size(51, 20)
         Me.txt_cntrl_pt.TabIndex = 232
+        Me.txt_cntrl_pt.Visible = False
         '
         'frmmove
         '
