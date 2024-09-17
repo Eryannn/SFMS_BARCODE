@@ -941,7 +941,7 @@ Public Class frmviewunposted
                     'cmdinsert.ExecuteNonQuery()
 
                     'MsgBox("posting")
-                    MsgBox(txtempnum.Text)
+                    '  MsgBox(txtempnum.Text)
                     If cmdinsert.ExecuteNonQuery > 0 Then
                         job_posted = True
                     End If
@@ -1008,9 +1008,13 @@ Public Class frmviewunposted
                         cmdinsert.Parameters.AddWithValue("@ufrework", readsfms("Uf_Jobtran_Rework").ToString)
                         cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
 
+                    If readsfms("wc").ToString = "P610" Then
+                        cmdinsert.Parameters.AddWithValue("@user_code", "QAI")
+                    Else
+                        cmdinsert.Parameters.AddWithValue("@user_code", DBNull.Value)
+                    End If
 
-
-                        If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
+                    If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
                             cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
                         Else
                             Dim createddate As DateTime
