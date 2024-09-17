@@ -72,7 +72,7 @@ Public Class frm_view_dt
 	            inner join IT_KPI_DTDetail dtdetail on dtheader.RowPointer = dtdetail.RefRowPointer
 	            inner join IT_KPI_DTCausemaint dtcause on dtdetail.CauseCode = dtcause.CauseCode
 
-	            where dtheader.DTDate between @startdate and  @enddate
+	            where dtdetail.RecordDate between @startdate and  @enddate
 	            and dtdetail.CreatedBy =@empnum
                 and dtheader.job=@job", con1)
 
