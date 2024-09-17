@@ -5,6 +5,11 @@ Imports System.Data
 Imports System.Configuration
 Imports System.Security.Cryptography
 
+Module globalvariable
+    Public job_posted As Boolean
+
+End Module
+
 Module Module1
     Dim con As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
     Dim con1 As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")

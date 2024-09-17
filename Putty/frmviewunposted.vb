@@ -831,7 +831,7 @@ Public Class frmviewunposted
                                          @ufdocnum)", con1)
             '=============================================================
             Dim readsfms As SqlDataReader = cmdreadsfms.ExecuteReader
-            Dim validateinsert As Boolean = False
+            ''Dim validateinsert As Boolean = False
 
 
             While readsfms.Read
@@ -915,7 +915,7 @@ Public Class frmviewunposted
                     'cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
                     cmdinsert.Parameters.AddWithValue("@createdby", txtempnum.Text)
                     ' cmdinsert.Parameters.AddWithValue("@createddate", readsfms("CreateDate").ToString)
-
+                    'cmdinsert.Parameters.addw
                     If readsfms.IsDBNull(readsfms.GetOrdinal("CreateDate")) Then
                         cmdinsert.Parameters.Add("@createddate", SqlDbType.DateTime).Value = DBNull.Value
                     Else
@@ -941,9 +941,10 @@ Public Class frmviewunposted
                     'cmdinsert.ExecuteNonQuery()
 
                     'MsgBox("posting")
+                    MsgBox(txtempnum.Text)
                     If cmdinsert.ExecuteNonQuery > 0 Then
-                            validateinsert = True
-                        End If
+                        job_posted = True
+                    End If
                     ElseIf readsfms("trans_type").ToString = "M"
                         cmdinsert.Parameters.Clear()
                         cmdinsert.Parameters.AddWithValue("@job", readsfms("Job").ToString)
@@ -1028,8 +1029,8 @@ Public Class frmviewunposted
 
                         'MsgBox("Posted Successfully MOVE SETUP")
                         If cmdinsert.ExecuteNonQuery > 0 Then
-                            validateinsert = True
-                        End If
+                        job_posted = True
+                    End If
                         'cmdupdatesfms.ExecuteNonQuery()
                         'MsgBox("MOVE POSTING")
                     Else
@@ -1103,7 +1104,8 @@ Public Class frmviewunposted
             Dim cmdupdatesfms As SqlCommand = New SqlCommand("
             UPDATE sfms_jobtran
                      SET Status = 'P',
-                        [Select] = 0
+                        [Select] = 0,
+                        PostedBy=@postedby
             from sfms_jobtran a
                 INNER JOIN Employee b on a.CreatedBy = b.Emp_num
             WHERE 
@@ -1117,13 +1119,18 @@ Public Class frmviewunposted
                     (a.trans_type = 'M'))", con)
             cmdupdatesfms.Parameters.AddWithValue("@section", cmb_section.Text)
             cmdupdatesfms.Parameters.AddWithValue("@machine", cmb_machine.Text)
+            cmdupdatesfms.Parameters.AddWithValue("@postedby", txtempnum.Text)
             cmdupdatesfms.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
             cmdupdatesfms.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
-            cmdupdatesfms.ExecuteNonQuery()
-            MsgBox("Job Posted")
-            If cmdupdatesfms.ExecuteNonQuery > 0 Then
-                MsgBox("Job Posted working")
+            If job_posted Then
+                cmdupdatesfms.ExecuteNonQuery()
+                MsgBox("Job Posted")
+                job_posted = False
             End If
+
+            'If cmdupdatesfms.ExecuteNonQuery > 0 Then
+            '    MsgBox("Job Posted working")
+            'End If
             Dim a As New SqlDataAdapter(viewunposted)
             Dim dt As New DataTable
             a.Fill(dt)
