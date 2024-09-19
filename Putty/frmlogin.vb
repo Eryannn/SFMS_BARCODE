@@ -82,8 +82,6 @@ Public Class frmlogin
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         check_update()
         If app_prev_version <> app_version Then
-            MsgBox(app_prev_version)
-            MsgBox(app_version)
             MsgBox("Please Update the SFMS Application")
         Else
             openpallettagdb()

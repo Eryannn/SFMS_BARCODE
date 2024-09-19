@@ -20,10 +20,9 @@ Module Module1
     Function check_update()
         Try
             con.Open()
-            Dim cmd_checkversion As New SqlCommand("Select Min([version]) as [version], MIN(Maintenance_log) as msg from sfms_Maintenance", con)
+            Dim cmd_checkversion As New SqlCommand("Select Min([version]) as [version] from sfms_Maintenance", con)
             Dim read_cmd As SqlDataReader = cmd_checkversion.ExecuteReader
             If read_cmd.HasRows Then
-
                 While read_cmd.Read
                     app_prev_version = read_cmd("version").ToString
                 End While

@@ -38,9 +38,15 @@ Public Class SFMSMENU
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        frmsetupstart.lblshift.Text = lblshift.Text
-        frmsetupstart.Show()
-        Me.Close()
+        'check_update()
+        MsgBox(app_prev_version)
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmsetupstart.lblshift.Text = lblshift.Text
+            frmsetupstart.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
@@ -51,40 +57,73 @@ Public Class SFMSMENU
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        frmmachinestart.lblempnum.Text = lblempnum.Text
-        frmmachinestart.Show()
-        Me.Close()
+        ' check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmmachinestart.lblempnum.Text = lblempnum.Text
+            frmmachinestart.Show()
+            Me.Close()
+        End If
+
     End Sub
 
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        frmdowntime.lblempnum.Text = lblempnum.Text
-        frmdowntime.Show()
-        Me.Close()
+        check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmdowntime.lblempnum.Text = lblempnum.Text
+            frmdowntime.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        frmlaborstart.lblempnum.Text = lblempnum.Text
-        frmlaborstart.Show()
-        Me.Close()
+        'check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmlaborstart.lblempnum.Text = lblempnum.Text
+            frmlaborstart.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        frmmove.Show()
-        frmmove.lblempnum.Text = lblempnum.Text
-        Me.hide()
+        'check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmmove.Show()
+            frmmove.lblempnum.Text = lblempnum.Text
+            Me.Hide()
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        frmviewunposted.Show()
-        frmviewunposted.txtempnum.Text = lblempnum.Text
-        Me.Hide()
+        'check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmviewunposted.Show()
+            frmviewunposted.txtempnum.Text = lblempnum.Text
+            Me.Hide()
+        End If
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        frmviewposted.Show()
-        frmviewposted.txtempnum.Text = lblempnum.Text
-        Me.Close()
+        '  check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frmviewposted.Show()
+            frmviewposted.txtempnum.Text = lblempnum.Text
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
