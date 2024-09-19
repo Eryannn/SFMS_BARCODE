@@ -7,13 +7,34 @@ Imports System.Security.Cryptography
 
 Module globalvariable
     Public job_posted As Boolean
-
+    Public checkupdate As Boolean
+    Public app_version As String = "1.0"
+    Public app_prev_version As String
 End Module
 
 Module Module1
     Dim con As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
     Dim con1 As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
 
+
+    Function check_update()
+        Try
+            con.Open()
+            Dim cmd_checkversion As New SqlCommand("Select Min([version]) as [version], MIN(Maintenance_log) as msg from sfms_Maintenance", con)
+            Dim read_cmd As SqlDataReader = cmd_checkversion.ExecuteReader
+            If read_cmd.HasRows Then
+
+                While read_cmd.Read
+                    app_prev_version = read_cmd("version").ToString
+                End While
+                read_cmd.Close()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+        End Try
+    End Function
     Function openpallettagdb()
         Try
             con.Open()

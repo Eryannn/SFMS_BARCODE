@@ -80,11 +80,16 @@ Public Class frmlogin
     End Sub
 
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
-
-        openpallettagdb()
-        login(txtuserid.Text, Encrypt(txtpassword.Text), cmbsite.Text)
-        closepallettagdb()
-
+        check_update()
+        If app_prev_version <> app_version Then
+            MsgBox(app_prev_version)
+            MsgBox(app_version)
+            MsgBox("Please Update the SFMS Application")
+        Else
+            openpallettagdb()
+            login(txtuserid.Text, Encrypt(txtpassword.Text), cmbsite.Text)
+            closepallettagdb()
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

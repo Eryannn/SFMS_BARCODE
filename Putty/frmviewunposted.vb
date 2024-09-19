@@ -977,8 +977,8 @@ Public Class frmviewunposted
                         Else
                             cmdinsert.Parameters.AddWithValue("@nextoper", readsfms("next_oper"))
                         End If
-                        cmdinsert.Parameters.AddWithValue("@empnum", txtempnum.Text)
-                        cmdinsert.Parameters.AddWithValue("@starttime", readsfms("start_time").ToString)
+                    cmdinsert.Parameters.AddWithValue("@empnum", readsfms("emp_num").ToString)
+                    cmdinsert.Parameters.AddWithValue("@starttime", readsfms("start_time").ToString)
                         cmdinsert.Parameters.AddWithValue("@endtime", readsfms("end_time").ToString)
                         cmdinsert.Parameters.AddWithValue("@qtymoved", readsfms("qty_moved").ToString)
                         cmdinsert.Parameters.AddWithValue("@whse", readsfms("whse").ToString)
@@ -1006,8 +1006,9 @@ Public Class frmviewunposted
                         cmdinsert.Parameters.AddWithValue("@ufmachine", readsfms("Uf_Jobtran_Machine").ToString)
                         cmdinsert.Parameters.AddWithValue("@ufoutput", readsfms("Uf_Jobtran_Output").ToString)
                         cmdinsert.Parameters.AddWithValue("@ufrework", readsfms("Uf_Jobtran_Rework").ToString)
-                        cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
+                    ' cmdinsert.Parameters.AddWithValue("@createdby", readsfms("CreatedBy").ToString)
 
+                    cmdinsert.Parameters.AddWithValue("@createdby", txtempnum.Text)
                     If readsfms("wc").ToString = "P610" Then
                         cmdinsert.Parameters.AddWithValue("@user_code", "QAI")
                     Else
@@ -1130,6 +1131,8 @@ Public Class frmviewunposted
                 cmdupdatesfms.ExecuteNonQuery()
                 MsgBox("Job Posted")
                 job_posted = False
+            Else
+                MsgBox("Invalid")
             End If
 
             'If cmdupdatesfms.ExecuteNonQuery > 0 Then
@@ -1145,66 +1148,7 @@ Public Class frmviewunposted
         Finally
             con.Close()
         End Try
-        'Try
 
-        '    Dim cmdupdatesfms As SqlCommand = New SqlCommand("UPDATE sfms_jobtran
-        '        SET Status = 'P'
-        '  from sfms_jobtran a
-        '  INNER JOIN Employee b on a.CreatedBy = b.Emp_num
-        '        WHERE a.[Select] = 1
-        '   AND b.Section = @section
-        '   AND a.UF_Jobtran_Machine = @machine
-        '            AND a.Status = 'U'
-        '            AND (
-        '                (a.trans_type <> 'M' AND a.a_hrs <> 0) OR
-        '                (a.trans_type = 'M'))", con)
-        '    cmdupdatesfms.Parameters.AddWithValue("@section", txt_section.Text)
-        '    cmdupdatesfms.Parameters.AddWithValue("@machine", cmb_machine.Text)
-
-        '    'Dim cmd_sfmsjobtranview As SqlCommand = New SqlCommand("Select * from sfms_jobtran where [Select] = 1 AND emp_num=@empnum", con)
-        '    'cmd_sfmsjobtranview.Parameters.AddWithValue("@empnum", txtempnum.Text)
-
-        '    Dim cmd_sfmsjobtranview As SqlCommand = New SqlCommand("select * from sfms_jobtran a
-        '  INNER JOIN Employee b on a.CreatedBy = b.Emp_num
-        '        WHERE a.[SELECT] = 1
-        '   AND b.Section = @section
-        '   AND a.UF_Jobtran_Machine = @machine
-        '            AND a.Status = 'U'
-        '            AND (
-        '                (a.trans_type <> 'M' AND a.a_hrs <> 0) OR
-        '                (a.trans_type = 'M'))", con)
-        '    cmd_sfmsjobtranview.Parameters.AddWithValue("@section", txt_section.Text)
-        '    cmd_sfmsjobtranview.Parameters.AddWithValue("@machine", cmb_machine.Text)
-
-        '    con.Open()
-        '    Dim readsfmsjobtran As SqlDataReader = cmd_sfmsjobtranview.ExecuteReader()
-        '    Dim validateinsert As Boolean = False
-
-        '    While readsfmsjobtran.Read()
-        '        Dim type As String = readsfmsjobtran("trans_type").ToString()
-        '        Dim aHrs As Integer = If(IsDBNull(readsfmsjobtran("a_hrs")), 0, CInt(readsfmsjobtran("a_hrs").ToString()))
-
-        '        If isposted Then
-        '            If type <> "M" AndAlso aHrs > 0 Then
-        '                validateinsert = True
-        '            ElseIf type = "M" Then
-        '                validateinsert = True
-        '            End If
-        '        End If
-        '    End While
-
-        '    readsfmsjobtran.Close()
-
-        '    If validateinsert Then
-        '        cmdupdatesfms.ExecuteNonQuery()
-        '    End If
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        '    'MsgBox("TESTDEBUG")
-        'Finally
-        '    con.Close()
-        '    isposted = False
-        'End Try
     End Sub
 
 
