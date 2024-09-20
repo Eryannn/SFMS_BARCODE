@@ -6,15 +6,27 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public job_posted As Boolean
-    Public checkupdate As Boolean
     Public app_version As String = "1.0"
     Public app_prev_version As String
+
+    Public job_posted As Boolean
+    Public checkupdate As Boolean
+    Public user_position As String
+    Public user_section As String
+    Public user_id As String
+    Public user_site As String
+    Public user_name As String
+    Public isadmin As Boolean
+    Public login_shift As String
+    Public joborder As String
+    Public suffix As Integer
+    Public operationnum As Integer
+    Public whse As String
 End Module
 
 Module Module1
-    Dim con As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
-    Dim con1 As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
+    Public con As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
+    Public con1 As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
 
 
     Function check_update()
@@ -127,27 +139,51 @@ Module Module1
             Dim execquery As SqlDataReader = cmdquery.ExecuteReader
             Dim hasrow As Boolean = execquery.Read()
 
-            If hasrow Then
-                Dim IsAdmin As Boolean = Convert.ToBoolean(execquery("IsAdmin"))
 
-                If IsAdmin Then
-                    'Form4.Show()
-                    'Form1.Hide()
+
+            If hasrow Then
+                user_position = execquery("Position")
+                user_section = execquery("Section")
+                user_id = execquery("Emp_num")
+                user_site = execquery("Site")
+                user_name = execquery("Name")
+                isadmin = execquery("IsAdmin")
+                login_shift = frmlogin.cmbshift.Text
+                If isadmin Then
+
                 Else
                     SFMSMENU.Show()
-                    'frmsetupstart.lblshift.Text = frmlogin.cmbshift.Text
-                    'frmsetupstart.lblempnum.Text = frmlogin.txtuserid.Text
-                    'frmsetupend.lblempnum.Text = frmlogin.txtuserid.Text
-                    SFMSMENU.lbl_site.Text = frmlogin.cmbsite.Text
-                    SFMSMENU.lblempnum.Text = frmlogin.txtuserid.Text
-                    SFMSMENU.lblshift.Text = frmlogin.cmbshift.Text
-
-
                     frmlogin.Hide()
                 End If
             Else
-                MessageBox.Show("Invalid Credentials!")
+                MsgBox("Invalid Credentials!")
             End If
+
+
+
+
+
+            'If hasrow Then
+            '    Dim IsAdmin As Boolean = Convert.ToBoolean(execquery("IsAdmin"))
+
+            '    If IsAdmin Then
+            '        'Form4.Show()
+            '        'Form1.Hide()
+            '    Else
+            '        SFMSMENU.Show()
+            '        'frmsetupstart.lblshift.Text = frmlogin.cmbshift.Text
+            '        'frmsetupstart.lblempnum.Text = frmlogin.txtuserid.Text
+            '        'frmsetupend.lblempnum.Text = frmlogin.txtuserid.Text
+            '        SFMSMENU.lbl_site.Text = frmlogin.cmbsite.Text
+            '        SFMSMENU.lblempnum.Text = frmlogin.txtuserid.Text
+            '        SFMSMENU.lblshift.Text = frmlogin.cmbshift.Text
+
+
+            '        frmlogin.Hide()
+            '    End If
+            'Else
+            '    MessageBox.Show("Invalid Credentials!")
+            'End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
         End Try

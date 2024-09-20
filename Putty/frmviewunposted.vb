@@ -1137,6 +1137,7 @@ Public Class frmviewunposted
                 cmdupdatesfms.ExecuteNonQuery()
                 MsgBox("Job Posted")
                 job_posted = False
+
             Else
                 MsgBox("Invalid")
             End If
