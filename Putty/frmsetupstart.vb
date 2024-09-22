@@ -9,6 +9,9 @@ Public Class frmsetupstart
     'Dim con As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
     'Dim con1 As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
     'Dim userid As String = frmlogin.txtuserid.Text
+    Dim startTime As DateTime
+    Dim starttimeint As Integer
+
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -104,16 +107,15 @@ Public Class frmsetupstart
 
     Private Sub save_sfms_setup()
 
-    End Sub
-
-    Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
-
-        joborder = txtjob.Text
-        suffix = txtsuffix.Text
-        operationnum = txtopernum.Text
+        If DateTime.TryParseExact(lblstarttime.Text, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, startTime) Then
+            starttimeint = startTime.Hour * 3600 + startTime.Minute * 60 + startTime.Second
+        End If
 
         Try
             con.Open()
+            joborder = txtjob.Text
+            suffix = txtsuffix.Text
+            operationnum = txtopernum.Text
             Dim cmd_insert As New SqlCommand("Insert_sfms_jobtran_setup", con)
             cmd_insert.CommandType = CommandType.StoredProcedure
 
@@ -128,7 +130,7 @@ Public Class frmsetupstart
             cmd_insert.Parameters.AddWithValue("@ahrs", 0)
             cmd_insert.Parameters.AddWithValue("@empnum", lblempnum.Text)
             cmd_insert.Parameters.AddWithValue("@startdatetime", lblstarttime.Text)
-            cmd_insert.Parameters.AddWithValue("@starttime", startTimeInt)
+            cmd_insert.Parameters.AddWithValue("@starttime", starttimeint)
             'cmd_insert.Parameters.AddWithValue("@endtime", endTimeInt)
             cmd_insert.Parameters.AddWithValue("@qtymoved", 0)
             cmd_insert.Parameters.AddWithValue("@whse", lblwhse.Text)
@@ -154,6 +156,54 @@ Public Class frmsetupstart
         Finally
             con.Close()
         End Try
+    End Sub
+
+    Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
+
+        save_sfms_setup()
+
+        'Try
+        '    con.Open()
+        '    Dim cmd_insert As New SqlCommand("Insert_sfms_jobtran_setup", con)
+        '    cmd_insert.CommandType = CommandType.StoredProcedure
+
+        '    cmd_insert.Parameters.AddWithValue("@job", txtjob.Text)
+        '    cmd_insert.Parameters.AddWithValue("@suffix", txtsuffix.Text)
+        '    cmd_insert.Parameters.AddWithValue("@opernum", txtopernum.Text)
+        '    cmd_insert.Parameters.AddWithValue("@transtype", "S")
+        '    Dim transdate As DateTime = DateTime.Now
+        '    cmd_insert.Parameters.AddWithValue("@transdate", transdate)
+        '    cmd_insert.Parameters.AddWithValue("@qtycomplete", 0)
+        '    cmd_insert.Parameters.AddWithValue("@qtyscrapped", 0)
+        '    cmd_insert.Parameters.AddWithValue("@ahrs", 0)
+        '    cmd_insert.Parameters.AddWithValue("@empnum", lblempnum.Text)
+        '    cmd_insert.Parameters.AddWithValue("@startdatetime", lblstarttime.Text)
+        '    cmd_insert.Parameters.AddWithValue("@starttime", startTimeInt)
+        '    'cmd_insert.Parameters.AddWithValue("@endtime", endTimeInt)
+        '    cmd_insert.Parameters.AddWithValue("@qtymoved", 0)
+        '    cmd_insert.Parameters.AddWithValue("@whse", lblwhse.Text)
+        '    cmd_insert.Parameters.AddWithValue("@shift", lblshift.Text)
+        '    'cmd_insert.Parameters.AddWithValue("@reasoncode", cmbsetuptype.Text)
+        '    cmd_insert.Parameters.AddWithValue("@wc", txtwc.Text)
+        '    'cmd_insert.Parameters.AddWithValue("@wc", txtwc.Text)
+        '    cmd_insert.Parameters.AddWithValue("@wcdesc", txtwcdesc.Text)
+        '    cmd_insert.Parameters.AddWithValue("@jobtranstype", cmbsetuptype.Text)
+        '    cmd_insert.Parameters.AddWithValue("@jobmachine", rtbmach.Text)
+        '    cmd_insert.Parameters.AddWithValue("@joboutput", 0)
+        '    cmd_insert.Parameters.AddWithValue("@jobrework", 0)
+        '    cmd_insert.Parameters.AddWithValue("@createdby", lblempnum.Text)
+        '    cmd_insert.Parameters.AddWithValue("@createdate", DateTime.Now)
+
+        '    cmd_insert.ExecuteNonQuery()
+        '    MsgBox("SAVED SUCCESSFULLY")
+        '    btnsetupend.Enabled = True
+        '    btnsave.Enabled = False
+
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
+        '    con.Close()
+        'End Try
 
         'Try
         '    con.Open()
