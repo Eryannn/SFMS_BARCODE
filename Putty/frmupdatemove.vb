@@ -693,8 +693,8 @@ Public Class frmupdatemove
                 Label5.Text = ""
                 Label6.Text = ""
                 viewunposted_operator.Parameters.AddWithValue("@empnum", frmviewunposted.txtempnum.Text)
-                viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = frmviewunposted.DateTimePicker1.Value.Date
-                viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = frmviewunposted.DateTimePicker2.Value.AddDays(1)
+                viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = frmviewunposted.dtp_start.Value.Date
+                viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = frmviewunposted.dtp_end.Value.AddDays(1)
                 'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
                 Dim a As New SqlDataAdapter(viewunposted_operator)
                 Dim dt As New DataTable
@@ -707,8 +707,8 @@ Public Class frmupdatemove
             Else
                 'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
                 viewunposted.Parameters.AddWithValue("@section", frmviewunposted.txt_section.Text) 'add this line for usersection
-                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = frmviewunposted.DateTimePicker1.Value.Date
-                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = frmviewunposted.DateTimePicker2.Value.AddDays(1)
+                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = frmviewunposted.dtp_start.Value.Date
+                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = frmviewunposted.dtp_end.Value.AddDays(1)
                 viewunposted.Parameters.AddWithValue("@machine", frmviewunposted.cmb_machine.Text)
                 Dim a As New SqlDataAdapter(viewunposted)
                 Dim dt As New DataTable

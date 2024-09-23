@@ -67,23 +67,37 @@ Public Class frmsetupstart
         Try
             con.Open()
 
-            Dim cmd As New SqlCommand("Select_pisp_sfms_jobtran", con)
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@jonumber", txtjob.Text)
-            cmd.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
-            cmd.Parameters.AddWithValue("@operationnum", txtopernum.Text)
+            Dim cmd_pisp As New SqlCommand("Select_pisp_sfms_jobtran", con)
+            cmd_pisp.CommandType = CommandType.StoredProcedure
+            cmd_pisp.Parameters.AddWithValue("@jonumber", txtjob.Text)
+            cmd_pisp.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
+            cmd_pisp.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
-            Dim read_cmd As SqlDataReader = cmd.ExecuteReader
+            Dim read_cmd_pisp As SqlDataReader
+
+            Dim cmd_sfms_setup As New SqlCommand("Select_sfms_jobtran_setup", con)
+            cmd_sfms_setup.CommandType = CommandType.StoredProcedure
+            cmd_sfms_setup.Parameters.AddWithValue("@jonumber", txtjob.Text)
+            cmd_sfms_setup.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
+            cmd_sfms_setup.Parameters.AddWithValue("@operationnum", txtopernum.Text)
+
+            Dim read_sfms_setup As SqlDataReader
 
             If txtjob.Text.Length = 10 AndAlso txtsuffix.Text.Length <> 0 AndAlso txtopernum.Text.Length = 2 Then
-                If read_cmd.HasRows Then
-                    While read_cmd.Read
-                        txtwc.Text = read_cmd("wc").ToString
-                        txtwcdesc.Text = read_cmd("description").ToString
-                        rtbmach.Text = read_cmd("Machine").ToString
-                        whse = read_cmd("whse").ToString
+                read_sfms_setup = cmd_sfms_setup.ExecuteReader
+                If read_sfms_setup.HasRows Then
+                    While read_sfms_setup.Read
+                        frmsetupend.txtwc.Text = read_sfms_setup("wc").ToString
+                        frmsetupend.txtwcdesc.Text = read_sfms_setup("description").ToString
+                        frmsetupend.rtbmach.Text = read_sfms_setup("Machine").ToString
+                        'whse = read_sfms_setup("whse").ToString
+                        frmsetupend.lblcode.Text = read_sfms_setup("Uf_Jobtran_TransactionType").ToString
+                        frmsetupend.lblstarttime.Text = read_sfms_setup("start_datetime").ToString
                     End While
-                    read_cmd.Close()
+                    read_sfms_setup.Close()
+                Else
+                    read_cmd_pisp = cmd_pisp.ExecuteReader
+
                 End If
             Else
                 txtwc.Clear()
@@ -107,7 +121,7 @@ Public Class frmsetupstart
 
     Private Sub save_sfms_setup()
 
-        If DateTime.TryParseExact(lblstarttime.Text, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, startTime) Then
+        If DateTime.TryParseExact(lblstarttime.Text, "MM/dd/yyyy hh: mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, startTime) Then
             starttimeint = startTime.Hour * 3600 + startTime.Minute * 60 + startTime.Second
         End If
 

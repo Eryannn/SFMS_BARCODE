@@ -36,8 +36,8 @@ Public Class frmviewunposted
                     jobtran.UF_Jobtran_Machine = @machine AND
                     Status='U'", con)
             cmd.Parameters.AddWithValue("@section", cmb_section.Text)
-            cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-            cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+            cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
             cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
 
             cmd.ExecuteNonQuery()
@@ -62,80 +62,112 @@ Public Class frmviewunposted
         Next
         Return 0
     End Function
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
-            jobtran.[SELECT],
-            jobtran.job, 
-            jobtran.Suffix, 
-            jobtran.oper_num,
-            jobtran.trans_date,
-            CASE 
-                WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-                WHEN jobtran.trans_type = 'S' THEN 'Setup'
-                WHEN jobtran.trans_type = 'M' THEN 'Move'
-                ELSE 'Lbr Run'
-            END AS [TRX TYPE],
-            jobtran.wcdesc,
-            jobtran.UF_Jobtran_Machine,
-            job.description,
-	        CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-	        CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-	        CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
-	        CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
-	        CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
-			jobtran.Createdby,
-            emp.Name,
-			emp.Section,
-            UF_Jobtran_DocNum
-        
-        FROM 
-           Pallet_Tagging.dbo.sfms_jobtran jobtran
-        INNER JOIN 
-	        [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-	    LEFT JOIN
-			Employee emp on jobtran.createdby = emp.Emp_num
-        WHERE 
-            emp.section = @section AND
-            jobtran.trans_date BETWEEN @date1 AND @date2 AND
-            jobtran.UF_Jobtran_Machine = @machine AND
-            jobtran.Status='U'
-        ORDER BY jobtran.trans_date DESC", con)
+    Private Sub load_table_for_operator()
+
+
+        '     Dim viewunposted_operator As SqlCommand = New SqlCommand("SELECT 
+        '         jobtran.[SELECT],
+        '         jobtran.job, 
+        '         jobtran.Suffix, 
+        '         jobtran.oper_num,
+        '         jobtran.trans_date,
+        '         CASE 
+        '             WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
+        '             WHEN jobtran.trans_type = 'S' THEN 'Setup'
+        '             WHEN jobtran.trans_type = 'M' THEN 'Move'
+        '             ELSE 'Lbr Run'
+        '         END AS [TRX TYPE],
+        '         jobtran.wcdesc,
+        '         jobtran.UF_Jobtran_Machine,
+        '         job.description,
+        '      CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
+        '      CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
+        '      CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
+        '      CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
+        '      CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
+        '         jobtran.createdby,
+        '         UF_Jobtran_DocNum
+        '     FROM 
+        '        Pallet_Tagging.dbo.sfms_jobtran jobtran
+        '     INNER JOIN 
+        '      [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
+        '  LEFT JOIN
+        'Employee emp on jobtran.emp_num = emp.Emp_num
+        '     WHERE 
+        '         jobtran.createdby = @empnum AND
+        '         jobtran.trans_date BETWEEN @date1 AND @date2 AND
+        '         Status='U'
+        '     ORDER BY jobtran.trans_date DESC", con)
+
+        '     viewunposted_operator.Parameters.AddWithValue("@empnum", txtempnum.Text)
+        '     viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+        '     viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
+        '     'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
+    End Sub
+    Private Sub load_table_for_supervisor()
+
+        Dim cmd_view_unposted_supervisor As New SqlCommand("Select_sfms_jobtran_supervisor", con)
+        cmd_view_unposted_supervisor.CommandType = CommandType.StoredProcedure
+        cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionS", cmb_section.Text)
+        cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionE", cmb_section.Text)
+        cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineS", cmb_machine.Text)
+        cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineE", cmb_machine.Text)
+        cmd_view_unposted_supervisor.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+        cmd_view_unposted_supervisor.Parameters.Add("@sectionS", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
+
+        Dim sda_supervisor As New SqlDataAdapter(cmd_view_unposted_supervisor)
+        Dim dt_supervisor As New DataTable
+        sda_supervisor.Fill(dt_supervisor)
+        DataGridView1.DataSource = dt_supervisor
+        AutofitColumns(DataGridView1)
+        enablecheckbox()
+
+
+        '     Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
+        '         jobtran.[SELECT],
+        '         jobtran.job, 
+        '         jobtran.Suffix, 
+        '         jobtran.oper_num,
+        '         jobtran.trans_date,
+        '         CASE 
+        '             WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
+        '             WHEN jobtran.trans_type = 'S' THEN 'Setup'
+        '             WHEN jobtran.trans_type = 'M' THEN 'Move'
+        '             ELSE 'Lbr Run'
+        '         END AS [TRX TYPE],
+        '         jobtran.wcdesc,
+        '         jobtran.UF_Jobtran_Machine,
+        '         job.description,
+        '      CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
+        '      CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
+        '      CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
+        '      CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
+        '      CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
+        'jobtran.Createdby,
+        '         emp.Name,
+        'emp.Section,
+        '         UF_Jobtran_DocNum
+
+        '     FROM 
+        '        Pallet_Tagging.dbo.sfms_jobtran jobtran
+        '     INNER JOIN 
+        '      [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
+        '  LEFT JOIN
+        'Employee emp on jobtran.createdby = emp.Emp_num
+        '     WHERE 
+        '         emp.section = @section AND
+        '         jobtran.trans_date BETWEEN @date1 AND @date2 AND
+        '         jobtran.UF_Jobtran_Machine = @machine AND
+        '         jobtran.Status='U'
+        '     ORDER BY jobtran.trans_date DESC", con)
         'modify emp.dept into emp.section
 
-        Dim viewunposted_operator As SqlCommand = New SqlCommand("SELECT 
-            jobtran.[SELECT],
-            jobtran.job, 
-            jobtran.Suffix, 
-            jobtran.oper_num,
-            jobtran.trans_date,
-            CASE 
-                WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-                WHEN jobtran.trans_type = 'S' THEN 'Setup'
-                WHEN jobtran.trans_type = 'M' THEN 'Move'
-                ELSE 'Lbr Run'
-            END AS [TRX TYPE],
-            jobtran.wcdesc,
-            jobtran.UF_Jobtran_Machine,
-            job.description,
-	        CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-	        CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-	        CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
-	        CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
-	        CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
-            jobtran.createdby,
-            UF_Jobtran_DocNum
-        FROM 
-           Pallet_Tagging.dbo.sfms_jobtran jobtran
-        INNER JOIN 
-	        [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-	    LEFT JOIN
-			Employee emp on jobtran.emp_num = emp.Emp_num
-        WHERE 
-            jobtran.createdby = @empnum AND
-            jobtran.trans_date BETWEEN @date1 AND @date2 AND
-            Status='U'
-        ORDER BY jobtran.trans_date DESC", con)
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+
 
         Try
             con.Open()
@@ -145,10 +177,7 @@ Public Class frmviewunposted
                 cmb_machine.Visible = False
                 Label5.Text = ""
                 Label6.Text = ""
-                viewunposted_operator.Parameters.AddWithValue("@empnum", txtempnum.Text)
-                viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-                viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
-                'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
+
                 Dim a As New SqlDataAdapter(viewunposted_operator)
                 Dim dt As New DataTable
                 a.Fill(dt)
@@ -159,8 +188,8 @@ Public Class frmviewunposted
             Else
                 'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
                 viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
-                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
                 viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
                 Dim a As New SqlDataAdapter(viewunposted)
                 Dim dt As New DataTable
@@ -192,34 +221,34 @@ Public Class frmviewunposted
 
     Private Sub frmviewunposted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        txtempnum.Text = userid
+        txtempnum.Text = user_id
 
-        Dim getuserdetails As String = "Select Site, Emp_num, Name, position, dept, section from Employee where Emp_num = @empnum"
-        Dim cmdgetuserdetails As New SqlCommand(getuserdetails, con)
-        cmdgetuserdetails.Parameters.AddWithValue("@empnum", userid)
+        'Dim getuserdetails As String = "Select Site, Emp_num, Name, position, dept, section from Employee where Emp_num = @empnum"
+        'Dim cmdgetuserdetails As New SqlCommand(getuserdetails, con)
+        'cmdgetuserdetails.Parameters.AddWithValue("@empnum", userid)
 
-        Try
-            con.Open()
-            Dim readuserdetails As SqlDataReader = cmdgetuserdetails.ExecuteReader
-            If readuserdetails.HasRows Then
-                While readuserdetails.Read
-                    txtempname.Text = readuserdetails("Name").ToString
-                    txt_section.Text = readuserdetails("section").ToString
-                    txt_position.Text = readuserdetails("position").ToString
-                    cmb_section.Text = readuserdetails("section").ToString
-                    If readuserdetails("Position").ToString = "Operator" Then
-                        btnpost.Enabled = False
-                    Else
-                        btnpost.Enabled = True
-                    End If
-                End While
-                readuserdetails.Close()
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            con.Close()
-        End Try
+        'Try
+        '    con.Open()
+        '    Dim readuserdetails As SqlDataReader = cmdgetuserdetails.ExecuteReader
+        '    If readuserdetails.HasRows Then
+        '        While readuserdetails.Read
+        '            txtempname.Text = readuserdetails("Name").ToString
+        '            txt_section.Text = readuserdetails("section").ToString
+        '            txt_position.Text = readuserdetails("position").ToString
+        '            cmb_section.Text = readuserdetails("section").ToString
+        '            If readuserdetails("Position").ToString = "Operator" Then
+        '                btnpost.Enabled = False
+        '            Else
+        '                btnpost.Enabled = True
+        '            End If
+        '        End While
+        '        readuserdetails.Close()
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
+        '    con.Close()
+        'End Try
 
     End Sub
 
@@ -521,8 +550,8 @@ Public Class frmviewunposted
                 Label5.Text = ""
                 Label6.Text = ""
                 viewunposted_operator.Parameters.AddWithValue("@empnum", txtempnum.Text)
-                viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-                viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+                viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+                viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
                 'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
                 Dim a As New SqlDataAdapter(viewunposted_operator)
                 Dim dt As New DataTable
@@ -534,8 +563,8 @@ Public Class frmviewunposted
             Else
                 'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
                 viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
-                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
                 viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
                 Dim a As New SqlDataAdapter(viewunposted)
                 Dim dt As New DataTable
@@ -657,8 +686,8 @@ Public Class frmviewunposted
         'cmdreadsfms.Parameters.AddWithValue("@shift", .Text)
         cmdreadsfms.Parameters.AddWithValue("@section", cmb_section.Text)
         cmdreadsfms.Parameters.AddWithValue("@machine", cmb_machine.Text)
-        cmdreadsfms.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-        cmdreadsfms.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+        cmdreadsfms.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+        cmdreadsfms.Parameters.Add("@enddate", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
         Dim transdate As DateTime = DataGridView1.SelectedCells(4).Value.ToString
         Dim transdatestring As String = transdate.ToString("yyyy-MM-dd HH:mm:ss")
         'Dim transdatestring As String = dtptransdate.Value.ToString("yyyy-MM-dd HH:mm:ss")
@@ -733,8 +762,8 @@ Public Class frmviewunposted
              ORDER BY jobtran.trans_date DESC", con)
 
                 viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 2SEPT2024 change the viewing of table
-                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
                 viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
 
 
@@ -1108,8 +1137,8 @@ Public Class frmviewunposted
              ORDER BY jobtran.trans_date DESC", con)
 
             viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 2SEPT2024 change the viewing of table
-            viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-            viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+            viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
             viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
 
             Dim cmdupdatesfms As SqlCommand = New SqlCommand("
@@ -1131,8 +1160,8 @@ Public Class frmviewunposted
             cmdupdatesfms.Parameters.AddWithValue("@section", cmb_section.Text)
             cmdupdatesfms.Parameters.AddWithValue("@machine", cmb_machine.Text)
             cmdupdatesfms.Parameters.AddWithValue("@postedby", txtempnum.Text)
-            cmdupdatesfms.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-            cmdupdatesfms.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            cmdupdatesfms.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+            cmdupdatesfms.Parameters.Add("@enddate", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
             If job_posted Then
                 cmdupdatesfms.ExecuteNonQuery()
                 MsgBox("Job Posted")
@@ -1357,8 +1386,8 @@ Public Class frmviewunposted
         Dim cmd As SqlCommand = New SqlCommand(query, con)
         cmd.Parameters.AddWithValue("@section", cmb_section.Text)
         cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
-        cmd.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-        cmd.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+        cmd.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+        cmd.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
 
         Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
         Dim table As DataTable = New DataTable()

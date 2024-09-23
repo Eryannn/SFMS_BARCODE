@@ -113,7 +113,8 @@ Public Class SFMSMENU
             MsgBox("Please Update the SFMS Application")
         Else
             frmviewunposted.Show()
-            frmviewunposted.txtempnum.Text = lblempnum.Text
+            frmviewunposted.txtempnum.Text = user_id
+            frmviewunposted.txtempname.Text = user_name
             Me.Hide()
         End If
 

@@ -13,31 +13,13 @@ Public Class frmsetupend
         lblendtime.Text = Now.ToString("MM/dd/yyyy hh:mm:ss tt").ToUpper()
         lbltransdate.Text = Now.ToString("MM/dd/yyyy")
         lbldate.Text = Date.Now.ToString("MM/dd/yyyy")
-        'lblempnum.Text = SFMSMENU.lblempnum.Text
-        'lblempnum.Text = frmsetupstart.lblempnum.Text
-        'lblempnum.Text = frmviewunposted.txtempnum.Text
-        lblempnum.Text = frmlogin.txtuserid.Text
 
-        lblshift.Text = frmlogin.cmbshift.Text
+        lblempnum.Text = user_id
+
+        lblshift.Text = login_shift
         Timer1.Enabled = True
         dtptransdate.Enabled = False
-        Dim getuserdetails As String = "select Site, Emp_num, Name from Employee where Emp_num = @empnum"
-        Dim cmdgetuserdetails As New SqlCommand(getuserdetails, con)
-        cmdgetuserdetails.Parameters.AddWithValue("@empnum", lblempnum.Text)
 
-        Try
-            con.Open()
-            Dim readuserdetails As SqlDataReader = cmdgetuserdetails.ExecuteReader
-            If readuserdetails.HasRows Then
-                While readuserdetails.Read
-                    lblempname.Text = readuserdetails("Name").ToString
-                End While
-                readuserdetails.Close()
-            End If
-        Catch ex As Exception
-        Finally
-            con.Close()
-        End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

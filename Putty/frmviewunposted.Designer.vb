@@ -35,8 +35,8 @@ Partial Class frmviewunposted
         Me.txt_section = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtp_end = New System.Windows.Forms.DateTimePicker()
+        Me.dtp_start = New System.Windows.Forms.DateTimePicker()
         Me.txtempname = New System.Windows.Forms.TextBox()
         Me.txtempnum = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -97,8 +97,8 @@ Partial Class frmviewunposted
         Me.Panel2.Controls.Add(Me.txt_section)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.DateTimePicker2)
-        Me.Panel2.Controls.Add(Me.DateTimePicker1)
+        Me.Panel2.Controls.Add(Me.dtp_end)
+        Me.Panel2.Controls.Add(Me.dtp_start)
         Me.Panel2.Controls.Add(Me.txtempname)
         Me.Panel2.Controls.Add(Me.txtempnum)
         Me.Panel2.Controls.Add(Me.Label3)
@@ -188,26 +188,26 @@ Partial Class frmviewunposted
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "-"
         '
-        'DateTimePicker2
+        'dtp_end
         '
-        Me.DateTimePicker2.CustomFormat = "MM/dd/yyyy"
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker2.Location = New System.Drawing.Point(442, 64)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(162, 31)
-        Me.DateTimePicker2.TabIndex = 5
+        Me.dtp_end.CustomFormat = "MM/dd/yyyy"
+        Me.dtp_end.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtp_end.Location = New System.Drawing.Point(442, 64)
+        Me.dtp_end.Name = "dtp_end"
+        Me.dtp_end.Size = New System.Drawing.Size(162, 31)
+        Me.dtp_end.TabIndex = 5
         '
-        'DateTimePicker1
+        'dtp_start
         '
-        Me.DateTimePicker1.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.CustomFormat = "MM/dd/yyyy"
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(239, 64)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(162, 31)
-        Me.DateTimePicker1.TabIndex = 4
+        Me.dtp_start.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtp_start.CustomFormat = "MM/dd/yyyy"
+        Me.dtp_start.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtp_start.Location = New System.Drawing.Point(239, 64)
+        Me.dtp_start.Name = "dtp_start"
+        Me.dtp_start.Size = New System.Drawing.Size(162, 31)
+        Me.dtp_start.TabIndex = 4
         '
         'txtempname
         '
@@ -369,8 +369,8 @@ Partial Class frmviewunposted
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtp_end As DateTimePicker
+    Friend WithEvents dtp_start As DateTimePicker
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents btnback As Button
     Friend WithEvents btnupdate As Button
