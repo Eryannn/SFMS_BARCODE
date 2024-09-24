@@ -57,16 +57,41 @@ Public Class frmviewunposted
 
     Private Function enablecheckbox()
         For Each row As DataGridViewRow In DataGridView1.Rows
-            row.ReadOnly = True
-            row.Cells("Select").ReadOnly = False
+            If user_position = "Operator" Then
+                row.ReadOnly = False
+                row.Cells("Select").ReadOnly = True
+            Else
+                row.ReadOnly = True
+                row.Cells("Select").ReadOnly = False
+            End If
+
         Next
         Return 0
     End Function
 
     Private Sub load_table_for_operator()
 
+        Try
+            con.Open()
+            Dim cmd_select_sfms_operator As New SqlCommand("Select_sfms_jobtran_operator", con)
+            cmd_select_sfms_operator.CommandType = CommandType.StoredProcedure
+            cmd_select_sfms_operator.Parameters.AddWithValue("@empnum", txtempnum.Text)
+            cmd_select_sfms_operator.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+            cmd_select_sfms_operator.Parameters.Add("@enddate", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
 
-        '     Dim viewunposted_operator As SqlCommand = New SqlCommand("SELECT 
+            Dim sda_operator As New SqlDataAdapter(cmd_select_sfms_operator)
+            Dim dt_operator As New DataTable
+            sda_operator.Fill(dt_operator)
+            DataGridView1.DataSource = dt_operator
+            AutofitColumns(DataGridView1)
+            enablecheckbox()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+        End Try
+
+        'Dim viewunposted_operator As SqlCommand = New SqlCommand("SELECT 
         '         jobtran.[SELECT],
         '         jobtran.job, 
         '         jobtran.Suffix, 
@@ -100,28 +125,34 @@ Public Class frmviewunposted
         '         Status='U'
         '     ORDER BY jobtran.trans_date DESC", con)
 
-        '     viewunposted_operator.Parameters.AddWithValue("@empnum", txtempnum.Text)
-        '     viewunposted_operator.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
-        '     viewunposted_operator.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
-        '     'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
+
+        'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
     End Sub
+
     Private Sub load_table_for_supervisor()
+        Try
+            con.Open()
+            Dim cmd_view_unposted_supervisor As New SqlCommand("Select_sfms_jobtran_supervisor", con)
+            cmd_view_unposted_supervisor.CommandType = CommandType.StoredProcedure
+            cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionS", cmb_section.Text)
+            cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionE", cmb_section.Text)
+            cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineS", cmb_machine.Text)
+            cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineE", cmb_machine.Text)
+            cmd_view_unposted_supervisor.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
+            cmd_view_unposted_supervisor.Parameters.Add("@enddate", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
 
-        Dim cmd_view_unposted_supervisor As New SqlCommand("Select_sfms_jobtran_supervisor", con)
-        cmd_view_unposted_supervisor.CommandType = CommandType.StoredProcedure
-        cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionS", cmb_section.Text)
-        cmd_view_unposted_supervisor.Parameters.AddWithValue("@sectionE", cmb_section.Text)
-        cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineS", cmb_machine.Text)
-        cmd_view_unposted_supervisor.Parameters.AddWithValue("@machineE", cmb_machine.Text)
-        cmd_view_unposted_supervisor.Parameters.Add("@startdate", SqlDbType.DateTime).Value = dtp_start.Value.Date
-        cmd_view_unposted_supervisor.Parameters.Add("@sectionS", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
+            Dim sda_supervisor As New SqlDataAdapter(cmd_view_unposted_supervisor)
+            Dim dt_supervisor As New DataTable
+            sda_supervisor.Fill(dt_supervisor)
+            DataGridView1.DataSource = dt_supervisor
+            AutofitColumns(DataGridView1)
+            enablecheckbox()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+        End Try
 
-        Dim sda_supervisor As New SqlDataAdapter(cmd_view_unposted_supervisor)
-        Dim dt_supervisor As New DataTable
-        sda_supervisor.Fill(dt_supervisor)
-        DataGridView1.DataSource = dt_supervisor
-        AutofitColumns(DataGridView1)
-        enablecheckbox()
 
 
         '     Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
@@ -166,45 +197,48 @@ Public Class frmviewunposted
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If user_position = "Operator" Then
+            load_table_for_operator()
+        Else
+            load_table_for_supervisor()
+        End If
 
+        'Try
+        '    con.Open()
 
+        '    If txt_position.Text = "Operator" Then
+        '        cmb_section.Visible = False
+        '        cmb_machine.Visible = False
+        '        Label5.Text = ""
+        '        Label6.Text = ""
 
-        Try
-            con.Open()
+        '        Dim a As New SqlDataAdapter(viewunposted_operator)
+        '        Dim dt As New DataTable
+        '        a.Fill(dt)
 
-            If txt_position.Text = "Operator" Then
-                cmb_section.Visible = False
-                cmb_machine.Visible = False
-                Label5.Text = ""
-                Label6.Text = ""
+        '        DataGridView1.DataSource = dt
+        '        AutofitColumns(DataGridView1)
+        '        enablecheckbox()
+        '    Else
+        '        'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
+        '        viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
+        '        viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
+        '        viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
+        '        viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
+        '        Dim a As New SqlDataAdapter(viewunposted)
+        '        Dim dt As New DataTable
+        '        a.Fill(dt)
 
-                Dim a As New SqlDataAdapter(viewunposted_operator)
-                Dim dt As New DataTable
-                a.Fill(dt)
+        '        DataGridView1.DataSource = dt
+        '        AutofitColumns(DataGridView1)
+        '        enablecheckbox()
+        '    End If
 
-                DataGridView1.DataSource = dt
-                AutofitColumns(DataGridView1)
-                enablecheckbox()
-            Else
-                'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
-                viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
-                viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
-                viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
-                viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
-                Dim a As New SqlDataAdapter(viewunposted)
-                Dim dt As New DataTable
-                a.Fill(dt)
-
-                DataGridView1.DataSource = dt
-                AutofitColumns(DataGridView1)
-                enablecheckbox()
-            End If
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            con.Close()
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
+        '    con.Close()
+        'End Try
 
 
 
@@ -222,6 +256,20 @@ Public Class frmviewunposted
     Private Sub frmviewunposted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         txtempnum.Text = user_id
+
+        If user_position = "Operator" Then
+            cmb_section.Visible = False
+            cmb_machine.Visible = False
+            Label6.Visible = False
+            Label5.Visible = False
+            btnpost.Visible = false
+        Else
+            cmb_section.Visible = True
+            cmb_machine.Visible = True
+            Label6.Visible = True
+            Label5.Visible = True
+            btnpost.Visible = True
+        End If
 
         'Dim getuserdetails As String = "Select Site, Emp_num, Name, position, dept, section from Employee where Emp_num = @empnum"
         'Dim cmdgetuserdetails As New SqlCommand(getuserdetails, con)
@@ -1335,19 +1383,32 @@ Public Class frmviewunposted
         'Catch ex As Exception
         '    MessageBox.Show("Error: " & ex.Message)
         'End Try
-        For Each row As DataGridViewRow In DataGridView1.Rows
-            If Not row.IsNewRow Then
-                Dim operator_section As String = row.Cells("Section").Value.ToString
+        'For Each row As DataGridViewRow In DataGridView1.Rows
+        '    If Not row.IsNewRow Then
+        '        Dim operator_section As String = row.Cells("Section").Value.ToString
+        '        If cmb_section.Text = operator_section Then
+        '            Dim checkBoxCell As DataGridViewCheckBoxCell = TryCast(row.Cells("Select"), DataGridViewCheckBoxCell)
+        '            If checkBoxCell IsNot Nothing Then
+        '                checkBoxCell.Value = Not CBool(checkBoxCell.Value)
+        '            End If
+        '        End If
+        '    End If
+        'Next
+        If user_position <> "Operator" Then
+            select_all()
+            load_table_for_supervisor()
+        End If
 
-                If cmb_section.Text = operator_section Then
-                    Dim checkBoxCell As DataGridViewCheckBoxCell = TryCast(row.Cells("Select"), DataGridViewCheckBoxCell)
-                    If checkBoxCell IsNot Nothing Then
-                        checkBoxCell.Value = Not CBool(checkBoxCell.Value)
-                    End If
-                End If
+    End Sub
+
+    Private Sub select_all()
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If row.Cells("Select").Value = False Then
+                row.Cells("Select").Value = True
+            Else
+                row.Cells("Select").Value = False
             End If
         Next
-
     End Sub
 
     Private Function loggedinusername()
