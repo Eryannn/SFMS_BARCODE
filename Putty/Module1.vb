@@ -22,6 +22,7 @@ Module globalvariable
     Public suffix As Integer
     Public operationnum As Integer
     Public whse As String
+
 End Module
 
 Module Module1
