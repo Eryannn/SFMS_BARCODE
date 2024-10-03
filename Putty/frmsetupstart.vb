@@ -73,7 +73,7 @@ Public Class frmsetupstart
             cmd_pisp.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
             cmd_pisp.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
-            Dim read_cmd_pisp As SqlDataReader
+
 
             Dim cmd_sfms_setup As New SqlCommand("Select_sfms_jobtran_setup", con)
             cmd_sfms_setup.CommandType = CommandType.StoredProcedure
@@ -81,23 +81,34 @@ Public Class frmsetupstart
             cmd_sfms_setup.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
             cmd_sfms_setup.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
-            Dim read_sfms_setup As SqlDataReader
+
 
             If txtjob.Text.Length = 10 AndAlso txtsuffix.Text.Length <> 0 AndAlso txtopernum.Text.Length = 2 Then
+                Dim read_sfms_setup As SqlDataReader
                 read_sfms_setup = cmd_sfms_setup.ExecuteReader
                 If read_sfms_setup.HasRows Then
                     While read_sfms_setup.Read
+
                         frmsetupend.txtwc.Text = read_sfms_setup("wc").ToString
                         frmsetupend.txtwcdesc.Text = read_sfms_setup("description").ToString
                         frmsetupend.rtbmach.Text = read_sfms_setup("Machine").ToString
                         'whse = read_sfms_setup("whse").ToString
                         frmsetupend.lblcode.Text = read_sfms_setup("Uf_Jobtran_TransactionType").ToString
                         frmsetupend.lblstarttime.Text = read_sfms_setup("start_datetime").ToString
+                        frmsetupend.Show()
+                        Me.Close()
                     End While
                     read_sfms_setup.Close()
                 Else
+                    read_sfms_setup.Close()
+                    Dim read_cmd_pisp As SqlDataReader
                     read_cmd_pisp = cmd_pisp.ExecuteReader
-
+                    While read_cmd_pisp.Read
+                        txtwc.Text = read_cmd_pisp("wc").ToString
+                        txtwcdesc.Text = read_cmd_pisp("description").ToString
+                        lblwhse.Text = read_cmd_pisp("whse").ToString
+                        rtbmach.Text = read_cmd_pisp("Machine").ToString
+                    End While
                 End If
             Else
                 txtwc.Clear()

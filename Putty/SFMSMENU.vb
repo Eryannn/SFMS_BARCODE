@@ -66,7 +66,8 @@ Public Class SFMSMENU
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
         Else
-            frmmachinestart.lblempnum.Text = lblempnum.Text
+            frmmachinestart.lblempnum.Text = user_id
+            frmmachinestart.lblempname.Text = user_name
             frmmachinestart.Show()
             Me.Close()
         End If
@@ -90,8 +91,11 @@ Public Class SFMSMENU
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
         Else
-            frmlaborstart.lblempnum.Text = lblempnum.Text
+
             frmlaborstart.Show()
+
+            frmlaborstart.lblempname.Text = user_name
+            frmlaborstart.lblempnum.Text = user_id
             Me.Close()
         End If
     End Sub
@@ -102,7 +106,8 @@ Public Class SFMSMENU
             MsgBox("Please Update the SFMS Application")
         Else
             frmmove.Show()
-            frmmove.lblempnum.Text = lblempnum.Text
+            frmmove.lblempnum.Text = user_id
+            frmmove.lblempname.Text = user_name
             Me.Hide()
         End If
     End Sub

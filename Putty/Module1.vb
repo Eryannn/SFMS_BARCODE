@@ -6,7 +6,7 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public app_version As String = "1.1"
+    Public app_version As String = "1.3"
     Public app_prev_version As String
 
     Public job_posted As Boolean
