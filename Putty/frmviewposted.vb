@@ -88,7 +88,7 @@ Public Class frmviewposted
     End Sub
 
     Private Sub frmviewposted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtempnum.Text = userid
+        txtempnum.Text = user_id
 
         Dim getuserdetails As String = "Select Site, Emp_num, Name, position, dept, section from Employee where Emp_num = @empnum"
         Dim cmdgetuserdetails As New SqlCommand(getuserdetails, con)

@@ -191,7 +191,7 @@ Partial Class frmlogin
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(1530, 0)
+        Me.Location = New System.Drawing.Point(1200, 200)
         Me.Name = "frmlogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Login"
