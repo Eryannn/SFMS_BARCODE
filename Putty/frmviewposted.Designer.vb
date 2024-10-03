@@ -44,6 +44,7 @@ Partial Class frmviewposted
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnback = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.txt_job_search = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -58,12 +59,12 @@ Partial Class frmviewposted
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(18, 337)
+        Me.DataGridView1.Location = New System.Drawing.Point(18, 353)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1286, 293)
+        Me.DataGridView1.Size = New System.Drawing.Size(1286, 331)
         Me.DataGridView1.TabIndex = 26
         '
         'Label7
@@ -279,11 +280,21 @@ Partial Class frmviewposted
         Me.Button2.Text = "Back"
         Me.Button2.UseVisualStyleBackColor = False
         '
+        'txt_job_search
+        '
+        Me.txt_job_search.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_job_search.Location = New System.Drawing.Point(18, 309)
+        Me.txt_job_search.Multiline = True
+        Me.txt_job_search.Name = "txt_job_search"
+        Me.txt_job_search.Size = New System.Drawing.Size(296, 33)
+        Me.txt_job_search.TabIndex = 29
+        '
         'frmviewposted
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1316, 711)
+        Me.Controls.Add(Me.txt_job_search)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel1)
@@ -299,6 +310,7 @@ Partial Class frmviewposted
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -323,4 +335,5 @@ Partial Class frmviewposted
     Friend WithEvents Label5 As Label
     Friend WithEvents cmb_machine As ComboBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents txt_job_search As TextBox
 End Class

@@ -146,13 +146,13 @@ Public Class frmviewunposted
             sda_supervisor.Fill(dt_supervisor)
             DataGridView1.DataSource = dt_supervisor
 
-            Dim btn As New DataGridViewButtonColumn
-            DataGridView1.Columns.Add(btn)
-            btn.HeaderText = ""
-            btn.Text = "Delete"
-            btn.Name = "btn_delete"
-            btn.UseColumnTextForButtonValue = True
-            DataGridView1.Columns.Insert(1, btn)
+            'Dim btn As New DataGridViewButtonColumn
+            'DataGridView1.Columns.Add(btn)
+            'btn.HeaderText = ""
+            'btn.Text = "Delete"
+            'btn.Name = "btn_delete"
+            'btn.UseColumnTextForButtonValue = True
+            'DataGridView1.Columns.Insert(1, btn)
 
 
 

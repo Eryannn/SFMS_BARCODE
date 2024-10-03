@@ -195,6 +195,7 @@ Public Class frmmove
                         '+ " " + readmach("DESCR").ToString
                     End While
                     readmach.Close()
+                    txtlot.Text = txtjob.Text + "-1"
                     Dim readnextop As SqlDataReader = cmd_get_cntrlpt_nextop.ExecuteReader
                     If readnextop.HasRows Then
                         While readnextop.Read
@@ -202,7 +203,10 @@ Public Class frmmove
                             txt_cntrl_pt.Text = readnextop("cntrl_point").ToString
                         End While
                         readnextop.Close()
-                        txtlot.Text = txtjob.Text + "-1"
+                        txtqtygood.Text = 0
+                        txtqtyrework.Text = 0
+                        txtqtyscrapped.Text = 0
+                        txtqtycompleted.Text = 0
                         Dim readum As SqlDataReader = cmdum.ExecuteReader
                         If readum.HasRows Then
                             While readum.Read
@@ -213,10 +217,7 @@ Public Class frmmove
                                 lblum4.Text = readum("u_m").ToString
                             End While
                             readum.Close()
-                            txtqtygood.Text = 0
-                            txtqtyrework.Text = 0
-                            txtqtyscrapped.Text = 0
-                            txtqtycompleted.Text = 0
+
                         End If
                     End If
                 End If
