@@ -145,6 +145,17 @@ Public Class frmviewunposted
             Dim dt_supervisor As New DataTable
             sda_supervisor.Fill(dt_supervisor)
             DataGridView1.DataSource = dt_supervisor
+
+            Dim btn As New DataGridViewButtonColumn
+            DataGridView1.Columns.Add(btn)
+            btn.HeaderText = ""
+            btn.Text = "Delete"
+            btn.Name = "btn_delete"
+            btn.UseColumnTextForButtonValue = True
+            DataGridView1.Columns.Insert(1, btn)
+
+
+
             AutofitColumns(DataGridView1)
             enablecheckbox()
         Catch ex As Exception
@@ -202,43 +213,6 @@ Public Class frmviewunposted
         Else
             load_table_for_supervisor()
         End If
-
-        'Try
-        '    con.Open()
-
-        '    If txt_position.Text = "Operator" Then
-        '        cmb_section.Visible = False
-        '        cmb_machine.Visible = False
-        '        Label5.Text = ""
-        '        Label6.Text = ""
-
-        '        Dim a As New SqlDataAdapter(viewunposted_operator)
-        '        Dim dt As New DataTable
-        '        a.Fill(dt)
-
-        '        DataGridView1.DataSource = dt
-        '        AutofitColumns(DataGridView1)
-        '        enablecheckbox()
-        '    Else
-        '        'viewunposted.Parameters.AddWithValue("@dept", txt_dept.Text) 'add this line for userdept
-        '        viewunposted.Parameters.AddWithValue("@section", cmb_section.Text) 'ERIAN 28AUG2024 CHANGED from txt_section to cmb_section due to supervisor have multiple sections
-        '        viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = dtp_start.Value.Date
-        '        viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = dtp_end.Value.AddDays(1)
-        '        viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
-        '        Dim a As New SqlDataAdapter(viewunposted)
-        '        Dim dt As New DataTable
-        '        a.Fill(dt)
-
-        '        DataGridView1.DataSource = dt
-        '        AutofitColumns(DataGridView1)
-        '        enablecheckbox()
-        '    End If
-
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        'Finally
-        '    con.Close()
-        'End Try
 
 
 

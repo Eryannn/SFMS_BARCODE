@@ -8,78 +8,69 @@ Public Class frmviewposted
     Dim con1 As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
     Dim userid As String = frmlogin.txtuserid.Text
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
-            jobtran.job, 
-            jobtran.Suffix, 
-            jobtran.oper_num,
-            jobtran.trans_date,
-            CASE 
-                WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-                WHEN jobtran.trans_type = 'S' THEN 'Setup'
-                WHEN jobtran.trans_type = 'M' THEN 'Move'
-                ELSE 'Lbr Run'
-            END AS [TRX TYPE],
-            jobtran.wcdesc,
-            jobtran.UF_Jobtran_Machine,
-            job.description,
-	        CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-	        CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-	        jobtran.a_hrs,
-	        jobtran.qty_complete,
-	        jobtran.qty_scrapped
-        FROM 
-           Pallet_Tagging.dbo.sfms_jobtran jobtran
-        INNER JOIN 
-	        [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-        INNER JOIN
-            Employee emp ON jobtran.CreatedBy = emp.Emp_num
-        WHERE 
-            emp.Section = @section AND 
-            jobtran.trans_date BETWEEN @date1 AND @date2 AND
-            jobtran.UF_Jobtran_Machine = @machine AND
-            Status='P'", con)
-
-        viewunposted.Parameters.AddWithValue("@section", cmb_section.Text)
-        viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-        viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
-        viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
 
 
-        Dim a As New SqlDataAdapter(viewunposted)
-        Dim dt As New DataTable
-        a.Fill(dt)
-        DataGridView1.DataSource = dt
+        check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+
+            Dim cmd As New SqlCommand("Select_sfms_posted", con)
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@section", cmb_section.Text)
+            cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
+            cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+            cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+
+            Dim a As New SqlDataAdapter(cmd)
+            Dim dt As New DataTable
+            a.Fill(dt)
+            DataGridView1.DataSource = dt
 
 
-        AutofitColumns(DataGridView1)
+            AutofitColumns(DataGridView1)
 
-        'Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
-        '    jobtran.job, 
-        '    jobtran.Suffix, 
-        '    jobtran.oper_num,
-        '    jobtran.trans_date,
-        '    CASE 
-        '        WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-        '        WHEN jobtran.trans_type = 'S' THEN 'Setup'
-        '        WHEN jobtran.trans_type = 'M' THEN 'Move'
-        '        ELSE 'Lbr Run'
-        '    END AS [TRX TYPE],
-        '    jobtran.wcdesc,
-        '    jobtran.UF_Jobtran_Machine,
-        '    job.description,
-        ' CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-        ' CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-        ' jobtran.a_hrs,
-        ' jobtran.qty_complete,
-        ' jobtran.qty_scrapped
-        'FROM 
-        '   Pallet_Tagging.dbo.sfms_jobtran jobtran
-        'INNER JOIN 
-        ' [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-        'WHERE 
-        '    jobtran.emp_num = @empnum AND 
-        '    jobtran.trans_date BETWEEN @date1 AND @date2 AND
-        '    Status='U'", con)
+            '    Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
+            '    jobtran.job, 
+            '    jobtran.Suffix, 
+            '    jobtran.oper_num,
+            '    jobtran.trans_date,
+            '    CASE 
+            '        WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
+            '        WHEN jobtran.trans_type = 'S' THEN 'Setup'
+            '        WHEN jobtran.trans_type = 'M' THEN 'Move'
+            '        ELSE 'Lbr Run'
+            '    END AS [TRX TYPE],
+            '    jobtran.wcdesc,
+            '    jobtran.UF_Jobtran_Machine,
+            '    job.description,
+            ' CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
+            ' CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
+            ' jobtran.a_hrs,
+            ' jobtran.qty_complete,
+            ' jobtran.qty_scrapped
+            'FROM 
+            '   Pallet_Tagging.dbo.sfms_jobtran jobtran
+            'INNER JOIN 
+            ' [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
+            'INNER JOIN
+            '    Employee emp ON jobtran.CreatedBy = emp.Emp_num
+            'WHERE 
+            '    emp.Section = @section AND 
+            '    jobtran.trans_date BETWEEN @date1 AND @date2 AND
+            '    jobtran.UF_Jobtran_Machine = @machine AND
+            '    Status='P'", con)
+
+            '    viewunposted.Parameters.AddWithValue("@section", cmb_section.Text)
+            '    viewunposted.Parameters.Add("@date1", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+            '    viewunposted.Parameters.Add("@date2", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+            '    viewunposted.Parameters.AddWithValue("@machine", cmb_machine.Text)
+
+
+
+        End If
+
     End Sub
     Private Sub AutofitColumns(dataGridView As DataGridView)
         ' Auto-resize columns to fit their content

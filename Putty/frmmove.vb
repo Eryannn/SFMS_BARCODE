@@ -40,8 +40,7 @@ Public Class frmmove
         lbltime.Text = Date.Now.ToString("hh:mm:ss tt").ToUpper()
     End Sub
 
-    Private Sub txtopernum_TextChanged(sender As Object, e As EventArgs) Handles txtopernum.TextChanged
-
+    Private Sub populate_details()
         Dim cmdwc As SqlCommand = New SqlCommand(" select top 1 jrt.job,jrt.suffix,jrt.oper_num,jrt.wc ,wc.description,job.whse
                          from jobroute jrt
                          inner join wc on wc.wc=jrt.wc 
@@ -72,21 +71,6 @@ Public Class frmmove
         'cmdcheckpending.Parameters.AddWithValue("@transdate", lbltransdate.Text) AND CAST(trans_date AS DATE) = @transdate
         cmdcheckpending.Parameters.AddWithValue("@empnum", lblempnum.Text)
 
-        'Dim cmdchecknextoperation As SqlCommand = New SqlCommand("select top 1 jrt.job,	jrt.suffix	,jrt.oper_num,	jrt.wc ,wc.description
-        '                 from jobroute jrt
-        '                 inner join wc on wc.wc=jrt.wc 
-        '                 where jrt.job =@jonumber
-        '                 and jrt.suffix=@josuffix
-        '                 and jrt.oper_num>@operationnum
-        '                 order by  jrt.oper_num ASC", con1)
-        'cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
-
-        'Dim cmdchecknextoperation As SqlCommand = New SqlCommand(" SELECT min(oper_num) as next_op FROM jobroute where job = @jonumber AND suffix = @josuffix AND oper_num > @operationnum", con1)
-        'cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
         Dim cmd_get_cntrlpt_nextop As SqlCommand = New SqlCommand("
         begin tran
@@ -251,8 +235,10 @@ Public Class frmmove
         Finally
             con.Close()
             con1.Close()
-
         End Try
+    End Sub
+    Private Sub txtopernum_TextChanged(sender As Object, e As EventArgs) Handles txtopernum.TextChanged
+        populate_details()
     End Sub
 
     Private Sub btnexit_Click(sender As Object, e As EventArgs) Handles btnexit.Click
@@ -900,4 +886,11 @@ Public Class frmmove
 
     End Sub
 
+    Private Sub txtjob_TextChanged(sender As Object, e As EventArgs) Handles txtjob.TextChanged
+        populate_details()
+    End Sub
+
+    Private Sub txtsuffix_TextChanged(sender As Object, e As EventArgs) Handles txtsuffix.TextChanged
+        populate_details()
+    End Sub
 End Class
