@@ -15,6 +15,7 @@ Public Class frmsetupend
         lbldate.Text = Date.Now.ToString("MM/dd/yyyy")
 
         lblempnum.Text = user_id
+        lblempname.Text = user_name
 
         lblshift.Text = login_shift
         Timer1.Enabled = True
@@ -34,43 +35,49 @@ Public Class frmsetupend
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Try
-            con.Open()
-            '[Dim endTime As DateTime = DateTime.Parse(lblendtime.Text)
+        check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            Try
+                con.Open()
+                '[Dim endTime As DateTime = DateTime.Parse(lblendtime.Text)
 
-            Dim endTime As DateTime
+                Dim endTime As DateTime
 
-            If DateTime.TryParseExact(lblendtime.Text, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, endTime) Then
+                If DateTime.TryParseExact(lblendtime.Text, "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, endTime) Then
 
-                Dim endTimeInt As Integer = endTime.Hour * 3600 + endTime.Minute * 60 + endTime.Second
-                If txtjob.Text.Length = 10 And txtjob.Text.Length >= 1 And txtopernum.Text.Length >= 1 Then
+                    Dim endTimeInt As Integer = endTime.Hour * 3600 + endTime.Minute * 60 + endTime.Second
+                    If txtjob.Text.Length = 10 And txtjob.Text.Length >= 1 And txtopernum.Text.Length >= 1 Then
 
-                    Dim cmdupdatesfms As SqlCommand = New SqlCommand("update sfms_jobtran set end_time = @endtime, a_hrs = @totalhrs, end_datetime = @enddatetime, emp_num = @updatedby where Job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type = 'S'", con)
-                    cmdupdatesfms.Parameters.AddWithValue("@endtime", endTimeInt)
-                    cmdupdatesfms.Parameters.AddWithValue("@totalhrs", lbltotalhrs.Text)
-                    cmdupdatesfms.Parameters.AddWithValue("@enddatetime", lblendtime.Text)
-                    cmdupdatesfms.Parameters.AddWithValue("@job", txtjob.Text)
-                    cmdupdatesfms.Parameters.AddWithValue("@suffix", txtsuffix.Text)
-                    cmdupdatesfms.Parameters.AddWithValue("@opernum", txtopernum.Text)
+                        Dim cmdupdatesfms As SqlCommand = New SqlCommand("update sfms_jobtran set end_time = @endtime, a_hrs = @totalhrs, end_datetime = @enddatetime, emp_num = @updatedby where Job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type = 'S'", con)
+                        cmdupdatesfms.Parameters.AddWithValue("@endtime", endTimeInt)
+                        cmdupdatesfms.Parameters.AddWithValue("@totalhrs", lbltotalhrs.Text)
+                        cmdupdatesfms.Parameters.AddWithValue("@enddatetime", lblendtime.Text)
+                        cmdupdatesfms.Parameters.AddWithValue("@job", txtjob.Text)
+                        cmdupdatesfms.Parameters.AddWithValue("@suffix", txtsuffix.Text)
+                        cmdupdatesfms.Parameters.AddWithValue("@opernum", txtopernum.Text)
 
-                    If lbl_updatedby.Text = "" Then
-                        cmdupdatesfms.Parameters.AddWithValue("@updatedby", lblempnum.Text)
-                    Else
-                        cmdupdatesfms.Parameters.AddWithValue("@updatedby", lbl_updatedby.Text)
+                        If lbl_updatedby.Text = "" Then
+                            cmdupdatesfms.Parameters.AddWithValue("@updatedby", lblempnum.Text)
+                        Else
+                            cmdupdatesfms.Parameters.AddWithValue("@updatedby", lbl_updatedby.Text)
+                        End If
+
+                        cmdupdatesfms.ExecuteNonQuery()
+                        Button4.Enabled = True
+                        Button2.Enabled = False
+                        MsgBox("Saved Successfully")
                     End If
-
-                    cmdupdatesfms.ExecuteNonQuery()
-                    Button4.Enabled = True
-                    Button2.Enabled = False
-                    MsgBox("Saved Successfully")
                 End If
-            End If
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            con.Close()
-        End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                con.Close()
+            End Try
+        End If
+
     End Sub
 
 

@@ -649,7 +649,6 @@ Partial Class frmmove
         Me.txt_cntrl_pt.Name = "txt_cntrl_pt"
         Me.txt_cntrl_pt.Size = New System.Drawing.Size(51, 20)
         Me.txt_cntrl_pt.TabIndex = 232
-        Me.txt_cntrl_pt.Visible = False
         '
         'frmmove
         '

@@ -80,7 +80,8 @@ Public Class SFMSMENU
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
         Else
-            frmdowntime.lblempnum.Text = lblempnum.Text
+            frmdowntime.lblempnum.Text = user_id
+            frmdowntime.lblempname.Text = user_name
             frmdowntime.Show()
             Me.Close()
         End If
@@ -157,7 +158,8 @@ Public Class SFMSMENU
             MsgBox("Please Update the SFMS Application")
         Else
             frm_view_dt.Show()
-            frm_view_dt.txtempnum.Text = lblempnum.Text
+            frm_view_dt.txtempnum.Text = user_id
+            frm_view_dt.txtempname.Text = user_name
             Me.Hide()
         End If
 

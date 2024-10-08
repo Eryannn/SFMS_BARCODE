@@ -308,7 +308,6 @@ Partial Class frmviewunposted
         'btnpost
         '
         Me.btnpost.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnpost.Enabled = False
         Me.btnpost.FlatAppearance.BorderColor = System.Drawing.Color.Lime
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

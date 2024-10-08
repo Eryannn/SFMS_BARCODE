@@ -154,21 +154,29 @@ Public Class frmviewposted
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
         Else
-            Dim cmd As New SqlCommand("Select_sfms_posted_searchjob", con)
-            cmd.CommandType = CommandType.StoredProcedure
+            Try
+                con.Open()
+                Dim cmd As New SqlCommand("Select_sfms_posted_searchjob", con)
+                cmd.CommandType = CommandType.StoredProcedure
 
-            cmd.Parameters.AddWithValue("@section", cmb_section.Text)
-            cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
-            cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
-            cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
-            cmd.Parameters.AddWithValue("@job", txt_job_search.Text)
-            Dim a As New SqlDataAdapter(cmd)
-            Dim dt As New DataTable
-            a.Fill(dt)
-            DataGridView1.DataSource = dt
+                cmd.Parameters.AddWithValue("@section", cmb_section.Text)
+                cmd.Parameters.AddWithValue("@machine", cmb_machine.Text)
+                cmd.Parameters.Add("@startdate", SqlDbType.DateTime).Value = DateTimePicker1.Value.Date
+                cmd.Parameters.Add("@enddate", SqlDbType.DateTime).Value = DateTimePicker2.Value.AddDays(1)
+                cmd.Parameters.AddWithValue("@job", txt_job_search.Text)
+                Dim a As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable
+                a.Fill(dt)
+                DataGridView1.DataSource = dt
 
 
-            AutofitColumns(DataGridView1)
+                AutofitColumns(DataGridView1)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                con.Close()
+            End Try
+
         End If
     End Sub
 End Class

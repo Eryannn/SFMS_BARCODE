@@ -405,4 +405,8 @@ Public Class frmdtdetails
     Private Sub txtrowpointer_TextChanged(sender As Object, e As EventArgs) Handles txtrowpointer.TextChanged
 
     End Sub
+
+    Private Sub cmbcategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcategory.SelectedIndexChanged
+
+    End Sub
 End Class

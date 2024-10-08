@@ -80,8 +80,7 @@ Public Class frmsetupstart
             cmd_sfms_setup.Parameters.AddWithValue("@jonumber", txtjob.Text)
             cmd_sfms_setup.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
             cmd_sfms_setup.Parameters.AddWithValue("@operationnum", txtopernum.Text)
-
-
+            cmd_sfms_setup.Parameters.AddWithValue("@empnum", lblempnum.Text)
 
             If txtjob.Text.Length = 10 AndAlso txtsuffix.Text.Length <> 0 AndAlso txtopernum.Text.Length = 2 Then
                 Dim read_sfms_setup As SqlDataReader
@@ -89,13 +88,24 @@ Public Class frmsetupstart
                 If read_sfms_setup.HasRows Then
                     While read_sfms_setup.Read
 
-                        frmsetupend.txtwc.Text = read_sfms_setup("wc").ToString
-                        frmsetupend.txtwcdesc.Text = read_sfms_setup("description").ToString
-                        frmsetupend.rtbmach.Text = read_sfms_setup("Machine").ToString
-                        'whse = read_sfms_setup("whse").ToString
-                        frmsetupend.lblcode.Text = read_sfms_setup("Uf_Jobtran_TransactionType").ToString
-                        frmsetupend.lblstarttime.Text = read_sfms_setup("start_datetime").ToString
+                        'frmsetupend.txtwc.Text = read_sfms_setup("wc").ToString
+                        'frmsetupend.txtwcdesc.Text = read_sfms_setup("description").ToString
+                        'frmsetupend.rtbmach.Text = read_sfms_setup("Machine").ToString
+                        ''whse = read_sfms_setup("whse").ToString
+                        'frmsetupend.lblcode.Text = read_sfms_setup("Uf_Jobtran_TransactionType").ToString
+                        'frmsetupend.lblstarttime.Text = read_sfms_setup("start_datetime").ToString
+                        'frmsetupend.lblempname.Text = user_name
+                        'frmsetupend.Show()
+                        'frmsetupend.txtjob.Text = txtjob.Text
+                        'frmsetupend.txtsuffix.Text = txtsuffix.Text
+                        'frmsetupend.txtopernum.Text = txtopernum.Text
+                        'Me.Close()
+                        frmsetupend.txtjob.Text = txtjob.Text
+                        frmsetupend.txtsuffix.Text = txtsuffix.Text
+                        frmsetupend.lblempnum.Text = lblempnum.Text
+                        MsgBox("Setup is still on process!")
                         frmsetupend.Show()
+                        frmsetupend.txtopernum.Text = txtopernum.Text
                         Me.Close()
                     End While
                     read_sfms_setup.Close()
