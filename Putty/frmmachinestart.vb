@@ -374,7 +374,8 @@ Public Class frmmachinestart
         frmmachineend.txtjob.Text = txtjob.Text
         frmmachineend.txtsuffix.Text = txtsuffix.Text
         frmmachineend.Show()
-        frmmachineend.lblempnum.Text = lblempnum.Text
+        frmmachineend.lblempnum.Text = user_id
+        lblempname.Text = user_name
         frmmachineend.txtopernum.Text = txtopernum.Text
 
         Me.Close()

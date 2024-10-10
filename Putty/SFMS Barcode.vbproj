@@ -261,6 +261,12 @@
     <Compile Include="frmviewunposted.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_move_wmcnum.Designer.vb">
+      <DependentUpon>frm_move_wmcnum.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_move_wmcnum.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_nooperationsched.Designer.vb">
       <DependentUpon>frm_nooperationsched.vb</DependentUpon>
     </Compile>
@@ -363,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmviewunposted.resx">
       <DependentUpon>frmviewunposted.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_move_wmcnum.resx">
+      <DependentUpon>frm_move_wmcnum.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_nooperationsched.resx">
       <DependentUpon>frm_nooperationsched.vb</DependentUpon>

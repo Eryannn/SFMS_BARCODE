@@ -35,7 +35,7 @@ Partial Class SFMSMENU
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.btn_tsqa_move = New System.Windows.Forms.Button()
         Me.lblempname = New System.Windows.Forms.Label()
         Me.lblempnum = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -46,11 +46,14 @@ Partial Class SFMSMENU
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_move_mcnum = New System.Windows.Forms.Button()
         Me.lbl_user = New System.Windows.Forms.Label()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.lbl_site = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -166,25 +169,25 @@ Partial Class SFMSMENU
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button7.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
         Me.Button7.ForeColor = System.Drawing.Color.Transparent
-        Me.Button7.Location = New System.Drawing.Point(35, 405)
+        Me.Button7.Location = New System.Drawing.Point(35, 482)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(203, 39)
         Me.Button7.TabIndex = 11
         Me.Button7.Text = "DOWNTIME"
         Me.Button7.UseVisualStyleBackColor = False
         '
-        'Button8
+        'btn_tsqa_move
         '
-        Me.Button8.BackColor = System.Drawing.Color.AliceBlue
-        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
-        Me.Button8.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button8.Location = New System.Drawing.Point(237, 88)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(203, 47)
-        Me.Button8.TabIndex = 12
-        Me.Button8.Text = "MOVE"
-        Me.Button8.UseVisualStyleBackColor = False
+        Me.btn_tsqa_move.BackColor = System.Drawing.Color.AliceBlue
+        Me.btn_tsqa_move.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_tsqa_move.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
+        Me.btn_tsqa_move.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_tsqa_move.Location = New System.Drawing.Point(19, 28)
+        Me.btn_tsqa_move.Name = "btn_tsqa_move"
+        Me.btn_tsqa_move.Size = New System.Drawing.Size(203, 47)
+        Me.btn_tsqa_move.TabIndex = 12
+        Me.btn_tsqa_move.Text = "MOVE"
+        Me.btn_tsqa_move.UseVisualStyleBackColor = False
         '
         'lblempname
         '
@@ -215,7 +218,7 @@ Partial Class SFMSMENU
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(12, 530)
+        Me.Label6.Location = New System.Drawing.Point(12, 601)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(103, 23)
         Me.Label6.TabIndex = 15
@@ -227,7 +230,7 @@ Partial Class SFMSMENU
         Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button9.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Button9.ForeColor = System.Drawing.Color.Transparent
-        Me.Button9.Location = New System.Drawing.Point(353, 514)
+        Me.Button9.Location = New System.Drawing.Point(353, 585)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(113, 27)
         Me.Button9.TabIndex = 16
@@ -282,7 +285,7 @@ Partial Class SFMSMENU
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
         Me.Button5.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button5.Location = New System.Drawing.Point(35, 458)
+        Me.Button5.Location = New System.Drawing.Point(35, 535)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(203, 39)
         Me.Button5.TabIndex = 20
@@ -295,7 +298,7 @@ Partial Class SFMSMENU
         Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button10.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Button10.ForeColor = System.Drawing.Color.Transparent
-        Me.Button10.Location = New System.Drawing.Point(254, 405)
+        Me.Button10.Location = New System.Drawing.Point(254, 482)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(203, 39)
         Me.Button10.TabIndex = 21
@@ -304,9 +307,9 @@ Partial Class SFMSMENU
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_move_mcnum)
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button8)
         Me.GroupBox1.Controls.Add(Me.Button6)
         Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.Button1)
@@ -319,12 +322,25 @@ Partial Class SFMSMENU
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "JOB TRANSTACTIONS"
         '
+        'btn_move_mcnum
+        '
+        Me.btn_move_mcnum.BackColor = System.Drawing.Color.AliceBlue
+        Me.btn_move_mcnum.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_move_mcnum.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
+        Me.btn_move_mcnum.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_move_mcnum.Location = New System.Drawing.Point(237, 88)
+        Me.btn_move_mcnum.Name = "btn_move_mcnum"
+        Me.btn_move_mcnum.Size = New System.Drawing.Size(203, 47)
+        Me.btn_move_mcnum.TabIndex = 12
+        Me.btn_move_mcnum.Text = "MOVE"
+        Me.btn_move_mcnum.UseVisualStyleBackColor = False
+        '
         'lbl_user
         '
         Me.lbl_user.AutoSize = True
         Me.lbl_user.Font = New System.Drawing.Font("Calibri", 12.0!)
         Me.lbl_user.ForeColor = System.Drawing.Color.White
-        Me.lbl_user.Location = New System.Drawing.Point(109, 533)
+        Me.lbl_user.Location = New System.Drawing.Point(109, 604)
         Me.lbl_user.Name = "lbl_user"
         Me.lbl_user.Size = New System.Drawing.Size(52, 19)
         Me.lbl_user.TabIndex = 23
@@ -336,7 +352,7 @@ Partial Class SFMSMENU
         Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button11.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
         Me.Button11.ForeColor = System.Drawing.Color.Transparent
-        Me.Button11.Location = New System.Drawing.Point(254, 458)
+        Me.Button11.Location = New System.Drawing.Point(254, 535)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(203, 39)
         Me.Button11.TabIndex = 24
@@ -355,12 +371,25 @@ Partial Class SFMSMENU
         Me.lbl_site.Text = "Label4"
         Me.lbl_site.Visible = False
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btn_tsqa_move)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.White
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 383)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(449, 93)
+        Me.GroupBox2.TabIndex = 26
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "TSQA"
+        '
         'SFMSMENU
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(488, 580)
+        Me.ClientSize = New System.Drawing.Size(488, 682)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lbl_site)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.lbl_user)
@@ -387,6 +416,7 @@ Partial Class SFMSMENU
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -403,7 +433,7 @@ Partial Class SFMSMENU
     Friend WithEvents Button4 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
+    Friend WithEvents btn_tsqa_move As Button
     Friend WithEvents lblempname As Label
     Friend WithEvents lblempnum As Label
     Friend WithEvents Label6 As Label
@@ -417,4 +447,6 @@ Partial Class SFMSMENU
     Friend WithEvents lbl_user As Label
     Friend WithEvents Button11 As Button
     Friend WithEvents lbl_site As Label
+    Friend WithEvents btn_move_mcnum As Button
+    Friend WithEvents GroupBox2 As GroupBox
 End Class

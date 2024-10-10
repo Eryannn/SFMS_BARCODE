@@ -24,9 +24,33 @@ Partial Class frmmove
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmmove))
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.txt_cntrl_pt = New System.Windows.Forms.TextBox()
+        Me.txt_docnum = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtqtycompleted = New System.Windows.Forms.TextBox()
+        Me.lblum4 = New System.Windows.Forms.Label()
+        Me.lblum3 = New System.Windows.Forms.Label()
+        Me.lblum2 = New System.Windows.Forms.Label()
+        Me.lblum1 = New System.Windows.Forms.Label()
+        Me.lblum = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.txtqtyrework = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.btnpost = New System.Windows.Forms.Button()
+        Me.btnsave = New System.Windows.Forms.Button()
+        Me.btnexit = New System.Windows.Forms.Button()
+        Me.txtqtymoved = New System.Windows.Forms.TextBox()
+        Me.txtlot = New System.Windows.Forms.TextBox()
+        Me.lblreasondesc = New System.Windows.Forms.Label()
+        Me.cmbreasoncode = New System.Windows.Forms.ComboBox()
+        Me.txtqtyscrapped = New System.Windows.Forms.TextBox()
+        Me.txtqtygood = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.lblnextop = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtwcdesc = New System.Windows.Forms.TextBox()
@@ -50,68 +74,301 @@ Partial Class frmmove
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblwhse = New System.Windows.Forms.Label()
-        Me.txtqtymoved = New System.Windows.Forms.TextBox()
-        Me.txtlot = New System.Windows.Forms.TextBox()
-        Me.lblreasondesc = New System.Windows.Forms.Label()
-        Me.cmbreasoncode = New System.Windows.Forms.ComboBox()
-        Me.txtqtyscrapped = New System.Windows.Forms.TextBox()
-        Me.txtqtygood = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.btnpost = New System.Windows.Forms.Button()
-        Me.btnsave = New System.Windows.Forms.Button()
-        Me.btnexit = New System.Windows.Forms.Button()
-        Me.txtqtyrework = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lblum = New System.Windows.Forms.Label()
-        Me.lblum1 = New System.Windows.Forms.Label()
-        Me.lblum2 = New System.Windows.Forms.Label()
-        Me.lblum3 = New System.Windows.Forms.Label()
-        Me.lblum4 = New System.Windows.Forms.Label()
-        Me.txtqtycompleted = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.dtptransdate = New System.Windows.Forms.DateTimePicker()
-        Me.txt_docnum = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.txt_cntrl_pt = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Label8
+        'Timer1
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Calibri", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label8.Location = New System.Drawing.Point(12, 31)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(76, 29)
-        Me.Label8.TabIndex = 140
-        Me.Label8.Text = "MOVE"
         '
-        'Panel1
+        'txt_cntrl_pt
         '
-        Me.Panel1.BackColor = System.Drawing.Color.LightBlue
-        Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Location = New System.Drawing.Point(-1, -1)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(560, 19)
-        Me.Panel1.TabIndex = 139
+        Me.txt_cntrl_pt.Location = New System.Drawing.Point(357, 362)
+        Me.txt_cntrl_pt.Name = "txt_cntrl_pt"
+        Me.txt_cntrl_pt.Size = New System.Drawing.Size(51, 20)
+        Me.txt_cntrl_pt.TabIndex = 232
         '
-        'Label7
+        'txt_docnum
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Stencil", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label7.Location = New System.Drawing.Point(3, -1)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(159, 22)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "SFMS BARCODE"
+        Me.txt_docnum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txt_docnum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_docnum.Location = New System.Drawing.Point(193, 611)
+        Me.txt_docnum.Name = "txt_docnum"
+        Me.txt_docnum.Size = New System.Drawing.Size(193, 22)
+        Me.txt_docnum.TabIndex = 5
+        Me.txt_docnum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.White
+        Me.Label20.Location = New System.Drawing.Point(32, 611)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(155, 18)
+        Me.Label20.TabIndex = 230
+        Me.Label20.Text = "DOCUMENT# / PALLET# :"
+        '
+        'txtqtycompleted
+        '
+        Me.txtqtycompleted.BackColor = System.Drawing.SystemColors.Info
+        Me.txtqtycompleted.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtqtycompleted.Location = New System.Drawing.Point(193, 448)
+        Me.txtqtycompleted.Name = "txtqtycompleted"
+        Me.txtqtycompleted.ReadOnly = True
+        Me.txtqtycompleted.Size = New System.Drawing.Size(193, 22)
+        Me.txtqtycompleted.TabIndex = 228
+        Me.txtqtycompleted.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lblum4
+        '
+        Me.lblum4.AutoSize = True
+        Me.lblum4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblum4.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblum4.Location = New System.Drawing.Point(392, 558)
+        Me.lblum4.Name = "lblum4"
+        Me.lblum4.Size = New System.Drawing.Size(0, 18)
+        Me.lblum4.TabIndex = 227
+        '
+        'lblum3
+        '
+        Me.lblum3.AutoSize = True
+        Me.lblum3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblum3.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblum3.Location = New System.Drawing.Point(392, 478)
+        Me.lblum3.Name = "lblum3"
+        Me.lblum3.Size = New System.Drawing.Size(0, 18)
+        Me.lblum3.TabIndex = 226
+        '
+        'lblum2
+        '
+        Me.lblum2.AutoSize = True
+        Me.lblum2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblum2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblum2.Location = New System.Drawing.Point(392, 450)
+        Me.lblum2.Name = "lblum2"
+        Me.lblum2.Size = New System.Drawing.Size(0, 18)
+        Me.lblum2.TabIndex = 225
+        '
+        'lblum1
+        '
+        Me.lblum1.AutoSize = True
+        Me.lblum1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblum1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblum1.Location = New System.Drawing.Point(392, 422)
+        Me.lblum1.Name = "lblum1"
+        Me.lblum1.Size = New System.Drawing.Size(0, 18)
+        Me.lblum1.TabIndex = 224
+        '
+        'lblum
+        '
+        Me.lblum.AutoSize = True
+        Me.lblum.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblum.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblum.Location = New System.Drawing.Point(392, 394)
+        Me.lblum.Name = "lblum"
+        Me.lblum.Size = New System.Drawing.Size(0, 18)
+        Me.lblum.TabIndex = 223
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.White
+        Me.Label19.Location = New System.Drawing.Point(72, 450)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(116, 18)
+        Me.Label19.TabIndex = 221
+        Me.Label19.Text = "QTY COMPLETED :"
+        '
+        'txtqtyrework
+        '
+        Me.txtqtyrework.BackColor = System.Drawing.SystemColors.Info
+        Me.txtqtyrework.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtqtyrework.Location = New System.Drawing.Point(193, 420)
+        Me.txtqtyrework.Name = "txtqtyrework"
+        Me.txtqtyrework.Size = New System.Drawing.Size(193, 22)
+        Me.txtqtyrework.TabIndex = 220
+        Me.txtqtyrework.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.White
+        Me.Label18.Location = New System.Drawing.Point(5, 422)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(183, 18)
+        Me.Label18.TabIndex = 219
+        Me.Label18.Text = "QTY COMPLETED (REWORK) :"
+        '
+        'btnpost
+        '
+        Me.btnpost.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnpost.FlatAppearance.BorderColor = System.Drawing.Color.Lime
+        Me.btnpost.FlatAppearance.BorderSize = 2
+        Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnpost.Location = New System.Drawing.Point(154, 708)
+        Me.btnpost.Name = "btnpost"
+        Me.btnpost.Size = New System.Drawing.Size(254, 24)
+        Me.btnpost.TabIndex = 218
+        Me.btnpost.Text = "POST"
+        Me.btnpost.UseVisualStyleBackColor = False
+        Me.btnpost.Visible = False
+        '
+        'btnsave
+        '
+        Me.btnsave.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnsave.FlatAppearance.BorderColor = System.Drawing.Color.Lime
+        Me.btnsave.FlatAppearance.BorderSize = 2
+        Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnsave.Location = New System.Drawing.Point(152, 646)
+        Me.btnsave.Name = "btnsave"
+        Me.btnsave.Size = New System.Drawing.Size(254, 24)
+        Me.btnsave.TabIndex = 6
+        Me.btnsave.Text = "SAVE"
+        Me.btnsave.UseVisualStyleBackColor = False
+        '
+        'btnexit
+        '
+        Me.btnexit.BackColor = System.Drawing.Color.Red
+        Me.btnexit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnexit.FlatAppearance.BorderSize = 2
+        Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnexit.Location = New System.Drawing.Point(152, 676)
+        Me.btnexit.Name = "btnexit"
+        Me.btnexit.Size = New System.Drawing.Size(254, 24)
+        Me.btnexit.TabIndex = 216
+        Me.btnexit.Text = "EXIT"
+        Me.btnexit.UseVisualStyleBackColor = False
+        '
+        'txtqtymoved
+        '
+        Me.txtqtymoved.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.txtqtymoved.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtqtymoved.Location = New System.Drawing.Point(193, 556)
+        Me.txtqtymoved.Name = "txtqtymoved"
+        Me.txtqtymoved.ReadOnly = True
+        Me.txtqtymoved.Size = New System.Drawing.Size(193, 22)
+        Me.txtqtymoved.TabIndex = 215
+        Me.txtqtymoved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtlot
+        '
+        Me.txtlot.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtlot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtlot.Location = New System.Drawing.Point(193, 583)
+        Me.txtlot.Name = "txtlot"
+        Me.txtlot.ReadOnly = True
+        Me.txtlot.Size = New System.Drawing.Size(193, 22)
+        Me.txtlot.TabIndex = 214
+        Me.txtlot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'lblreasondesc
+        '
+        Me.lblreasondesc.AutoSize = True
+        Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblreasondesc.ForeColor = System.Drawing.Color.White
+        Me.lblreasondesc.Location = New System.Drawing.Point(190, 533)
+        Me.lblreasondesc.Name = "lblreasondesc"
+        Me.lblreasondesc.Size = New System.Drawing.Size(0, 18)
+        Me.lblreasondesc.TabIndex = 213
+        '
+        'cmbreasoncode
+        '
+        Me.cmbreasoncode.BackColor = System.Drawing.Color.Yellow
+        Me.cmbreasoncode.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmbreasoncode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbreasoncode.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbreasoncode.FormattingEnabled = True
+        Me.cmbreasoncode.Location = New System.Drawing.Point(193, 506)
+        Me.cmbreasoncode.Name = "cmbreasoncode"
+        Me.cmbreasoncode.Size = New System.Drawing.Size(193, 21)
+        Me.cmbreasoncode.TabIndex = 212
+        '
+        'txtqtyscrapped
+        '
+        Me.txtqtyscrapped.BackColor = System.Drawing.SystemColors.Info
+        Me.txtqtyscrapped.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtqtyscrapped.Location = New System.Drawing.Point(193, 476)
+        Me.txtqtyscrapped.Name = "txtqtyscrapped"
+        Me.txtqtyscrapped.Size = New System.Drawing.Size(193, 22)
+        Me.txtqtyscrapped.TabIndex = 211
+        Me.txtqtyscrapped.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtqtygood
+        '
+        Me.txtqtygood.BackColor = System.Drawing.SystemColors.Info
+        Me.txtqtygood.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtqtygood.Location = New System.Drawing.Point(193, 392)
+        Me.txtqtygood.Name = "txtqtygood"
+        Me.txtqtygood.Size = New System.Drawing.Size(193, 22)
+        Me.txtqtygood.TabIndex = 4
+        Me.txtqtygood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.Location = New System.Drawing.Point(149, 585)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(38, 18)
+        Me.Label17.TabIndex = 209
+        Me.Label17.Text = "LOT :"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.White
+        Me.Label16.Location = New System.Drawing.Point(98, 558)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(89, 18)
+        Me.Label16.TabIndex = 208
+        Me.Label16.Text = "QTY MOVED :"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.White
+        Me.Label15.Location = New System.Drawing.Point(78, 506)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(109, 18)
+        Me.Label15.TabIndex = 207
+        Me.Label15.Text = "SCRAP REASON :"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(81, 478)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(106, 18)
+        Me.Label14.TabIndex = 206
+        Me.Label14.Text = "QTY SCRAPPED :"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(20, 394)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(167, 18)
+        Me.Label11.TabIndex = 205
+        Me.Label11.Text = "QTY COMPLETED (GOOD) :"
         '
         'lblnextop
         '
@@ -322,13 +579,14 @@ Partial Class frmmove
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.LawnGreen
-        Me.Label1.Location = New System.Drawing.Point(53, 105)
+        Me.Label1.BackColor = System.Drawing.Color.LightBlue
+        Me.Label1.Font = New System.Drawing.Font("Stencil", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Label1.Location = New System.Drawing.Point(3, -1)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(135, 23)
-        Me.Label1.TabIndex = 182
-        Me.Label1.Text = "CURRENT TIME :"
+        Me.Label1.Size = New System.Drawing.Size(159, 22)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "SFMS BARCODE"
         '
         'Label2
         '
@@ -351,266 +609,16 @@ Partial Class frmmove
         Me.lblwhse.Text = "whse"
         Me.lblwhse.Visible = False
         '
-        'txtqtymoved
+        'Label8
         '
-        Me.txtqtymoved.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.txtqtymoved.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtymoved.Location = New System.Drawing.Point(193, 556)
-        Me.txtqtymoved.Name = "txtqtymoved"
-        Me.txtqtymoved.ReadOnly = True
-        Me.txtqtymoved.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtymoved.TabIndex = 215
-        Me.txtqtymoved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtlot
-        '
-        Me.txtlot.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtlot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlot.Location = New System.Drawing.Point(193, 583)
-        Me.txtlot.Name = "txtlot"
-        Me.txtlot.ReadOnly = True
-        Me.txtlot.Size = New System.Drawing.Size(193, 22)
-        Me.txtlot.TabIndex = 214
-        Me.txtlot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'lblreasondesc
-        '
-        Me.lblreasondesc.AutoSize = True
-        Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblreasondesc.ForeColor = System.Drawing.Color.White
-        Me.lblreasondesc.Location = New System.Drawing.Point(190, 533)
-        Me.lblreasondesc.Name = "lblreasondesc"
-        Me.lblreasondesc.Size = New System.Drawing.Size(0, 18)
-        Me.lblreasondesc.TabIndex = 213
-        '
-        'cmbreasoncode
-        '
-        Me.cmbreasoncode.BackColor = System.Drawing.Color.Yellow
-        Me.cmbreasoncode.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cmbreasoncode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmbreasoncode.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbreasoncode.FormattingEnabled = True
-        Me.cmbreasoncode.Location = New System.Drawing.Point(193, 506)
-        Me.cmbreasoncode.Name = "cmbreasoncode"
-        Me.cmbreasoncode.Size = New System.Drawing.Size(193, 21)
-        Me.cmbreasoncode.TabIndex = 212
-        '
-        'txtqtyscrapped
-        '
-        Me.txtqtyscrapped.BackColor = System.Drawing.SystemColors.Info
-        Me.txtqtyscrapped.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtyscrapped.Location = New System.Drawing.Point(193, 476)
-        Me.txtqtyscrapped.Name = "txtqtyscrapped"
-        Me.txtqtyscrapped.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtyscrapped.TabIndex = 211
-        Me.txtqtyscrapped.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtqtygood
-        '
-        Me.txtqtygood.BackColor = System.Drawing.SystemColors.Info
-        Me.txtqtygood.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtygood.Location = New System.Drawing.Point(193, 392)
-        Me.txtqtygood.Name = "txtqtygood"
-        Me.txtqtygood.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtygood.TabIndex = 4
-        Me.txtqtygood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(149, 585)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(38, 18)
-        Me.Label17.TabIndex = 209
-        Me.Label17.Text = "LOT :"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(98, 558)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(89, 18)
-        Me.Label16.TabIndex = 208
-        Me.Label16.Text = "QTY MOVED :"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.White
-        Me.Label15.Location = New System.Drawing.Point(78, 506)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(109, 18)
-        Me.Label15.TabIndex = 207
-        Me.Label15.Text = "SCRAP REASON :"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(81, 478)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(106, 18)
-        Me.Label14.TabIndex = 206
-        Me.Label14.Text = "QTY SCRAPPED :"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(20, 394)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(167, 18)
-        Me.Label11.TabIndex = 205
-        Me.Label11.Text = "QTY COMPLETED (GOOD) :"
-        '
-        'btnpost
-        '
-        Me.btnpost.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnpost.FlatAppearance.BorderColor = System.Drawing.Color.Lime
-        Me.btnpost.FlatAppearance.BorderSize = 2
-        Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnpost.Location = New System.Drawing.Point(154, 708)
-        Me.btnpost.Name = "btnpost"
-        Me.btnpost.Size = New System.Drawing.Size(254, 24)
-        Me.btnpost.TabIndex = 218
-        Me.btnpost.Text = "POST"
-        Me.btnpost.UseVisualStyleBackColor = False
-        Me.btnpost.Visible = False
-        '
-        'btnsave
-        '
-        Me.btnsave.BackColor = System.Drawing.Color.LimeGreen
-        Me.btnsave.FlatAppearance.BorderColor = System.Drawing.Color.Lime
-        Me.btnsave.FlatAppearance.BorderSize = 2
-        Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnsave.Location = New System.Drawing.Point(152, 646)
-        Me.btnsave.Name = "btnsave"
-        Me.btnsave.Size = New System.Drawing.Size(254, 24)
-        Me.btnsave.TabIndex = 6
-        Me.btnsave.Text = "SAVE"
-        Me.btnsave.UseVisualStyleBackColor = False
-        '
-        'btnexit
-        '
-        Me.btnexit.BackColor = System.Drawing.Color.Red
-        Me.btnexit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnexit.FlatAppearance.BorderSize = 2
-        Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnexit.Location = New System.Drawing.Point(152, 676)
-        Me.btnexit.Name = "btnexit"
-        Me.btnexit.Size = New System.Drawing.Size(254, 24)
-        Me.btnexit.TabIndex = 216
-        Me.btnexit.Text = "EXIT"
-        Me.btnexit.UseVisualStyleBackColor = False
-        '
-        'txtqtyrework
-        '
-        Me.txtqtyrework.BackColor = System.Drawing.SystemColors.Info
-        Me.txtqtyrework.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtyrework.Location = New System.Drawing.Point(193, 420)
-        Me.txtqtyrework.Name = "txtqtyrework"
-        Me.txtqtyrework.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtyrework.TabIndex = 220
-        Me.txtqtyrework.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(5, 422)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(183, 18)
-        Me.Label18.TabIndex = 219
-        Me.Label18.Text = "QTY COMPLETED (REWORK) :"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(72, 450)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(116, 18)
-        Me.Label19.TabIndex = 221
-        Me.Label19.Text = "QTY COMPLETED :"
-        '
-        'Timer1
-        '
-        '
-        'lblum
-        '
-        Me.lblum.AutoSize = True
-        Me.lblum.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblum.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum.Location = New System.Drawing.Point(392, 394)
-        Me.lblum.Name = "lblum"
-        Me.lblum.Size = New System.Drawing.Size(0, 18)
-        Me.lblum.TabIndex = 223
-        '
-        'lblum1
-        '
-        Me.lblum1.AutoSize = True
-        Me.lblum1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblum1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum1.Location = New System.Drawing.Point(392, 422)
-        Me.lblum1.Name = "lblum1"
-        Me.lblum1.Size = New System.Drawing.Size(0, 18)
-        Me.lblum1.TabIndex = 224
-        '
-        'lblum2
-        '
-        Me.lblum2.AutoSize = True
-        Me.lblum2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblum2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum2.Location = New System.Drawing.Point(392, 450)
-        Me.lblum2.Name = "lblum2"
-        Me.lblum2.Size = New System.Drawing.Size(0, 18)
-        Me.lblum2.TabIndex = 225
-        '
-        'lblum3
-        '
-        Me.lblum3.AutoSize = True
-        Me.lblum3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblum3.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum3.Location = New System.Drawing.Point(392, 478)
-        Me.lblum3.Name = "lblum3"
-        Me.lblum3.Size = New System.Drawing.Size(0, 18)
-        Me.lblum3.TabIndex = 226
-        '
-        'lblum4
-        '
-        Me.lblum4.AutoSize = True
-        Me.lblum4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblum4.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum4.Location = New System.Drawing.Point(392, 558)
-        Me.lblum4.Name = "lblum4"
-        Me.lblum4.Size = New System.Drawing.Size(0, 18)
-        Me.lblum4.TabIndex = 227
-        '
-        'txtqtycompleted
-        '
-        Me.txtqtycompleted.BackColor = System.Drawing.SystemColors.Info
-        Me.txtqtycompleted.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtycompleted.Location = New System.Drawing.Point(193, 448)
-        Me.txtqtycompleted.Name = "txtqtycompleted"
-        Me.txtqtycompleted.ReadOnly = True
-        Me.txtqtycompleted.Size = New System.Drawing.Size(193, 22)
-        Me.txtqtycompleted.TabIndex = 228
-        Me.txtqtycompleted.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label8.Location = New System.Drawing.Point(12, 31)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(76, 29)
+        Me.Label8.TabIndex = 140
+        Me.Label8.Text = "MOVE"
         '
         'dtptransdate
         '
@@ -622,40 +630,35 @@ Partial Class frmmove
         Me.dtptransdate.TabIndex = 229
         Me.dtptransdate.Visible = False
         '
-        'txt_docnum
+        'Panel1
         '
-        Me.txt_docnum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txt_docnum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_docnum.Location = New System.Drawing.Point(193, 611)
-        Me.txt_docnum.Name = "txt_docnum"
-        Me.txt_docnum.Size = New System.Drawing.Size(193, 22)
-        Me.txt_docnum.TabIndex = 5
-        Me.txt_docnum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.LightBlue
+        Me.Panel1.Controls.Add(Me.Label7)
+        Me.Panel1.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(560, 22)
+        Me.Panel1.TabIndex = 139
         '
-        'Label20
+        'Label7
         '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(32, 611)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(155, 18)
-        Me.Label20.TabIndex = 230
-        Me.Label20.Text = "DOCUMENT# / PALLET# :"
-        '
-        'txt_cntrl_pt
-        '
-        Me.txt_cntrl_pt.Location = New System.Drawing.Point(357, 362)
-        Me.txt_cntrl_pt.Name = "txt_cntrl_pt"
-        Me.txt_cntrl_pt.Size = New System.Drawing.Size(51, 20)
-        Me.txt_cntrl_pt.TabIndex = 232
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Stencil", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Label7.Location = New System.Drawing.Point(3, -1)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(159, 22)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "SFMS BARCODE"
         '
         'frmmove
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(748, 753)
+        Me.ClientSize = New System.Drawing.Size(541, 753)
         Me.Controls.Add(Me.txt_cntrl_pt)
         Me.Controls.Add(Me.txt_docnum)
         Me.Controls.Add(Me.Label20)
@@ -719,10 +722,33 @@ Partial Class frmmove
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label7 As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents txt_cntrl_pt As TextBox
+    Friend WithEvents txt_docnum As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtqtycompleted As TextBox
+    Friend WithEvents lblum4 As Label
+    Friend WithEvents lblum3 As Label
+    Friend WithEvents lblum2 As Label
+    Friend WithEvents lblum1 As Label
+    Friend WithEvents lblum As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents txtqtyrework As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents btnpost As Button
+    Friend WithEvents btnsave As Button
+    Friend WithEvents btnexit As Button
+    Friend WithEvents txtqtymoved As TextBox
+    Friend WithEvents txtlot As TextBox
+    Friend WithEvents lblreasondesc As Label
+    Friend WithEvents cmbreasoncode As ComboBox
+    Friend WithEvents txtqtyscrapped As TextBox
+    Friend WithEvents txtqtygood As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label11 As Label
     Friend WithEvents lblnextop As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents txtwcdesc As TextBox
@@ -746,32 +772,8 @@ Partial Class frmmove
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents lblwhse As Label
-    Friend WithEvents txtqtymoved As TextBox
-    Friend WithEvents txtlot As TextBox
-    Friend WithEvents lblreasondesc As Label
-    Friend WithEvents cmbreasoncode As ComboBox
-    Friend WithEvents txtqtyscrapped As TextBox
-    Friend WithEvents txtqtygood As TextBox
-    Friend WithEvents Label17 As Label
-    Friend WithEvents Label16 As Label
-    Friend WithEvents Label15 As Label
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label11 As Label
-    Friend WithEvents btnpost As Button
-    Friend WithEvents btnsave As Button
-    Friend WithEvents btnexit As Button
-    Friend WithEvents txtqtyrework As TextBox
-    Friend WithEvents Label18 As Label
-    Friend WithEvents Label19 As Label
-    Friend WithEvents Timer1 As Timer
-    Friend WithEvents lblum As Label
-    Friend WithEvents lblum1 As Label
-    Friend WithEvents lblum2 As Label
-    Friend WithEvents lblum3 As Label
-    Friend WithEvents lblum4 As Label
-    Friend WithEvents txtqtycompleted As TextBox
+    Friend WithEvents Label8 As Label
     Friend WithEvents dtptransdate As DateTimePicker
-    Friend WithEvents txt_docnum As TextBox
-    Friend WithEvents Label20 As Label
-    Friend WithEvents txt_cntrl_pt As TextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label7 As Label
 End Class

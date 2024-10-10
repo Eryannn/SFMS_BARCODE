@@ -101,7 +101,7 @@ Public Class SFMSMENU
         End If
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles btn_tsqa_move.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -109,6 +109,7 @@ Public Class SFMSMENU
             frmmove.Show()
             frmmove.lblempnum.Text = user_id
             frmmove.lblempname.Text = user_name
+            frmmove.lblshift.Text = login_shift
             Me.Hide()
         End If
     End Sub
@@ -176,5 +177,18 @@ Public Class SFMSMENU
             Me.Close()
         End If
 
+    End Sub
+
+    Private Sub btn_move_mcnum_Click(sender As Object, e As EventArgs) Handles btn_move_mcnum.Click
+        check_update()
+        If app_prev_version <> app_version Then
+            MsgBox("Please Update the SFMS Application")
+        Else
+            frm_move_wmcnum.Show()
+            frm_move_wmcnum.lbl_empnum.Text = user_id
+            frm_move_wmcnum.lbl_empname.Text = user_name
+            frm_move_wmcnum.lbl_shift.Text = login_shift
+            Me.Hide()
+        End If
     End Sub
 End Class

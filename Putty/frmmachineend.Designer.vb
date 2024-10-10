@@ -94,6 +94,8 @@ Partial Class frmmachineend
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightBlue
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Location = New System.Drawing.Point(-1, 0)
@@ -647,7 +649,7 @@ Partial Class frmmachineend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(713, 747)
+        Me.ClientSize = New System.Drawing.Size(552, 747)
         Me.Controls.Add(Me.lbl_updatedby)
         Me.Controls.Add(Me.dtptransdate)
         Me.Controls.Add(Me.lblqtymoved)

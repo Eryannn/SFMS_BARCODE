@@ -66,6 +66,8 @@ Partial Class frmviewunposted
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.MidnightBlue
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Label7)
@@ -88,6 +90,8 @@ Partial Class frmviewunposted
         '
         'Panel2
         '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.CornflowerBlue
         Me.Panel2.Controls.Add(Me.Label6)
         Me.Panel2.Controls.Add(Me.cmb_section)
@@ -279,6 +283,7 @@ Partial Class frmviewunposted
         '
         'btnback
         '
+        Me.btnback.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnback.BackColor = System.Drawing.Color.Tomato
         Me.btnback.FlatAppearance.BorderColor = System.Drawing.Color.Red
         Me.btnback.FlatAppearance.BorderSize = 2
@@ -294,6 +299,7 @@ Partial Class frmviewunposted
         '
         'btnupdate
         '
+        Me.btnupdate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnupdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnupdate.FlatAppearance.BorderColor = System.Drawing.Color.Yellow
         Me.btnupdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -307,6 +313,7 @@ Partial Class frmviewunposted
         '
         'btnpost
         '
+        Me.btnpost.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btnpost.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnpost.FlatAppearance.BorderColor = System.Drawing.Color.Lime
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
