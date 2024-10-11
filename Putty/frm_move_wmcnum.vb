@@ -10,6 +10,9 @@ Public Class frm_move_wmcnum
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+
+        Dim saved As Boolean
+
         If CInt(txt_qtyscrap.Text) > 0 AndAlso cmb_reasoncode.SelectedIndex = -1 Then
 
             MsgBox("Reason Code is Required")
@@ -24,31 +27,41 @@ Public Class frm_move_wmcnum
                 OrElse txtwc.Text = "M924" Then
                 If txt_lot.Text <> "" Then
                     Insert_sfms_jobtran()
-                    MsgBox("Saved Successfully")
+                    'MsgBox("Saved Successfully")
+                    saved = True
                     txt_qtygood.Focus()
                     txt_qtygood.Text = 0
                     txt_qtyrework.Text = 0
                     txt_qtycomplete.Text = 0
                     txt_qtyscrap.Text = 0
                     txt_qtymove.Text = 0
+                    txt_qtyredtags = 0
                     btn_save.Enabled = True
                 Else
                     MsgBox("Lot is Required")
+                    saved = False
                 End If
             Else
                 Insert_sfms_jobtran()
-                MsgBox("Saved Successfully")
+                ' MsgBox("Saved Successfully")
+                saved = True
                 txt_qtygood.Focus()
                 txt_qtygood.Text = 0
                 txt_qtyrework.Text = 0
                 txt_qtycomplete.Text = 0
                 txt_qtyscrap.Text = 0
                 txt_qtymove.Text = 0
+                txt_qtyredtags = 0
                 txt_mcnum.Clear()
                 btn_save.Enabled = True
             End If
         End If
 
+        If saved Then
+            MsgBox("Saved Successfully")
+        Else
+            MsgBox("Invalid ")
+        End If
 
     End Sub
 
@@ -67,6 +80,7 @@ Public Class frm_move_wmcnum
             cmd_insert.Parameters.AddWithValue("@seq", latestseq)
             cmd_insert.Parameters.AddWithValue("@qtycomplete", CInt(txt_qtycomplete.Text))
             cmd_insert.Parameters.AddWithValue("@qtyscrapped", CInt(txt_qtyscrap.Text))
+            cmd_insert.Parameters.AddWithValue("@qtyredtags", CInt(txt_qtyredtags.Text))
             cmd_insert.Parameters.AddWithValue("@nextoper", lbl_nextop.Text)
             cmd_insert.Parameters.AddWithValue("@empnum", lbl_empnum.Text)
             cmd_insert.Parameters.AddWithValue("@qtymoved", CInt(txt_qtymove.Text))
@@ -84,12 +98,12 @@ Public Class frm_move_wmcnum
             cmd_insert.Parameters.AddWithValue("@wc", txtwc.Text)
             cmd_insert.Parameters.AddWithValue("@wcdesc", txtwcdesc.Text)
             If cmb_reasoncode.Text = "" Then
-                cmd_insert.Parameters.AddWithValue("@reasoncode", DBNull.Value)
+                cmd_insert.Parameters.AddWithValue("@reasondesc", DBNull.Value)
             Else
-                cmd_insert.Parameters.AddWithValue("@reasoncode", cmb_reasoncode.Text)
+                cmd_insert.Parameters.AddWithValue("@reasondesc", cmb_reasoncode.Text)
             End If
 
-            cmd_insert.Parameters.AddWithValue("@reasondesc", DBNull.Value)
+            'cmd_insert.Parameters.AddWithValue("@reasondesc", DBNull.Value)
             cmd_insert.Parameters.AddWithValue("@jobmachine", rtbmach.Text)
             cmd_insert.Parameters.AddWithValue("@output", CInt(txt_qtygood.Text))
             cmd_insert.Parameters.AddWithValue("@rework", CInt(txt_qtyrework.Text))
@@ -398,4 +412,28 @@ Public Class frm_move_wmcnum
         End Try
     End Sub
 
+    Private Sub txt_qtyscrap_TextChanged(sender As Object, e As EventArgs) Handles txt_qtyscrap.TextChanged
+
+        If String.IsNullOrEmpty(txt_qtyscrap.Text) Then
+            txt_qtyscrap.Text = "0"
+        Else
+            Dim qtyScrapped As Double
+            If Double.TryParse(txt_qtyscrap.Text, qtyScrapped) Then
+                txt_qtyscrap.Text = qtyScrapped.ToString("n0")
+                txt_qtyscrap.Select(txt_qtyscrap.Text.Length, 0)
+            Else
+                MsgBox("Invalid quantity scrapped value.")
+            End If
+        End If
+
+        If CInt(txt_qtyscrap.Text) <= 0 Then
+            cmb_reasoncode.Enabled = False
+            cmb_reasoncode.SelectedIndex = -1
+            cmb_reasoncode.Text = ""
+            lbl_reason_desc.Text = ""
+        Else
+            cmb_reasoncode.Enabled = True
+        End If
+
+    End Sub
 End Class
