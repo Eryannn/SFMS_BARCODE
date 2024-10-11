@@ -313,12 +313,6 @@ Public Class frmmove
             End If
         End If
 
-        'If lblnextop.Text Is Nothing OrElse lblnextop.Text = "0" Then
-        '    txtqtymoved.Text = "0"
-        'Else
-        '    txtqtymoved.Text = totalqtycompleted
-        'End If
-
         If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
         ElseIf txt_cntrl_pt.text = 1

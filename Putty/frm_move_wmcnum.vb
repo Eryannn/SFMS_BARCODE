@@ -35,7 +35,7 @@ Public Class frm_move_wmcnum
                     txt_qtycomplete.Text = 0
                     txt_qtyscrap.Text = 0
                     txt_qtymove.Text = 0
-                    txt_qtyredtags = 0
+                    txt_qtyredtags.Text = 0
                     btn_save.Enabled = True
                 Else
                     MsgBox("Lot is Required")
@@ -51,7 +51,7 @@ Public Class frm_move_wmcnum
                 txt_qtycomplete.Text = 0
                 txt_qtyscrap.Text = 0
                 txt_qtymove.Text = 0
-                txt_qtyredtags = 0
+                txt_qtyredtags.Text = 0
                 txt_mcnum.Clear()
                 btn_save.Enabled = True
             End If
@@ -433,6 +433,63 @@ Public Class frm_move_wmcnum
             lbl_reason_desc.Text = ""
         Else
             cmb_reasoncode.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub txt_qtygood_TextChanged(sender As Object, e As EventArgs) Handles txt_qtygood.TextChanged
+        Dim totalqtycompleted As Integer
+        If String.IsNullOrEmpty(txt_qtygood.Text) Then
+            txt_qtygood.Text = "0"
+        Else
+            Dim qtyScrapped As Double
+            If Double.TryParse(txt_qtygood.Text, qtyScrapped) Then
+                txt_qtygood.Text = qtyScrapped.ToString("n0")
+                txt_qtygood.Select(txt_qtygood.Text.Length, 0)
+            Else
+                MsgBox("Invalid quantity scrapped value.")
+            End If
+        End If
+
+        If txt_qtygood IsNot Nothing AndAlso Not String.IsNullOrEmpty(txt_qtygood.Text) AndAlso IsNumeric(txt_qtygood.Text) Then
+            If txt_qtyrework IsNot Nothing AndAlso Not String.IsNullOrEmpty(txt_qtyrework.Text) AndAlso IsNumeric(txt_qtyrework.Text) Then
+                totalqtycompleted = (CInt(txt_qtygood.Text) + CInt(txt_qtyrework.Text)).ToString()
+                txt_qtycomplete.Text = (CInt(txt_qtygood.Text) + CInt(txt_qtyrework.Text)).ToString()
+            End If
+        End If
+
+        If lbl_nextop.Text = "" OrElse lbl_nextop.Text = "0" Then
+            txt_qtymove.Text = "0"
+        ElseIf txt_cntrl_pt.Text = 1
+            txt_qtymove.Text = totalqtycompleted
+        Else
+            txt_qtymove.Text = "0"
+        End If
+    End Sub
+
+    Private Sub txt_qtyrework_TextChanged(sender As Object, e As EventArgs) Handles txt_qtyrework.TextChanged
+        If String.IsNullOrEmpty(txt_qtyrework.Text) Then
+            txt_qtyrework.Text = "0"
+        Else
+            Dim qtyScrapped As Double
+            If Double.TryParse(txt_qtyrework.Text, qtyScrapped) Then
+                txt_qtyrework.Text = qtyScrapped.ToString("n0")
+                txt_qtyrework.Select(txt_qtyrework.Text.Length, 0)
+            Else
+                MsgBox("Invalid quantity scrapped value.")
+            End If
+        End If
+
+        Dim total As Double
+        total = CInt(txt_qtygood.Text) + CInt(txt_qtyrework.Text)
+        txt_qtycomplete.Text = total
+
+        If lbl_nextop.Text = "" OrElse lbl_nextop.Text = "0" Then
+            txt_qtymove.Text = "0"
+        ElseIf txt_cntrl_pt.Text = 1
+            txt_qtymove.Text = total
+        Else
+            txt_qtymove.Text = "0"
         End If
 
     End Sub
