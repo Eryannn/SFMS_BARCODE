@@ -93,7 +93,7 @@ Partial Class frmupdatelabor
         Me.lblum2.AutoSize = True
         Me.lblum2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblum2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum2.Location = New System.Drawing.Point(412, 431)
+        Me.lblum2.Location = New System.Drawing.Point(412, 457)
         Me.lblum2.Name = "lblum2"
         Me.lblum2.Size = New System.Drawing.Size(0, 18)
         Me.lblum2.TabIndex = 241
@@ -135,7 +135,7 @@ Partial Class frmupdatelabor
         '
         Me.txtqtymoved.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txtqtymoved.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtymoved.Location = New System.Drawing.Point(213, 429)
+        Me.txtqtymoved.Location = New System.Drawing.Point(213, 455)
         Me.txtqtymoved.Name = "txtqtymoved"
         Me.txtqtymoved.ReadOnly = True
         Me.txtqtymoved.Size = New System.Drawing.Size(193, 22)
@@ -146,7 +146,7 @@ Partial Class frmupdatelabor
         '
         Me.txtlot.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtlot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlot.Location = New System.Drawing.Point(213, 456)
+        Me.txtlot.Location = New System.Drawing.Point(213, 482)
         Me.txtlot.Name = "txtlot"
         Me.txtlot.ReadOnly = True
         Me.txtlot.Size = New System.Drawing.Size(193, 22)
@@ -155,19 +155,20 @@ Partial Class frmupdatelabor
         'lblreasondesc
         '
         Me.lblreasondesc.AutoSize = True
-        Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblreasondesc.ForeColor = System.Drawing.Color.White
-        Me.lblreasondesc.Location = New System.Drawing.Point(210, 406)
+        Me.lblreasondesc.Location = New System.Drawing.Point(210, 421)
         Me.lblreasondesc.Name = "lblreasondesc"
-        Me.lblreasondesc.Size = New System.Drawing.Size(0, 18)
+        Me.lblreasondesc.Size = New System.Drawing.Size(0, 26)
         Me.lblreasondesc.TabIndex = 237
         '
         'cmbreasoncode
         '
+        Me.cmbreasoncode.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbreasoncode.FormattingEnabled = True
         Me.cmbreasoncode.Location = New System.Drawing.Point(213, 379)
         Me.cmbreasoncode.Name = "cmbreasoncode"
-        Me.cmbreasoncode.Size = New System.Drawing.Size(193, 21)
+        Me.cmbreasoncode.Size = New System.Drawing.Size(328, 33)
         Me.cmbreasoncode.TabIndex = 236
         '
         'txtqtyscrapped
@@ -203,11 +204,11 @@ Partial Class frmupdatelabor
         'lbltotalhrs
         '
         Me.lbltotalhrs.AutoSize = True
-        Me.lbltotalhrs.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotalhrs.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltotalhrs.ForeColor = System.Drawing.Color.White
-        Me.lbltotalhrs.Location = New System.Drawing.Point(210, 560)
+        Me.lbltotalhrs.Location = New System.Drawing.Point(212, 652)
         Me.lbltotalhrs.Name = "lbltotalhrs"
-        Me.lbltotalhrs.Size = New System.Drawing.Size(0, 18)
+        Me.lbltotalhrs.Size = New System.Drawing.Size(0, 26)
         Me.lbltotalhrs.TabIndex = 232
         '
         'lblstartint
@@ -228,7 +229,7 @@ Partial Class frmupdatelabor
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnpost.Location = New System.Drawing.Point(305, 753)
+        Me.btnpost.Location = New System.Drawing.Point(305, 831)
         Me.btnpost.Name = "btnpost"
         Me.btnpost.Size = New System.Drawing.Size(254, 24)
         Me.btnpost.TabIndex = 229
@@ -242,11 +243,11 @@ Partial Class frmupdatelabor
         Me.btnsave.FlatAppearance.BorderColor = System.Drawing.Color.Lime
         Me.btnsave.FlatAppearance.BorderSize = 2
         Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnsave.Location = New System.Drawing.Point(161, 606)
+        Me.btnsave.Location = New System.Drawing.Point(161, 700)
         Me.btnsave.Name = "btnsave"
-        Me.btnsave.Size = New System.Drawing.Size(254, 24)
+        Me.btnsave.Size = New System.Drawing.Size(254, 35)
         Me.btnsave.TabIndex = 228
         Me.btnsave.Text = "UPDATE"
         Me.btnsave.UseVisualStyleBackColor = False
@@ -267,11 +268,11 @@ Partial Class frmupdatelabor
         Me.btnexit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnexit.FlatAppearance.BorderSize = 2
         Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnexit.Location = New System.Drawing.Point(161, 636)
+        Me.btnexit.Location = New System.Drawing.Point(161, 741)
         Me.btnexit.Name = "btnexit"
-        Me.btnexit.Size = New System.Drawing.Size(254, 24)
+        Me.btnexit.Size = New System.Drawing.Size(254, 38)
         Me.btnexit.TabIndex = 226
         Me.btnexit.Text = "EXIT"
         Me.btnexit.UseVisualStyleBackColor = False
@@ -281,7 +282,7 @@ Partial Class frmupdatelabor
         Me.lbltransdate.AutoSize = True
         Me.lbltransdate.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltransdate.ForeColor = System.Drawing.Color.White
-        Me.lbltransdate.Location = New System.Drawing.Point(210, 484)
+        Me.lbltransdate.Location = New System.Drawing.Point(210, 510)
         Me.lbltransdate.Name = "lbltransdate"
         Me.lbltransdate.Size = New System.Drawing.Size(0, 18)
         Me.lbltransdate.TabIndex = 225
@@ -291,7 +292,7 @@ Partial Class frmupdatelabor
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(127, 560)
+        Me.Label21.Location = New System.Drawing.Point(127, 654)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(80, 18)
         Me.Label21.TabIndex = 223
@@ -302,7 +303,7 @@ Partial Class frmupdatelabor
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(133, 532)
+        Me.Label20.Location = New System.Drawing.Point(133, 602)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(74, 18)
         Me.Label20.TabIndex = 222
@@ -313,7 +314,7 @@ Partial Class frmupdatelabor
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(122, 507)
+        Me.Label19.Location = New System.Drawing.Point(122, 541)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(85, 18)
         Me.Label19.TabIndex = 221
@@ -324,7 +325,7 @@ Partial Class frmupdatelabor
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(69, 484)
+        Me.Label18.Location = New System.Drawing.Point(69, 510)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(138, 18)
         Me.Label18.TabIndex = 220
@@ -335,7 +336,7 @@ Partial Class frmupdatelabor
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(169, 458)
+        Me.Label17.Location = New System.Drawing.Point(169, 484)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(38, 18)
         Me.Label17.TabIndex = 219
@@ -346,7 +347,7 @@ Partial Class frmupdatelabor
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(118, 431)
+        Me.Label16.Location = New System.Drawing.Point(118, 457)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 18)
         Me.Label16.TabIndex = 218
@@ -582,31 +583,35 @@ Partial Class frmupdatelabor
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightBlue
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Location = New System.Drawing.Point(-1, -1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(560, 19)
+        Me.Panel1.Size = New System.Drawing.Size(589, 19)
         Me.Panel1.TabIndex = 191
         '
         'dtpstart
         '
         Me.dtpstart.CustomFormat = "MM/dd/yyyy hh:mm tt"
+        Me.dtpstart.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpstart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpstart.Location = New System.Drawing.Point(213, 506)
+        Me.dtpstart.Location = New System.Drawing.Point(213, 530)
         Me.dtpstart.Name = "dtpstart"
         Me.dtpstart.ShowUpDown = True
-        Me.dtpstart.Size = New System.Drawing.Size(162, 20)
+        Me.dtpstart.Size = New System.Drawing.Size(328, 38)
         Me.dtpstart.TabIndex = 244
         '
         'dtpend
         '
         Me.dtpend.CustomFormat = "MM/dd/yyyy hh:mm tt"
+        Me.dtpend.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpend.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpend.Location = New System.Drawing.Point(213, 531)
+        Me.dtpend.Location = New System.Drawing.Point(213, 592)
         Me.dtpend.Name = "dtpend"
         Me.dtpend.ShowUpDown = True
-        Me.dtpend.Size = New System.Drawing.Size(162, 20)
+        Me.dtpend.Size = New System.Drawing.Size(328, 38)
         Me.dtpend.TabIndex = 245
         '
         'txttranstype
@@ -634,7 +639,7 @@ Partial Class frmupdatelabor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(664, 669)
+        Me.ClientSize = New System.Drawing.Size(580, 801)
         Me.Controls.Add(Me.lbl_updatedby)
         Me.Controls.Add(Me.txttranstype)
         Me.Controls.Add(Me.dtpend)

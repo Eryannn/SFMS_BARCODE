@@ -122,7 +122,7 @@ Partial Class frmmachineend
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnpost.Location = New System.Drawing.Point(161, 714)
+        Me.btnpost.Location = New System.Drawing.Point(161, 728)
         Me.btnpost.Name = "btnpost"
         Me.btnpost.Size = New System.Drawing.Size(254, 24)
         Me.btnpost.TabIndex = 126
@@ -138,7 +138,7 @@ Partial Class frmmachineend
         Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnsave.Location = New System.Drawing.Point(161, 654)
+        Me.btnsave.Location = New System.Drawing.Point(161, 668)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(254, 24)
         Me.btnsave.TabIndex = 125
@@ -163,7 +163,7 @@ Partial Class frmmachineend
         Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnexit.Location = New System.Drawing.Point(161, 684)
+        Me.btnexit.Location = New System.Drawing.Point(161, 698)
         Me.btnexit.Name = "btnexit"
         Me.btnexit.Size = New System.Drawing.Size(254, 24)
         Me.btnexit.TabIndex = 123
@@ -175,7 +175,7 @@ Partial Class frmmachineend
         Me.lbltransdate.AutoSize = True
         Me.lbltransdate.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltransdate.ForeColor = System.Drawing.Color.White
-        Me.lbltransdate.Location = New System.Drawing.Point(210, 536)
+        Me.lbltransdate.Location = New System.Drawing.Point(210, 550)
         Me.lbltransdate.Name = "lbltransdate"
         Me.lbltransdate.Size = New System.Drawing.Size(0, 18)
         Me.lbltransdate.TabIndex = 122
@@ -185,7 +185,7 @@ Partial Class frmmachineend
         Me.lblstarttime.AutoSize = True
         Me.lblstarttime.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblstarttime.ForeColor = System.Drawing.Color.White
-        Me.lblstarttime.Location = New System.Drawing.Point(210, 554)
+        Me.lblstarttime.Location = New System.Drawing.Point(210, 568)
         Me.lblstarttime.Name = "lblstarttime"
         Me.lblstarttime.Size = New System.Drawing.Size(0, 18)
         Me.lblstarttime.TabIndex = 121
@@ -195,7 +195,7 @@ Partial Class frmmachineend
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.White
-        Me.Label21.Location = New System.Drawing.Point(127, 590)
+        Me.Label21.Location = New System.Drawing.Point(127, 604)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(80, 18)
         Me.Label21.TabIndex = 120
@@ -206,7 +206,7 @@ Partial Class frmmachineend
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(133, 572)
+        Me.Label20.Location = New System.Drawing.Point(133, 586)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(74, 18)
         Me.Label20.TabIndex = 119
@@ -217,7 +217,7 @@ Partial Class frmmachineend
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.White
-        Me.Label19.Location = New System.Drawing.Point(122, 554)
+        Me.Label19.Location = New System.Drawing.Point(122, 568)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(85, 18)
         Me.Label19.TabIndex = 118
@@ -228,7 +228,7 @@ Partial Class frmmachineend
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(69, 536)
+        Me.Label18.Location = New System.Drawing.Point(69, 550)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(138, 18)
         Me.Label18.TabIndex = 117
@@ -239,7 +239,7 @@ Partial Class frmmachineend
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(169, 510)
+        Me.Label17.Location = New System.Drawing.Point(169, 524)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(38, 18)
         Me.Label17.TabIndex = 116
@@ -250,7 +250,7 @@ Partial Class frmmachineend
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(118, 483)
+        Me.Label16.Location = New System.Drawing.Point(118, 497)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 18)
         Me.Label16.TabIndex = 115
@@ -532,7 +532,7 @@ Partial Class frmmachineend
         Me.lblendtime.AutoSize = True
         Me.lblendtime.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblendtime.ForeColor = System.Drawing.Color.White
-        Me.lblendtime.Location = New System.Drawing.Point(210, 572)
+        Me.lblendtime.Location = New System.Drawing.Point(210, 586)
         Me.lblendtime.Name = "lblendtime"
         Me.lblendtime.Size = New System.Drawing.Size(0, 18)
         Me.lblendtime.TabIndex = 128
@@ -542,7 +542,7 @@ Partial Class frmmachineend
         Me.lbltotalhrs.AutoSize = True
         Me.lbltotalhrs.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltotalhrs.ForeColor = System.Drawing.Color.White
-        Me.lbltotalhrs.Location = New System.Drawing.Point(210, 590)
+        Me.lbltotalhrs.Location = New System.Drawing.Point(210, 604)
         Me.lbltotalhrs.Name = "lbltotalhrs"
         Me.lbltotalhrs.Size = New System.Drawing.Size(15, 18)
         Me.lbltotalhrs.TabIndex = 129
@@ -587,11 +587,11 @@ Partial Class frmmachineend
         Me.cmbreasoncode.BackColor = System.Drawing.Color.Yellow
         Me.cmbreasoncode.DropDownWidth = 193
         Me.cmbreasoncode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmbreasoncode.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbreasoncode.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbreasoncode.FormattingEnabled = True
         Me.cmbreasoncode.Location = New System.Drawing.Point(213, 431)
         Me.cmbreasoncode.Name = "cmbreasoncode"
-        Me.cmbreasoncode.Size = New System.Drawing.Size(193, 21)
+        Me.cmbreasoncode.Size = New System.Drawing.Size(291, 32)
         Me.cmbreasoncode.TabIndex = 133
         '
         'lblreasondesc
@@ -599,7 +599,7 @@ Partial Class frmmachineend
         Me.lblreasondesc.AutoSize = True
         Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblreasondesc.ForeColor = System.Drawing.Color.White
-        Me.lblreasondesc.Location = New System.Drawing.Point(210, 458)
+        Me.lblreasondesc.Location = New System.Drawing.Point(210, 472)
         Me.lblreasondesc.Name = "lblreasondesc"
         Me.lblreasondesc.Size = New System.Drawing.Size(0, 18)
         Me.lblreasondesc.TabIndex = 134
@@ -607,7 +607,7 @@ Partial Class frmmachineend
         'txtlot
         '
         Me.txtlot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlot.Location = New System.Drawing.Point(213, 508)
+        Me.txtlot.Location = New System.Drawing.Point(213, 522)
         Me.txtlot.Name = "txtlot"
         Me.txtlot.Size = New System.Drawing.Size(193, 22)
         Me.txtlot.TabIndex = 135
@@ -617,7 +617,7 @@ Partial Class frmmachineend
         Me.lblqtymoved.AutoSize = True
         Me.lblqtymoved.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblqtymoved.ForeColor = System.Drawing.Color.White
-        Me.lblqtymoved.Location = New System.Drawing.Point(213, 483)
+        Me.lblqtymoved.Location = New System.Drawing.Point(213, 497)
         Me.lblqtymoved.Name = "lblqtymoved"
         Me.lblqtymoved.Size = New System.Drawing.Size(15, 18)
         Me.lblqtymoved.TabIndex = 136
@@ -649,7 +649,7 @@ Partial Class frmmachineend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(552, 747)
+        Me.ClientSize = New System.Drawing.Size(552, 774)
         Me.Controls.Add(Me.lbl_updatedby)
         Me.Controls.Add(Me.dtptransdate)
         Me.Controls.Add(Me.lblqtymoved)
