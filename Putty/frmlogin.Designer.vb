@@ -34,7 +34,7 @@ Partial Class frmlogin
         Me.cmbshift = New System.Windows.Forms.ComboBox()
         Me.btnlogin = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lbl_ver = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -160,15 +160,15 @@ Partial Class frmlogin
         Me.Button1.Text = "EXIT"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'Label6
+        'lbl_ver
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(13, 268)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(44, 13)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Ver. 1.8"
+        Me.lbl_ver.AutoSize = True
+        Me.lbl_ver.ForeColor = System.Drawing.Color.White
+        Me.lbl_ver.Location = New System.Drawing.Point(13, 268)
+        Me.lbl_ver.Name = "lbl_ver"
+        Me.lbl_ver.Size = New System.Drawing.Size(44, 13)
+        Me.lbl_ver.TabIndex = 11
+        Me.lbl_ver.Text = "Ver. 1.8"
         '
         'frmlogin
         '
@@ -177,7 +177,7 @@ Partial Class frmlogin
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(381, 290)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lbl_ver)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.cmbshift)
@@ -211,5 +211,5 @@ Partial Class frmlogin
     Friend WithEvents cmbshift As ComboBox
     Friend WithEvents btnlogin As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents Label6 As Label
+    Friend WithEvents lbl_ver As Label
 End Class

@@ -31,24 +31,24 @@ Partial Class SFMSMENU
         Me.lbldate = New System.Windows.Forms.Label()
         Me.lbltime = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.btn_setup = New System.Windows.Forms.Button()
+        Me.btn_labor = New System.Windows.Forms.Button()
+        Me.btn_machine = New System.Windows.Forms.Button()
+        Me.btn_downtime = New System.Windows.Forms.Button()
         Me.btn_tsqa_move = New System.Windows.Forms.Button()
         Me.lblempname = New System.Windows.Forms.Label()
         Me.lblempnum = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.lblshift = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
+        Me.btn_unposted = New System.Windows.Forms.Button()
+        Me.btn_posted = New System.Windows.Forms.Button()
+        Me.btn_fgts = New System.Windows.Forms.Button()
+        Me.btn_viewdt = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btn_move_mcnum = New System.Windows.Forms.Button()
         Me.lbl_user = New System.Windows.Forms.Label()
-        Me.Button11 = New System.Windows.Forms.Button()
+        Me.btn_nooperation = New System.Windows.Forms.Button()
         Me.lbl_site = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Panel1.SuspendLayout()
@@ -124,61 +124,61 @@ Partial Class SFMSMENU
         '
         Me.Timer1.Interval = 1000
         '
-        'Button1
+        'btn_setup
         '
-        Me.Button1.BackColor = System.Drawing.Color.Moccasin
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button1.Location = New System.Drawing.Point(18, 26)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(203, 47)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "SETUP"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btn_setup.BackColor = System.Drawing.Color.Moccasin
+        Me.btn_setup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_setup.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_setup.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_setup.Location = New System.Drawing.Point(18, 26)
+        Me.btn_setup.Name = "btn_setup"
+        Me.btn_setup.Size = New System.Drawing.Size(203, 47)
+        Me.btn_setup.TabIndex = 5
+        Me.btn_setup.Text = "SETUP"
+        Me.btn_setup.UseVisualStyleBackColor = False
         '
-        'Button4
+        'btn_labor
         '
-        Me.Button4.BackColor = System.Drawing.Color.LemonChiffon
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
-        Me.Button4.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button4.Location = New System.Drawing.Point(237, 26)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(203, 47)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "LABOR RUN"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btn_labor.BackColor = System.Drawing.Color.LemonChiffon
+        Me.btn_labor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_labor.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
+        Me.btn_labor.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_labor.Location = New System.Drawing.Point(237, 26)
+        Me.btn_labor.Name = "btn_labor"
+        Me.btn_labor.Size = New System.Drawing.Size(203, 47)
+        Me.btn_labor.TabIndex = 7
+        Me.btn_labor.Text = "LABOR RUN"
+        Me.btn_labor.UseVisualStyleBackColor = False
         '
-        'Button6
+        'btn_machine
         '
-        Me.Button6.BackColor = System.Drawing.Color.PaleGreen
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
-        Me.Button6.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button6.Location = New System.Drawing.Point(18, 88)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(203, 47)
-        Me.Button6.TabIndex = 9
-        Me.Button6.Text = "MACHINE RUN "
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.btn_machine.BackColor = System.Drawing.Color.PaleGreen
+        Me.btn_machine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_machine.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
+        Me.btn_machine.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_machine.Location = New System.Drawing.Point(18, 88)
+        Me.btn_machine.Name = "btn_machine"
+        Me.btn_machine.Size = New System.Drawing.Size(203, 47)
+        Me.btn_machine.TabIndex = 9
+        Me.btn_machine.Text = "MACHINE RUN "
+        Me.btn_machine.UseVisualStyleBackColor = False
         '
-        'Button7
+        'btn_downtime
         '
-        Me.Button7.BackColor = System.Drawing.Color.Red
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.Button7.ForeColor = System.Drawing.Color.Transparent
-        Me.Button7.Location = New System.Drawing.Point(35, 482)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(203, 39)
-        Me.Button7.TabIndex = 11
-        Me.Button7.Text = "DOWNTIME"
-        Me.Button7.UseVisualStyleBackColor = False
+        Me.btn_downtime.BackColor = System.Drawing.Color.Red
+        Me.btn_downtime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_downtime.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_downtime.ForeColor = System.Drawing.Color.Transparent
+        Me.btn_downtime.Location = New System.Drawing.Point(35, 482)
+        Me.btn_downtime.Name = "btn_downtime"
+        Me.btn_downtime.Size = New System.Drawing.Size(203, 39)
+        Me.btn_downtime.TabIndex = 11
+        Me.btn_downtime.Text = "DOWNTIME"
+        Me.btn_downtime.UseVisualStyleBackColor = False
         '
         'btn_tsqa_move
         '
-        Me.btn_tsqa_move.BackColor = System.Drawing.Color.AliceBlue
+        Me.btn_tsqa_move.BackColor = System.Drawing.Color.LightCyan
         Me.btn_tsqa_move.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_tsqa_move.Font = New System.Drawing.Font("Calibri", 21.75!, System.Drawing.FontStyle.Bold)
         Me.btn_tsqa_move.ForeColor = System.Drawing.Color.CornflowerBlue
@@ -249,70 +249,71 @@ Partial Class SFMSMENU
         Me.lblshift.Text = "?shift"
         Me.lblshift.Visible = False
         '
-        'Button2
+        'btn_unposted
         '
-        Me.Button2.BackColor = System.Drawing.Color.SkyBlue
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue
-        Me.Button2.FlatAppearance.BorderSize = 2
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.Transparent
-        Me.Button2.Location = New System.Drawing.Point(18, 150)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(203, 47)
-        Me.Button2.TabIndex = 18
-        Me.Button2.Text = "VIEW UNPOSTED TRX"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btn_unposted.BackColor = System.Drawing.Color.SkyBlue
+        Me.btn_unposted.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_unposted.FlatAppearance.BorderSize = 2
+        Me.btn_unposted.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_unposted.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_unposted.ForeColor = System.Drawing.Color.Transparent
+        Me.btn_unposted.Location = New System.Drawing.Point(18, 150)
+        Me.btn_unposted.Name = "btn_unposted"
+        Me.btn_unposted.Size = New System.Drawing.Size(203, 47)
+        Me.btn_unposted.TabIndex = 18
+        Me.btn_unposted.Text = "VIEW UNPOSTED TRX"
+        Me.btn_unposted.UseVisualStyleBackColor = False
         '
-        'Button3
+        'btn_posted
         '
-        Me.Button3.BackColor = System.Drawing.Color.SkyBlue
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue
-        Me.Button3.FlatAppearance.BorderSize = 2
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.Transparent
-        Me.Button3.Location = New System.Drawing.Point(237, 150)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(203, 47)
-        Me.Button3.TabIndex = 19
-        Me.Button3.Text = "VIEW POSTED TRX"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btn_posted.BackColor = System.Drawing.Color.SkyBlue
+        Me.btn_posted.FlatAppearance.BorderColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_posted.FlatAppearance.BorderSize = 2
+        Me.btn_posted.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_posted.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_posted.ForeColor = System.Drawing.Color.Transparent
+        Me.btn_posted.Location = New System.Drawing.Point(237, 150)
+        Me.btn_posted.Name = "btn_posted"
+        Me.btn_posted.Size = New System.Drawing.Size(203, 47)
+        Me.btn_posted.TabIndex = 19
+        Me.btn_posted.Text = "VIEW POSTED TRX"
+        Me.btn_posted.UseVisualStyleBackColor = False
         '
-        'Button5
+        'btn_fgts
         '
-        Me.Button5.BackColor = System.Drawing.Color.AliceBlue
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.Button5.ForeColor = System.Drawing.Color.CornflowerBlue
-        Me.Button5.Location = New System.Drawing.Point(35, 535)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(203, 39)
-        Me.Button5.TabIndex = 20
-        Me.Button5.Text = "FGTS PRINTING"
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.btn_fgts.BackColor = System.Drawing.Color.AliceBlue
+        Me.btn_fgts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_fgts.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_fgts.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.btn_fgts.Location = New System.Drawing.Point(35, 535)
+        Me.btn_fgts.Name = "btn_fgts"
+        Me.btn_fgts.Size = New System.Drawing.Size(203, 39)
+        Me.btn_fgts.TabIndex = 20
+        Me.btn_fgts.Text = "FGTS PRINTING"
+        Me.btn_fgts.UseVisualStyleBackColor = False
+        Me.btn_fgts.Visible = False
         '
-        'Button10
+        'btn_viewdt
         '
-        Me.Button10.BackColor = System.Drawing.Color.Red
-        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.Button10.ForeColor = System.Drawing.Color.Transparent
-        Me.Button10.Location = New System.Drawing.Point(254, 482)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(203, 39)
-        Me.Button10.TabIndex = 21
-        Me.Button10.Text = "VIEW DOWNTIME TRX"
-        Me.Button10.UseVisualStyleBackColor = False
+        Me.btn_viewdt.BackColor = System.Drawing.Color.Red
+        Me.btn_viewdt.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_viewdt.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_viewdt.ForeColor = System.Drawing.Color.Transparent
+        Me.btn_viewdt.Location = New System.Drawing.Point(254, 482)
+        Me.btn_viewdt.Name = "btn_viewdt"
+        Me.btn_viewdt.Size = New System.Drawing.Size(203, 39)
+        Me.btn_viewdt.TabIndex = 21
+        Me.btn_viewdt.Text = "VIEW DOWNTIME TRX"
+        Me.btn_viewdt.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btn_move_mcnum)
-        Me.GroupBox1.Controls.Add(Me.Button3)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button6)
-        Me.GroupBox1.Controls.Add(Me.Button4)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.btn_posted)
+        Me.GroupBox1.Controls.Add(Me.btn_unposted)
+        Me.GroupBox1.Controls.Add(Me.btn_machine)
+        Me.GroupBox1.Controls.Add(Me.btn_labor)
+        Me.GroupBox1.Controls.Add(Me.btn_setup)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(17, 159)
@@ -346,18 +347,18 @@ Partial Class SFMSMENU
         Me.lbl_user.TabIndex = 23
         Me.lbl_user.Text = "Label4"
         '
-        'Button11
+        'btn_nooperation
         '
-        Me.Button11.BackColor = System.Drawing.Color.Red
-        Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button11.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.Button11.ForeColor = System.Drawing.Color.Transparent
-        Me.Button11.Location = New System.Drawing.Point(254, 535)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(203, 39)
-        Me.Button11.TabIndex = 24
-        Me.Button11.Text = "No Operation Schedule"
-        Me.Button11.UseVisualStyleBackColor = False
+        Me.btn_nooperation.BackColor = System.Drawing.Color.Red
+        Me.btn_nooperation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_nooperation.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.btn_nooperation.ForeColor = System.Drawing.Color.Transparent
+        Me.btn_nooperation.Location = New System.Drawing.Point(254, 535)
+        Me.btn_nooperation.Name = "btn_nooperation"
+        Me.btn_nooperation.Size = New System.Drawing.Size(203, 39)
+        Me.btn_nooperation.TabIndex = 24
+        Me.btn_nooperation.Text = "No Operation Schedule"
+        Me.btn_nooperation.UseVisualStyleBackColor = False
         '
         'lbl_site
         '
@@ -391,17 +392,17 @@ Partial Class SFMSMENU
         Me.ClientSize = New System.Drawing.Size(488, 682)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lbl_site)
-        Me.Controls.Add(Me.Button11)
+        Me.Controls.Add(Me.btn_nooperation)
         Me.Controls.Add(Me.lbl_user)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button10)
-        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.btn_viewdt)
+        Me.Controls.Add(Me.btn_fgts)
         Me.Controls.Add(Me.lblshift)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.lblempnum)
         Me.Controls.Add(Me.lblempname)
-        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.btn_downtime)
         Me.Controls.Add(Me.lbltime)
         Me.Controls.Add(Me.lbldate)
         Me.Controls.Add(Me.Label3)
@@ -429,23 +430,23 @@ Partial Class SFMSMENU
     Friend WithEvents lbldate As Label
     Friend WithEvents lbltime As Label
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
+    Friend WithEvents btn_setup As Button
+    Friend WithEvents btn_labor As Button
+    Friend WithEvents btn_machine As Button
+    Friend WithEvents btn_downtime As Button
     Friend WithEvents btn_tsqa_move As Button
     Friend WithEvents lblempname As Label
     Friend WithEvents lblempnum As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Button9 As Button
     Friend WithEvents lblshift As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button10 As Button
+    Friend WithEvents btn_unposted As Button
+    Friend WithEvents btn_posted As Button
+    Friend WithEvents btn_fgts As Button
+    Friend WithEvents btn_viewdt As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents lbl_user As Label
-    Friend WithEvents Button11 As Button
+    Friend WithEvents btn_nooperation As Button
     Friend WithEvents lbl_site As Label
     Friend WithEvents btn_move_mcnum As Button
     Friend WithEvents GroupBox2 As GroupBox

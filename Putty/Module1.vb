@@ -6,7 +6,7 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public app_version As String = "1.8"
+    Public app_version As String = "1.9"
     Public app_name As String = "BARCODE"
     Public app_prev_version As String
 
@@ -23,6 +23,8 @@ Module globalvariable
     Public suffix As Integer
     Public operationnum As Integer
     Public whse As String
+
+    Public department As String
 
 End Module
 
@@ -152,6 +154,7 @@ Module Module1
                 user_name = execquery("Name")
                 isadmin = execquery("IsAdmin")
                 login_shift = frmlogin.cmbshift.Text
+                department = execquery("dept")
                 If isadmin Then
 
                 Else

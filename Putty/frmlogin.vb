@@ -69,6 +69,7 @@ Public Class frmlogin
 
     Private Sub frmlogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim currenttime As DateTime = DateTime.Now
+        lbl_ver.Text = "Ver. " + app_version
         If currenttime.Hour >= 7 AndAlso currenttime.Hour < 19 Then
             cmbshift.SelectedIndex = cmbshift.Items.IndexOf("DS")
         Else
@@ -85,6 +86,7 @@ Public Class frmlogin
             MsgBox("Please Update the SFMS Application")
         Else
             openpallettagdb()
+
             login(txtuserid.Text, Encrypt(txtpassword.Text), cmbsite.Text)
             closepallettagdb()
         End If

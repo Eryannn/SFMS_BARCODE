@@ -11,6 +11,33 @@ Public Class SFMSMENU
 
         lbl_user.Text = userid + " " + user_name + " / " + login_shift
 
+        If user_section = "QA" Then
+            'btn_move_mcnum.Enabled = False
+            'btn_setup.Enabled = False
+            'btn_machine.Enabled = False
+            'btn_labor.Enabled = False
+            btn_move_mcnum.Visible = False
+            btn_setup.Visible = False
+            btn_machine.Visible = False
+            btn_labor.Visible = False
+            btn_downtime.Visible = False
+            btn_viewdt.Visible = False
+            btn_nooperation.Visible = False
+            btn_fgts.Visible = False
+
+            btn_tsqa_move.Enabled = True
+        Else
+            btn_move_mcnum.Visible = True
+            btn_setup.Visible = True
+            btn_machine.Visible = True
+            btn_labor.Visible = True
+            btn_downtime.Visible = True
+            btn_viewdt.Visible = True
+            btn_nooperation.Visible = True
+            btn_fgts.Visible = True
+        End If
+
+
         'Timer1.Enabled = True
         'lbldate.Text = Now.ToString("MM/dd/yyyy").ToUpper()
         'lblshift.Text = frmlogin.cmbshift.Text
@@ -43,7 +70,7 @@ Public Class SFMSMENU
         lbltime.Text = Now.ToString("hh:mm:ss tt").ToUpper()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_setup.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -61,7 +88,7 @@ Public Class SFMSMENU
 
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btn_machine.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -75,7 +102,7 @@ Public Class SFMSMENU
     End Sub
 
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles btn_downtime.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -87,7 +114,7 @@ Public Class SFMSMENU
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btn_labor.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -114,7 +141,7 @@ Public Class SFMSMENU
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btn_unposted.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -127,7 +154,7 @@ Public Class SFMSMENU
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btn_posted.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -140,7 +167,7 @@ Public Class SFMSMENU
 
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btn_fgts.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -153,7 +180,7 @@ Public Class SFMSMENU
 
     End Sub
 
-    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles btn_viewdt.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
@@ -166,7 +193,7 @@ Public Class SFMSMENU
 
     End Sub
 
-    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles btn_nooperation.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
