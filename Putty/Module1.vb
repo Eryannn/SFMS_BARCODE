@@ -6,7 +6,8 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public app_version As String = "1.7"
+    Public app_version As String = "1.8"
+    Public app_name As String = "BARCODE"
     Public app_prev_version As String
 
     Public job_posted As Boolean
@@ -33,7 +34,8 @@ Module Module1
     Function check_update()
         Try
             con.Open()
-            Dim cmd_checkversion As New SqlCommand("Select Min([version]) as [version] from sfms_Maintenance", con)
+            Dim cmd_checkversion As New SqlCommand("Select Min([version]) as [version] from sfms_Maintenance WHERE application = @app", con)
+            cmd_checkversion.Parameters.AddWithValue("@app", app_name)
             Dim read_cmd As SqlDataReader = cmd_checkversion.ExecuteReader
             If read_cmd.HasRows Then
                 While read_cmd.Read
