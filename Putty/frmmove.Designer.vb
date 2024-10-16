@@ -96,7 +96,7 @@ Partial Class frmmove
         '
         Me.txt_docnum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_docnum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_docnum.Location = New System.Drawing.Point(193, 611)
+        Me.txt_docnum.Location = New System.Drawing.Point(193, 633)
         Me.txt_docnum.Name = "txt_docnum"
         Me.txt_docnum.Size = New System.Drawing.Size(193, 22)
         Me.txt_docnum.TabIndex = 5
@@ -107,7 +107,7 @@ Partial Class frmmove
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.White
-        Me.Label20.Location = New System.Drawing.Point(32, 611)
+        Me.Label20.Location = New System.Drawing.Point(32, 633)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(155, 18)
         Me.Label20.TabIndex = 230
@@ -129,7 +129,7 @@ Partial Class frmmove
         Me.lblum4.AutoSize = True
         Me.lblum4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblum4.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblum4.Location = New System.Drawing.Point(392, 558)
+        Me.lblum4.Location = New System.Drawing.Point(392, 581)
         Me.lblum4.Name = "lblum4"
         Me.lblum4.Size = New System.Drawing.Size(0, 18)
         Me.lblum4.TabIndex = 227
@@ -214,7 +214,7 @@ Partial Class frmmove
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnpost.Location = New System.Drawing.Point(154, 708)
+        Me.btnpost.Location = New System.Drawing.Point(154, 730)
         Me.btnpost.Name = "btnpost"
         Me.btnpost.Size = New System.Drawing.Size(254, 24)
         Me.btnpost.TabIndex = 218
@@ -230,7 +230,7 @@ Partial Class frmmove
         Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnsave.Location = New System.Drawing.Point(152, 646)
+        Me.btnsave.Location = New System.Drawing.Point(152, 668)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(254, 24)
         Me.btnsave.TabIndex = 6
@@ -245,7 +245,7 @@ Partial Class frmmove
         Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnexit.Location = New System.Drawing.Point(152, 676)
+        Me.btnexit.Location = New System.Drawing.Point(152, 698)
         Me.btnexit.Name = "btnexit"
         Me.btnexit.Size = New System.Drawing.Size(254, 24)
         Me.btnexit.TabIndex = 216
@@ -256,7 +256,7 @@ Partial Class frmmove
         '
         Me.txtqtymoved.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txtqtymoved.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtqtymoved.Location = New System.Drawing.Point(193, 556)
+        Me.txtqtymoved.Location = New System.Drawing.Point(193, 578)
         Me.txtqtymoved.Name = "txtqtymoved"
         Me.txtqtymoved.ReadOnly = True
         Me.txtqtymoved.Size = New System.Drawing.Size(193, 22)
@@ -267,7 +267,7 @@ Partial Class frmmove
         '
         Me.txtlot.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtlot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlot.Location = New System.Drawing.Point(193, 583)
+        Me.txtlot.Location = New System.Drawing.Point(193, 605)
         Me.txtlot.Name = "txtlot"
         Me.txtlot.ReadOnly = True
         Me.txtlot.Size = New System.Drawing.Size(193, 22)
@@ -279,7 +279,7 @@ Partial Class frmmove
         Me.lblreasondesc.AutoSize = True
         Me.lblreasondesc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblreasondesc.ForeColor = System.Drawing.Color.White
-        Me.lblreasondesc.Location = New System.Drawing.Point(190, 533)
+        Me.lblreasondesc.Location = New System.Drawing.Point(190, 555)
         Me.lblreasondesc.Name = "lblreasondesc"
         Me.lblreasondesc.Size = New System.Drawing.Size(0, 18)
         Me.lblreasondesc.TabIndex = 213
@@ -288,12 +288,14 @@ Partial Class frmmove
         '
         Me.cmbreasoncode.BackColor = System.Drawing.Color.Yellow
         Me.cmbreasoncode.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmbreasoncode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbreasoncode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbreasoncode.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbreasoncode.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbreasoncode.FormattingEnabled = True
         Me.cmbreasoncode.Location = New System.Drawing.Point(193, 506)
         Me.cmbreasoncode.Name = "cmbreasoncode"
-        Me.cmbreasoncode.Size = New System.Drawing.Size(193, 21)
+        Me.cmbreasoncode.Size = New System.Drawing.Size(291, 37)
         Me.cmbreasoncode.TabIndex = 212
         '
         'txtqtyscrapped
@@ -321,7 +323,7 @@ Partial Class frmmove
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(149, 585)
+        Me.Label17.Location = New System.Drawing.Point(149, 607)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(38, 18)
         Me.Label17.TabIndex = 209
@@ -332,7 +334,7 @@ Partial Class frmmove
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(98, 558)
+        Me.Label16.Location = New System.Drawing.Point(98, 580)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 18)
         Me.Label16.TabIndex = 208
@@ -659,7 +661,7 @@ Partial Class frmmove
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(541, 753)
+        Me.ClientSize = New System.Drawing.Size(541, 920)
         Me.Controls.Add(Me.txt_cntrl_pt)
         Me.Controls.Add(Me.txt_docnum)
         Me.Controls.Add(Me.Label20)
