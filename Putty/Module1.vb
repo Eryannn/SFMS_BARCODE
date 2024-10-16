@@ -45,6 +45,10 @@ Module Module1
                 End While
                 read_cmd.Close()
             End If
+
+            If app_prev_version <> app_version Then
+                MsgBox("Please Update the SFMS Application! ReOpen application.")
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally

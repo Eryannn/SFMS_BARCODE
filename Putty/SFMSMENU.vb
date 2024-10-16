@@ -116,10 +116,7 @@ Public Class SFMSMENU
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btn_labor.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
-
+        If app_prev_version = app_version Then
             frmlaborstart.Show()
 
             frmlaborstart.lblempname.Text = user_name
