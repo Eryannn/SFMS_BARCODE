@@ -72,9 +72,7 @@ Public Class SFMSMENU
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_setup.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmsetupstart.lblshift.Text = lblshift.Text
             frmsetupstart.Show()
             Me.Close()
@@ -90,9 +88,7 @@ Public Class SFMSMENU
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btn_machine.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmmachinestart.lblempnum.Text = user_id
             frmmachinestart.lblempname.Text = user_name
             frmmachinestart.Show()
@@ -104,9 +100,7 @@ Public Class SFMSMENU
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles btn_downtime.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmdowntime.lblempnum.Text = user_id
             frmdowntime.lblempname.Text = user_name
             frmdowntime.Show()
@@ -127,9 +121,7 @@ Public Class SFMSMENU
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles btn_tsqa_move.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmmove.Show()
             frmmove.lblempnum.Text = user_id
             frmmove.lblempname.Text = user_name
@@ -140,9 +132,7 @@ Public Class SFMSMENU
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btn_unposted.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmviewunposted.Show()
             frmviewunposted.txtempnum.Text = user_id
             frmviewunposted.txtempname.Text = user_name
@@ -153,9 +143,7 @@ Public Class SFMSMENU
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btn_posted.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmviewposted.Show()
             frmviewposted.txtempname.Text = user_name
             frmviewposted.txtempnum.Text = user_id
@@ -166,9 +154,7 @@ Public Class SFMSMENU
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btn_fgts.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frmfgts.Show()
             frmfgts.txtempnum.Text = lblempnum.Text
             frmfgts.txtshift.Text = lblshift.Text
@@ -179,9 +165,7 @@ Public Class SFMSMENU
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles btn_viewdt.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frm_view_dt.Show()
             frm_view_dt.txtempnum.Text = user_id
             frm_view_dt.txtempname.Text = user_name
@@ -192,9 +176,7 @@ Public Class SFMSMENU
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles btn_nooperation.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frm_nooperationsched.Show()
             frm_nooperationsched.lbl_site.Text = lbl_site.Text
             frm_nooperationsched.lblempnum.Text = lblempnum.Text
@@ -205,9 +187,7 @@ Public Class SFMSMENU
 
     Private Sub btn_move_mcnum_Click(sender As Object, e As EventArgs) Handles btn_move_mcnum.Click
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
+        If app_prev_version = app_version Then
             frm_move_wmcnum.Show()
             frm_move_wmcnum.lbl_empnum.Text = user_id
             frm_move_wmcnum.lbl_empname.Text = user_name

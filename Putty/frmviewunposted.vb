@@ -208,10 +208,12 @@ Public Class frmviewunposted
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If user_position = "Operator" Then
-            load_table_for_operator()
-        Else
-            load_table_for_supervisor()
+        If app_prev_version = app_version Then
+            If user_position = "Operator" Then
+                load_table_for_operator()
+            Else
+                load_table_for_supervisor()
+            End If
         End If
 
 
@@ -299,191 +301,192 @@ Public Class frmviewunposted
         ' Handle date conversion, assuming the date is in a valid format
         'Dim startDateTime As DateTime
         'Dim endDateTime As DateTime
+        If app_prev_version = app_version Then
+            If DataGridView1.SelectedCells(5).Value.ToString = "Setup" Then
+                If DataGridView1.SelectedCells(10).Value.ToString = "" Then
+                    If txt_position.Text = "Operator" Then
+                        frmsetupend.txtjob.Text = job
+                        frmsetupend.txtsuffix.Text = suffix
 
-        If DataGridView1.SelectedCells(5).Value.ToString = "Setup" Then
-            If DataGridView1.SelectedCells(10).Value.ToString = "" Then
-                If txt_position.Text = "Operator" Then
-                    frmsetupend.txtjob.Text = job
-                    frmsetupend.txtsuffix.Text = suffix
+                        frmsetupend.lbl_updatedby.Text = txtempnum.Text ' add this line
 
-                    frmsetupend.lbl_updatedby.Text = txtempnum.Text ' add this line
+                        frmsetupend.Show()
+                        frmsetupend.lblempnum.Text = empnum
+                        frmsetupend.lblempname.Text = txtempname.Text
+                        frmsetupend.txtopernum.Text = opernum
+                        Me.Close()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmsetupend.txtjob.Text = job
+                        frmsetupend.txtsuffix.Text = suffix
 
-                    frmsetupend.Show()
-                    frmsetupend.lblempnum.Text = empnum
-                    frmsetupend.lblempname.Text = txtempname.Text
-                    frmsetupend.txtopernum.Text = opernum
-                    Me.Close()
+                        frmsetupend.lbl_updatedby.Text = txtempnum.Text ' add this line
+
+                        frmsetupend.Show()
+                        frmsetupend.lblempnum.Text = empnum
+                        frmsetupend.lblempname.Text = empname
+                        frmsetupend.txtopernum.Text = opernum
+                        Me.Close()
+                    End If
                 Else
-                    Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmsetupend.txtjob.Text = job
-                    frmsetupend.txtsuffix.Text = suffix
+                    If txt_position.Text = "Operator" Then
+                        frmupdatesetup.txtjob.Text = job
+                        frmupdatesetup.txtsuffix.Text = suffix
+                        frmupdatesetup.Show()
+                        frmupdatesetup.lblempnum.Text = txtempnum.Text
+                        frmupdatesetup.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmupdatesetup.lblempname.Text = txtempname.Text
+                        frmupdatesetup.dtptransdate.Value = transdate
+                        frmupdatesetup.txttranstype.Text = "S"
+                        frmupdatesetup.txtopernum.Text = opernum
+                        '   Me.Hide()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmupdatesetup.txtjob.Text = job
+                        frmupdatesetup.txtsuffix.Text = suffix
+                        frmupdatesetup.Show()
+                        frmupdatesetup.lblempnum.Text = empnum
+                        frmupdatesetup.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmupdatesetup.lblempname.Text = empname
+                        frmupdatesetup.dtptransdate.Value = transdate
+                        frmupdatesetup.txttranstype.Text = "S"
+                        frmupdatesetup.txtopernum.Text = opernum
+                        '   Me.Hide()
+                    End If
 
-                    frmsetupend.lbl_updatedby.Text = txtempnum.Text ' add this line
+                End If
+            ElseIf DataGridView1.SelectedCells(5).Value.ToString = "Mch Run" Then
+                If DataGridView1.SelectedCells(10).Value.ToString = "" Then
+                    If txt_position.Text = "Operator" Then
+                        frmmachineend.txtjob.Text = job
+                        frmmachineend.txtsuffix.Text = suffix
+                        frmmachineend.Show()
+                        frmmachineend.lblempnum.Text = txtempnum.Text
+                        frmmachineend.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmmachineend.lblempname.Text = txtempname.Text
+                        frmmachineend.txtopernum.Text = opernum
+                        Me.Close()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmmachineend.txtjob.Text = job
+                        frmmachineend.txtsuffix.Text = suffix
+                        frmmachineend.Show()
+                        frmmachineend.lblempnum.Text = empnum
+                        frmmachineend.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmmachineend.lblempname.Text = empname
+                        frmmachineend.txtopernum.Text = opernum
+                        Me.Close()
+                    End If
+                Else
+                    If txt_position.Text = "Operator" Then
+                        frmupdatemachine.txtjob.Text = job
+                        frmupdatemachine.txtsuffix.Text = suffix
+                        frmupdatemachine.Show()
+                        frmupdatemachine.lblempnum.Text = txtempnum.Text
+                        frmupdatemachine.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmupdatemachine.lblempname.Text = txtempname.Text
+                        frmupdatemachine.dtptransdate.Value = transdate
+                        frmupdatemachine.txttranstype.Text = "C"
+                        frmupdatemachine.txtopernum.Text = opernum
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmupdatemachine.txtjob.Text = job
+                        frmupdatemachine.txtsuffix.Text = suffix
+                        frmupdatemachine.Show()
+                        frmupdatemachine.lblempnum.Text = empnum
+                        frmupdatemachine.lbl_updatedby.Text = txtempnum.Text 'add this line
+                        frmupdatemachine.lblempname.Text = empname
+                        frmupdatemachine.dtptransdate.Value = transdate
+                        frmupdatemachine.txttranstype.Text = "C"
+                        frmupdatemachine.txtopernum.Text = opernum
+                        '  Me.Hide()
+                    End If
+                End If
 
-                    frmsetupend.Show()
-                    frmsetupend.lblempnum.Text = empnum
-                    frmsetupend.lblempname.Text = empname
-                    frmsetupend.txtopernum.Text = opernum
-                    Me.Close()
+
+            ElseIf DataGridView1.SelectedCells(5).Value.ToString = "Lbr Run" Then
+
+                If DataGridView1.SelectedCells(10).Value.ToString = "" Then
+                    If txt_position.Text = "Operator" Then
+                        frmlaborend.txtjob.Text = job
+                        frmlaborend.txtsuffix.Text = suffix
+
+
+                        frmlaborend.Show()
+                        frmlaborend.lblempnum.Text = txtempnum.Text ' add this line
+                        frmlaborend.txtopernum.Text = opernum
+                        frmlaborend.lbl_updatedby.Text = txtempnum.Text
+                        frmlaborend.lblempname.Text = txtempname.Text
+                        Me.Close()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmlaborend.txtjob.Text = job
+                        frmlaborend.txtsuffix.Text = suffix
+
+
+                        frmlaborend.Show()
+                        frmlaborend.lblempnum.Text = empnum ' add this line
+                        frmlaborend.txtopernum.Text = opernum
+                        frmlaborend.lbl_updatedby.Text = txtempnum.Text
+                        frmlaborend.lblempname.Text = empname
+                        Me.Close()
+                    End If
+
+                Else
+                    If txt_position.Text = "Operator" Then
+                        frmupdatelabor.txtjob.Text = job
+                        frmupdatelabor.txtsuffix.Text = suffix
+                        frmupdatelabor.Show()
+                        frmupdatelabor.lblempnum.Text = txtempnum.Text ' add this line
+                        frmupdatelabor.lbl_updatedby.Text = txtempnum.Text
+                        frmupdatelabor.lblempname.Text = txtempname.Text
+                        frmupdatelabor.dtptransdate.Value = transdate
+                        frmupdatelabor.txttranstype.Text = "R"
+                        frmupdatelabor.txtopernum.Text = opernum
+                        ' Me.Hide()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frmupdatelabor.txtjob.Text = job
+                        frmupdatelabor.txtsuffix.Text = suffix
+                        frmupdatelabor.Show()
+                        frmupdatelabor.lblempnum.Text = empnum ' add this line
+                        frmupdatelabor.lbl_updatedby.Text = txtempnum.Text
+                        frmupdatelabor.lblempname.Text = empname
+                        frmupdatelabor.dtptransdate.Value = transdate
+                        frmupdatelabor.txttranstype.Text = "R"
+                        frmupdatelabor.txtopernum.Text = opernum
+                        ' Me.Hide()
+                    End If
                 End If
             Else
                 If txt_position.Text = "Operator" Then
-                    frmupdatesetup.txtjob.Text = job
-                    frmupdatesetup.txtsuffix.Text = suffix
-                    frmupdatesetup.Show()
-                    frmupdatesetup.lblempnum.Text = txtempnum.Text
-                    frmupdatesetup.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmupdatesetup.lblempname.Text = txtempname.Text
-                    frmupdatesetup.dtptransdate.Value = transdate
-                    frmupdatesetup.txttranstype.Text = "S"
-                    frmupdatesetup.txtopernum.Text = opernum
-                    '   Me.Hide()
+                    frmupdatemove.txtjob.Text = job
+                    frmupdatemove.txtsuffix.Text = suffix
+                    frmupdatemove.Show()
+                    frmupdatemove.lblempnum.Text = txtempnum.Text
+                    frmupdatemove.lbl_updatedby.Text = txtempnum.Text
+                    frmupdatemove.lblempname.Text = txtempname.Text
+                    frmupdatemove.dtptransdate.Value = transdate
+                    frmupdatemove.txttranstype.Text = "M"
+                    frmupdatemove.txtopernum.Text = opernum
+                    'Me.Hide()
                 Else
                     Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmupdatesetup.txtjob.Text = job
-                    frmupdatesetup.txtsuffix.Text = suffix
-                    frmupdatesetup.Show()
-                    frmupdatesetup.lblempnum.Text = empnum
-                    frmupdatesetup.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmupdatesetup.lblempname.Text = empname
-                    frmupdatesetup.dtptransdate.Value = transdate
-                    frmupdatesetup.txttranstype.Text = "S"
-                    frmupdatesetup.txtopernum.Text = opernum
-                    '   Me.Hide()
+                    frmupdatemove.txtjob.Text = job
+                    frmupdatemove.txtsuffix.Text = suffix
+                    frmupdatemove.Show()
+                    frmupdatemove.lblempnum.Text = empnum
+                    frmupdatemove.lbl_updatedby.Text = txtempnum.Text
+                    frmupdatemove.lblempname.Text = empname
+                    frmupdatemove.dtptransdate.Value = transdate
+                    frmupdatemove.txttranstype.Text = "M"
+                    frmupdatemove.txtopernum.Text = opernum
+                    'Me.Hide()
                 End If
 
-            End If
-        ElseIf DataGridView1.SelectedCells(5).Value.ToString = "Mch Run" Then
-            If DataGridView1.SelectedCells(10).Value.ToString = "" Then
-                If txt_position.Text = "Operator" Then
-                    frmmachineend.txtjob.Text = job
-                    frmmachineend.txtsuffix.Text = suffix
-                    frmmachineend.Show()
-                    frmmachineend.lblempnum.Text = txtempnum.Text
-                    frmmachineend.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmmachineend.lblempname.Text = txtempname.Text
-                    frmmachineend.txtopernum.Text = opernum
-                    Me.Close()
-                Else
-                    Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmmachineend.txtjob.Text = job
-                    frmmachineend.txtsuffix.Text = suffix
-                    frmmachineend.Show()
-                    frmmachineend.lblempnum.Text = empnum
-                    frmmachineend.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmmachineend.lblempname.Text = empname
-                    frmmachineend.txtopernum.Text = opernum
-                    Me.Close()
-                End If
-            Else
-                If txt_position.Text = "Operator" Then
-                    frmupdatemachine.txtjob.Text = job
-                    frmupdatemachine.txtsuffix.Text = suffix
-                    frmupdatemachine.Show()
-                    frmupdatemachine.lblempnum.Text = txtempnum.Text
-                    frmupdatemachine.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmupdatemachine.lblempname.Text = txtempname.Text
-                    frmupdatemachine.dtptransdate.Value = transdate
-                    frmupdatemachine.txttranstype.Text = "C"
-                    frmupdatemachine.txtopernum.Text = opernum
-                Else
-                    Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmupdatemachine.txtjob.Text = job
-                    frmupdatemachine.txtsuffix.Text = suffix
-                    frmupdatemachine.Show()
-                    frmupdatemachine.lblempnum.Text = empnum
-                    frmupdatemachine.lbl_updatedby.Text = txtempnum.Text 'add this line
-                    frmupdatemachine.lblempname.Text = empname
-                    frmupdatemachine.dtptransdate.Value = transdate
-                    frmupdatemachine.txttranstype.Text = "C"
-                    frmupdatemachine.txtopernum.Text = opernum
-                    '  Me.Hide()
-                End If
-            End If
-
-
-        ElseIf DataGridView1.SelectedCells(5).Value.ToString = "Lbr Run" Then
-
-            If DataGridView1.SelectedCells(10).Value.ToString = "" Then
-                If txt_position.Text = "Operator" Then
-                    frmlaborend.txtjob.Text = job
-                    frmlaborend.txtsuffix.Text = suffix
-
-
-                    frmlaborend.Show()
-                    frmlaborend.lblempnum.Text = txtempnum.Text ' add this line
-                    frmlaborend.txtopernum.Text = opernum
-                    frmlaborend.lbl_updatedby.Text = txtempnum.Text
-                    frmlaborend.lblempname.Text = txtempname.Text
-                    Me.Close()
-                Else
-                    Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmlaborend.txtjob.Text = job
-                    frmlaborend.txtsuffix.Text = suffix
-
-
-                    frmlaborend.Show()
-                    frmlaborend.lblempnum.Text = empnum ' add this line
-                    frmlaborend.txtopernum.Text = opernum
-                    frmlaborend.lbl_updatedby.Text = txtempnum.Text
-                    frmlaborend.lblempname.Text = empname
-                    Me.Close()
-                End If
-
-            Else
-                If txt_position.Text = "Operator" Then
-                    frmupdatelabor.txtjob.Text = job
-                    frmupdatelabor.txtsuffix.Text = suffix
-                    frmupdatelabor.Show()
-                    frmupdatelabor.lblempnum.Text = txtempnum.Text ' add this line
-                    frmupdatelabor.lbl_updatedby.Text = txtempnum.Text
-                    frmupdatelabor.lblempname.Text = txtempname.Text
-                    frmupdatelabor.dtptransdate.Value = transdate
-                    frmupdatelabor.txttranstype.Text = "R"
-                    frmupdatelabor.txtopernum.Text = opernum
-                    ' Me.Hide()
-                Else
-                    Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                    frmupdatelabor.txtjob.Text = job
-                    frmupdatelabor.txtsuffix.Text = suffix
-                    frmupdatelabor.Show()
-                    frmupdatelabor.lblempnum.Text = empnum ' add this line
-                    frmupdatelabor.lbl_updatedby.Text = txtempnum.Text
-                    frmupdatelabor.lblempname.Text = empname
-                    frmupdatelabor.dtptransdate.Value = transdate
-                    frmupdatelabor.txttranstype.Text = "R"
-                    frmupdatelabor.txtopernum.Text = opernum
-                    ' Me.Hide()
-                End If
-            End If
-        Else
-            If txt_position.Text = "Operator" Then
-                frmupdatemove.txtjob.Text = job
-                frmupdatemove.txtsuffix.Text = suffix
-                frmupdatemove.Show()
-                frmupdatemove.lblempnum.Text = txtempnum.Text
-                frmupdatemove.lbl_updatedby.Text = txtempnum.Text
-                frmupdatemove.lblempname.Text = txtempname.Text
-                frmupdatemove.dtptransdate.Value = transdate
-                frmupdatemove.txttranstype.Text = "M"
-                frmupdatemove.txtopernum.Text = opernum
-                'Me.Hide()
-            Else
-                Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
-                frmupdatemove.txtjob.Text = job
-                frmupdatemove.txtsuffix.Text = suffix
-                frmupdatemove.Show()
-                frmupdatemove.lblempnum.Text = empnum
-                frmupdatemove.lbl_updatedby.Text = txtempnum.Text
-                frmupdatemove.lblempname.Text = empname
-                frmupdatemove.dtptransdate.Value = transdate
-                frmupdatemove.txttranstype.Text = "M"
-                frmupdatemove.txtopernum.Text = opernum
-                'Me.Hide()
             End If
 
         End If
-
 
 
 
@@ -729,10 +732,7 @@ Public Class frmviewunposted
         Dim isposted As Boolean = False
 
         check_update()
-        If app_prev_version <> app_version Then
-            MsgBox("Please Update the SFMS Application")
-        Else
-
+        If app_prev_version = app_version Then
             Try
                 con1.Open()
                 con.Open()
@@ -1368,9 +1368,11 @@ Public Class frmviewunposted
         '        End If
         '    End If
         'Next
-        If user_position <> "Operator" Then
-            select_all()
-            load_table_for_supervisor()
+        If app_prev_version = app_version Then
+            If user_position <> "Operator" Then
+                select_all()
+                load_table_for_supervisor()
+            End If
         End If
 
     End Sub
