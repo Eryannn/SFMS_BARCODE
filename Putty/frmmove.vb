@@ -584,6 +584,7 @@ Public Class frmmove
                             txtqtyscrapped.Text = 0
                             ' txtlot.Text = 0
                             txtqtymoved.Text = 0
+                            txtlot.ReadOnly = False
                             ' lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
                             ' lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
 
@@ -601,7 +602,7 @@ Public Class frmmove
                         insertcmd.ExecuteNonQuery()
                         MsgBox("Saved Successfully")
                         txtqtygood.Focus()
-
+                        txtlot.ReadOnly = True
                         ' txtwc.Clear()
                         ' txtwcdesc.Clear()
                         ' rtbmach.Clear()
@@ -888,4 +889,6 @@ Public Class frmmove
     Private Sub txtsuffix_TextChanged(sender As Object, e As EventArgs) Handles txtsuffix.TextChanged
         populate_details()
     End Sub
+
+
 End Class

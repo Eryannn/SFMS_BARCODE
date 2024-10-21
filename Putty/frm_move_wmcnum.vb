@@ -156,6 +156,20 @@ Public Class frm_move_wmcnum
 
     Private Sub txt_opernum_TextChanged(sender As Object, e As EventArgs) Handles txt_opernum.TextChanged
         populate_details()
+        enabletxtlot()
+    End Sub
+    Private Sub enabletxtlot()
+        If txtwc.Text = "P230" OrElse txtwc.Text = "P921" OrElse txtwc.Text = "P922" OrElse
+              txtwc.Text = "P924" OrElse txtwc.Text = "F210" OrElse txtwc.Text = "F221" _
+              OrElse txtwc.Text = "F230" OrElse txtwc.Text = "F921" OrElse txtwc.Text = "F922" _
+              OrElse txtwc.Text = "F924" OrElse txtwc.Text = "M210" OrElse txtwc.Text = "M221" _
+              OrElse txtwc.Text = "M230" OrElse txtwc.Text = "M921" OrElse txtwc.Text = "M922" _
+              OrElse txtwc.Text = "M924" Then
+            txt_lot.ReadOnly = False
+            txt_lot.Text = ""
+        Else
+            txt_lot.ReadOnly = True
+        End If
     End Sub
 
     Private Sub populate_details()
@@ -324,7 +338,7 @@ Public Class frm_move_wmcnum
                 rtbmach.Clear()
                 lbl_nextop.Text = ""
                 lblwhse.Text = ""
-
+                'txt_lot.Text = ""
                 txt_cntrl_pt.Clear()
             End If
 
@@ -358,14 +372,17 @@ Public Class frm_move_wmcnum
         lbl_um_qtyredtags.Text = ""
         lbl_um_qtyscrap.Text = ""
         lbl_um_qtymove.Text = ""
+        txt_lot.Text = ""
     End Sub
 
     Private Sub txt_suffix_TextChanged(sender As Object, e As EventArgs) Handles txt_suffix.TextChanged
         populate_details()
+        enabletxtlot()
     End Sub
 
     Private Sub txt_job_TextChanged(sender As Object, e As EventArgs) Handles txt_job.TextChanged
         populate_details()
+        enabletxtlot()
     End Sub
 
     Private Sub cmb_reasoncode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_reasoncode.SelectedIndexChanged
