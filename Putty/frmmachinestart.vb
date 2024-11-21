@@ -118,7 +118,7 @@ Public Class frmmachinestart
                 'MsgBox("Setup is still on process!")
                 btnsave.Enabled = False
                 frmmachineend.Show()
-                frmmachineend.lblempnum.Text = userid
+                frmmachineend.lblempnum.Text = user_id
                 frmmachineend.txtopernum.Text = txtopernum.Text
                 Me.Close()
             Else

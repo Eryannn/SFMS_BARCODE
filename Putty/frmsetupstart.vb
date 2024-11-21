@@ -195,8 +195,14 @@ Public Class frmsetupstart
 
     Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
 
-        save_sfms_setup()
-
+        check_update()
+        If app_prev_version = app_version Then
+            If cmbsetuptype.Text = "" Then
+                MsgBox("Setup type required!")
+            Else
+                save_sfms_setup()
+            End If
+        End If
         'Try
         '    con.Open()
         '    Dim cmd_insert As New SqlCommand("Insert_sfms_jobtran_setup", con)
