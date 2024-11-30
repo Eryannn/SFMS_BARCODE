@@ -73,7 +73,15 @@ Public Class frmmachinestart
         cmdmach.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
         cmdmach.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
-        Dim cmdcheckpending As SqlCommand = New SqlCommand("Select * from sfms_jobtran where job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type='C' AND emp_num=@empnum ", con)
+        Dim check_setuppending As SqlCommand = New SqlCommand("Select_sfms_jobtran_setup", con)
+        check_setuppending.CommandType = CommandType.StoredProcedure
+        check_setuppending.Parameters.AddWithValue("@jonumber", txtjob.Text)
+        check_setuppending.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
+        check_setuppending.Parameters.AddWithValue("@operationnum", txtopernum.Text)
+        check_setuppending.Parameters.AddWithValue("@empnum", lblempnum.Text)
+
+
+        Dim cmdcheckpending As SqlCommand = New SqlCommand("Select * from sfms_jobtran where job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type = 'C' AND emp_num=@empnum ", con)
         cmdcheckpending.Parameters.AddWithValue("@job", txtjob.Text)
         cmdcheckpending.Parameters.AddWithValue("@suffix", txtsuffix.Text)
         cmdcheckpending.Parameters.AddWithValue("@opernum", txtopernum.Text)
@@ -110,54 +118,68 @@ Public Class frmmachinestart
                 lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
             End If
 
-            Dim readsfms As SqlDataReader = cmdcheckpending.ExecuteReader
-            If readsfms.HasRows Then
-
-                frmmachineend.txtjob.Text = txtjob.Text
-                frmmachineend.txtsuffix.Text = txtsuffix.Text
-                'MsgBox("Setup is still on process!")
-                btnsave.Enabled = False
-                frmmachineend.Show()
-                frmmachineend.lblempnum.Text = user_id
-                frmmachineend.txtopernum.Text = txtopernum.Text
+            Dim readsfms_setup As SqlDataReader = check_setuppending.ExecuteReader
+            If readsfms_setup.HasRows Then
+                frmsetupend.txtjob.Text = txtjob.Text
+                frmsetupend.txtsuffix.Text = txtsuffix.Text
+                frmsetupend.lblempnum.Text = lblempnum.Text
+                MsgBox("Setup is still on process!")
+                frmsetupend.Show()
+                frmsetupend.txtopernum.Text = txtopernum.Text
                 Me.Close()
             Else
-                readsfms.Close()
-                Dim readwc As SqlDataReader = cmdwc.ExecuteReader
-                If readwc.HasRows Then
-                    While readwc.Read()
-                        txtwc.Text = readwc("wc").ToString
-                        txtwcdesc.Text = readwc("description").ToString
-                        lblwhse.Text = readwc("whse").ToString
-                    End While
-                    readwc.Close()
-                    Dim readmach As SqlDataReader = cmdmach.ExecuteReader
-                    If readmach.HasRows Then
-                        While readmach.Read()
-                            rtbmach.Text = readmach("RESID").ToString
-                            '+ " " + readmach("DESCR").ToString
-                        End While
-                        readmach.Close()
-                        Dim readnextop As SqlDataReader = cmdchecknextoperation.ExecuteReader
-                        If readnextop.HasRows Then
-                            While readnextop.Read
-                                lblnextop.Text = readnextop("next_op").ToString
-                            End While
-                            readnextop.Close()
-                            lbllot.Text = txtjob.Text + "-1"
+                readsfms_setup.Close()
+                Dim readsfms As SqlDataReader = cmdcheckpending.ExecuteReader
+                If readsfms.HasRows Then
 
-                        End If
-                    End If
+                    'frmmachineend.txtjob.Text = txtjob.Text
+                    'frmmachineend.txtsuffix.Text = txtsuffix.Text
+                    'MsgBox("Setup is still on process!")
+                    'btnsave.Enabled = False
+                    'frmmachineend.Show()
+                    'frmmachineend.lblempnum.Text = user_id
+                    'frmmachineend.txtopernum.Text = txtopernum.Text
+                    'Me.Close()
                 Else
-                    txtwc.Clear()
-                    txtwcdesc.Clear()
-                    rtbmach.Clear()
-                    lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
-                    lbllot.Text = If(cleartext() = 0, "", cleartext().ToString())
-                    lblstartint.Text = If(cleartext() = 0, "", cleartext().ToString())
-                    lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
+                    readsfms.Close()
+                    Dim readwc As SqlDataReader = cmdwc.ExecuteReader
+                    If readwc.HasRows Then
+                        While readwc.Read()
+                            txtwc.Text = readwc("wc").ToString
+                            txtwcdesc.Text = readwc("description").ToString
+                            lblwhse.Text = readwc("whse").ToString
+                        End While
+                        readwc.Close()
+                        Dim readmach As SqlDataReader = cmdmach.ExecuteReader
+                        If readmach.HasRows Then
+                            While readmach.Read()
+                                rtbmach.Text = readmach("RESID").ToString
+                                '+ " " + readmach("DESCR").ToString
+                            End While
+                            readmach.Close()
+                            Dim readnextop As SqlDataReader = cmdchecknextoperation.ExecuteReader
+                            If readnextop.HasRows Then
+                                While readnextop.Read
+                                    lblnextop.Text = readnextop("next_op").ToString
+                                End While
+                                readnextop.Close()
+                                lbllot.Text = txtjob.Text + "-1"
+
+                            End If
+                        End If
+                    Else
+                        txtwc.Clear()
+                        txtwcdesc.Clear()
+                        rtbmach.Clear()
+                        lblnextop.Text = If(cleartext() = 0, "", cleartext().ToString())
+                        lbllot.Text = If(cleartext() = 0, "", cleartext().ToString())
+                        lblstartint.Text = If(cleartext() = 0, "", cleartext().ToString())
+                        lblwhse.Text = If(cleartext() = 0, "", cleartext().ToString())
+                    End If
                 End If
             End If
+
+
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally

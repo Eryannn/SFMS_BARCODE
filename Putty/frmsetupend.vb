@@ -85,7 +85,7 @@ Public Class frmsetupend
         Dim con As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
         Dim con1 As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
         'AND CAST(trans_date AS DATE) = @transdate
-        Dim cmdcheckpending As SqlCommand = New SqlCommand("Select * from sfms_jobtran where job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type = 'S' AND createdby = @empnum AND shift = @shift", con)
+        Dim cmdcheckpending As SqlCommand = New SqlCommand("Select * from sfms_jobtran where job = @job AND Suffix = @suffix AND oper_num = @opernum AND end_time IS NULL AND trans_type = 'S' AND createdby = @empnum", con)
         cmdcheckpending.Parameters.AddWithValue("@job", txtjob.Text)
         cmdcheckpending.Parameters.AddWithValue("@suffix", txtsuffix.Text)
         cmdcheckpending.Parameters.AddWithValue("@opernum", txtopernum.Text)
