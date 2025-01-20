@@ -91,42 +91,6 @@ Public Class frmviewunposted
             con.Close()
         End Try
 
-        'Dim viewunposted_operator As SqlCommand = New SqlCommand("SELECT 
-        '         jobtran.[SELECT],
-        '         jobtran.job, 
-        '         jobtran.Suffix, 
-        '         jobtran.oper_num,
-        '         jobtran.trans_date,
-        '         CASE 
-        '             WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-        '             WHEN jobtran.trans_type = 'S' THEN 'Setup'
-        '             WHEN jobtran.trans_type = 'M' THEN 'Move'
-        '             ELSE 'Lbr Run'
-        '         END AS [TRX TYPE],
-        '         jobtran.wcdesc,
-        '         jobtran.UF_Jobtran_Machine,
-        '         job.description,
-        '      CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-        '      CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-        '      CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
-        '      CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
-        '      CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
-        '         jobtran.createdby,
-        '         UF_Jobtran_DocNum
-        '     FROM 
-        '        Pallet_Tagging.dbo.sfms_jobtran jobtran
-        '     INNER JOIN 
-        '      [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-        '  LEFT JOIN
-        'Employee emp on jobtran.emp_num = emp.Emp_num
-        '     WHERE 
-        '         jobtran.createdby = @empnum AND
-        '         jobtran.trans_date BETWEEN @date1 AND @date2 AND
-        '         Status='U'
-        '     ORDER BY jobtran.trans_date DESC", con)
-
-
-        'viewunposted_operator.Parameters.AddWithValue("@machine", cmb_machine.Text)
     End Sub
 
     Private Sub load_table_for_supervisor()
@@ -165,46 +129,6 @@ Public Class frmviewunposted
         End Try
 
 
-
-        '     Dim viewunposted As SqlCommand = New SqlCommand("SELECT 
-        '         jobtran.[SELECT],
-        '         jobtran.job, 
-        '         jobtran.Suffix, 
-        '         jobtran.oper_num,
-        '         jobtran.trans_date,
-        '         CASE 
-        '             WHEN jobtran.trans_type = 'C' THEN 'Mch Run'
-        '             WHEN jobtran.trans_type = 'S' THEN 'Setup'
-        '             WHEN jobtran.trans_type = 'M' THEN 'Move'
-        '             ELSE 'Lbr Run'
-        '         END AS [TRX TYPE],
-        '         jobtran.wcdesc,
-        '         jobtran.UF_Jobtran_Machine,
-        '         job.description,
-        '      CONVERT(VARCHAR, jobtran.start_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.start_datetime, 100), 7) AS [TIME START],
-        '      CONVERT(VARCHAR, jobtran.end_datetime, 101) + ' ' + RIGHT(CONVERT(VARCHAR, jobtran.end_datetime, 100), 7) AS [TIME END],
-        '      CAST(jobtran.a_hrs AS DECIMAL(18, 2)) AS TotalHrs,
-        '      CAST(jobtran.qty_complete AS INT) AS QTYCOMPLETED,
-        '      CAST(jobtran.qty_scrapped AS INT) AS QTYSCRAPPED,
-        'jobtran.Createdby,
-        '         emp.Name,
-        'emp.Section,
-        '         UF_Jobtran_DocNum
-
-        '     FROM 
-        '        Pallet_Tagging.dbo.sfms_jobtran jobtran
-        '     INNER JOIN 
-        '      [PI-SP_App].dbo.job job ON jobtran.job = job.job AND jobtran.Suffix = job.suffix
-        '  LEFT JOIN
-        'Employee emp on jobtran.createdby = emp.Emp_num
-        '     WHERE 
-        '         emp.section = @section AND
-        '         jobtran.trans_date BETWEEN @date1 AND @date2 AND
-        '         jobtran.UF_Jobtran_Machine = @machine AND
-        '         jobtran.Status='U'
-        '     ORDER BY jobtran.trans_date DESC", con)
-        'modify emp.dept into emp.section
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -215,9 +139,6 @@ Public Class frmviewunposted
                 load_table_for_supervisor()
             End If
         End If
-
-
-
     End Sub
     Private Sub AutofitColumns(dataGridView As DataGridView)
         ' Auto-resize columns to fit their content
@@ -232,6 +153,7 @@ Public Class frmviewunposted
     Private Sub frmviewunposted_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         txtempnum.Text = user_id
+        cmb_section.Text = user_section
 
         If user_position = "Operator" Then
             cmb_section.Visible = False
@@ -459,18 +381,8 @@ Public Class frmviewunposted
                     End If
                 End If
             Else
-                If txt_position.Text = "Operator" Then
-                    frmupdatemove.txtjob.Text = job
-                    frmupdatemove.txtsuffix.Text = suffix
-                    frmupdatemove.Show()
-                    frmupdatemove.lblempnum.Text = txtempnum.Text
-                    frmupdatemove.lbl_updatedby.Text = txtempnum.Text
-                    frmupdatemove.lblempname.Text = txtempname.Text
-                    frmupdatemove.dtptransdate.Value = transdate
-                    frmupdatemove.txttranstype.Text = "M"
-                    frmupdatemove.txtopernum.Text = opernum
-                    'Me.Hide()
-                Else
+                If cmb_section.Text = "QA" Then
+
                     Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
                     frmupdatemove.txtjob.Text = job
                     frmupdatemove.txtsuffix.Text = suffix
@@ -482,7 +394,33 @@ Public Class frmviewunposted
                     frmupdatemove.txttranstype.Text = "M"
                     frmupdatemove.txtopernum.Text = opernum
                     'Me.Hide()
+                Else
+                    If txt_position.Text = "Operator" Then
+                        frm_update_move_wmcnum.txtjob.Text = job
+                        frm_update_move_wmcnum.txtsuffix.Text = suffix
+                        frm_update_move_wmcnum.Show()
+                        frm_update_move_wmcnum.lblempnum.Text = txtempnum.Text
+                        frm_update_move_wmcnum.lbl_updatedby.Text = txtempnum.Text
+                        frm_update_move_wmcnum.lblempname.Text = txtempname.Text
+                        frm_update_move_wmcnum.dtptransdate.Value = transdate
+                        frm_update_move_wmcnum.txttranstype.Text = "M"
+                        frm_update_move_wmcnum.txtopernum.Text = opernum
+                        'Me.Hide()
+                    Else
+                        Dim empname As String = DataGridView1.SelectedCells(15).Value?.ToString()
+                        frm_update_move_wmcnum.txtjob.Text = job
+                        frm_update_move_wmcnum.txtsuffix.Text = suffix
+                        frm_update_move_wmcnum.Show()
+                        frm_update_move_wmcnum.lblempnum.Text = empnum
+                        frm_update_move_wmcnum.lbl_updatedby.Text = txtempnum.Text
+                        frm_update_move_wmcnum.lblempname.Text = empname
+                        frm_update_move_wmcnum.dtptransdate.Value = transdate
+                        frm_update_move_wmcnum.txttranstype.Text = "M"
+                        frm_update_move_wmcnum.txtopernum.Text = opernum
+                        'Me.Hide()
+                    End If
                 End If
+
 
             End If
 

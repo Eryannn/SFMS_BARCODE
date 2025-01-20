@@ -187,7 +187,7 @@ Partial Class frmupdatemove
         Me.btnpost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnpost.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnpost.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnpost.Location = New System.Drawing.Point(150, 654)
+        Me.btnpost.Location = New System.Drawing.Point(139, 710)
         Me.btnpost.Name = "btnpost"
         Me.btnpost.Size = New System.Drawing.Size(254, 24)
         Me.btnpost.TabIndex = 268
@@ -203,7 +203,7 @@ Partial Class frmupdatemove
         Me.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnsave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnsave.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnsave.Location = New System.Drawing.Point(148, 569)
+        Me.btnsave.Location = New System.Drawing.Point(137, 625)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(254, 24)
         Me.btnsave.TabIndex = 267
@@ -218,7 +218,7 @@ Partial Class frmupdatemove
         Me.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnexit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnexit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnexit.Location = New System.Drawing.Point(148, 599)
+        Me.btnexit.Location = New System.Drawing.Point(137, 655)
         Me.btnexit.Name = "btnexit"
         Me.btnexit.Size = New System.Drawing.Size(254, 24)
         Me.btnexit.TabIndex = 266
@@ -612,7 +612,7 @@ Partial Class frmupdatemove
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(662, 633)
+        Me.ClientSize = New System.Drawing.Size(637, 816)
         Me.Controls.Add(Me.lbl_updatedby)
         Me.Controls.Add(Me.txt_docnum)
         Me.Controls.Add(Me.Label20)

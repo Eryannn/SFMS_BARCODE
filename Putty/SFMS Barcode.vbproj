@@ -279,6 +279,12 @@
     <Compile Include="frm_updatedt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_update_move_wmcnum.Designer.vb">
+      <DependentUpon>frm_update_move_wmcnum.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_update_move_wmcnum.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_view_dt.Designer.vb">
       <DependentUpon>frm_view_dt.vb</DependentUpon>
     </Compile>
@@ -378,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_updatedt.resx">
       <DependentUpon>frm_updatedt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_update_move_wmcnum.resx">
+      <DependentUpon>frm_update_move_wmcnum.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_view_dt.resx">
       <DependentUpon>frm_view_dt.vb</DependentUpon>

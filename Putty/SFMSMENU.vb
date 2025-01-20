@@ -178,8 +178,9 @@ Public Class SFMSMENU
         check_update()
         If app_prev_version = app_version Then
             frm_nooperationsched.Show()
-            frm_nooperationsched.lbl_site.Text = lbl_site.Text
-            frm_nooperationsched.lblempnum.Text = lblempnum.Text
+            frm_nooperationsched.lblempname.Text = user_name
+            frm_nooperationsched.lblempnum.Text = user_id
+            frm_nooperationsched.lbl_site.Text = user_site
             Me.Close()
         End If
 

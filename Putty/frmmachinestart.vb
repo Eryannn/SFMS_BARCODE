@@ -49,7 +49,7 @@ Public Class frmmachinestart
 
     End Sub
 
-    Private Sub txtopernum_TextChanged(sender As Object, e As EventArgs) Handles txtopernum.TextChanged
+    Private Sub Load_data()
         Dim cmdwc As SqlCommand = New SqlCommand(" select top 1 jrt.job,jrt.suffix,jrt.oper_num,jrt.wc ,wc.description,job.whse
                          from jobroute jrt
                          inner join wc on wc.wc=jrt.wc 
@@ -88,16 +88,6 @@ Public Class frmmachinestart
         'cmdcheckpending.Parameters.AddWithValue("@transdate", lbltransdate.Text) AND CAST(trans_date AS DATE) = @transdate
         cmdcheckpending.Parameters.AddWithValue("@empnum", lblempnum.Text)
 
-        'Dim cmdchecknextoperation As SqlCommand = New SqlCommand("select top 1 jrt.job,	jrt.suffix	,jrt.oper_num,	jrt.wc ,wc.description
-        '                 from jobroute jrt
-        '                 inner join wc on wc.wc=jrt.wc 
-        '                 where jrt.job =@jonumber
-        '                 and jrt.suffix=@josuffix
-        '                 and jrt.oper_num>@operationnum
-        '                 order by  jrt.oper_num ASC", con1)
-        'cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@josuffix", txtsuffix.Text)
-        'cmdchecknextoperation.Parameters.AddWithValue("@operationnum", txtopernum.Text)
 
         Dim cmdchecknextoperation As SqlCommand = New SqlCommand(" SELECT min(oper_num) as next_op FROM jobroute where job = @jonumber AND suffix = @josuffix AND oper_num > @operationnum", con1)
         cmdchecknextoperation.Parameters.AddWithValue("@jonumber", txtjob.Text)
@@ -132,14 +122,14 @@ Public Class frmmachinestart
                 Dim readsfms As SqlDataReader = cmdcheckpending.ExecuteReader
                 If readsfms.HasRows Then
 
-                    'frmmachineend.txtjob.Text = txtjob.Text
-                    'frmmachineend.txtsuffix.Text = txtsuffix.Text
-                    'MsgBox("Setup is still on process!")
-                    'btnsave.Enabled = False
-                    'frmmachineend.Show()
-                    'frmmachineend.lblempnum.Text = user_id
-                    'frmmachineend.txtopernum.Text = txtopernum.Text
-                    'Me.Close()
+                    frmmachineend.txtjob.Text = txtjob.Text
+                    frmmachineend.txtsuffix.Text = txtsuffix.Text
+                    MsgBox("Setup is still on process!")
+                    btnsave.Enabled = False
+                    frmmachineend.Show()
+                    frmmachineend.lblempnum.Text = user_id
+                    frmmachineend.txtopernum.Text = txtopernum.Text
+                    Me.Close()
                 Else
                     readsfms.Close()
                     Dim readwc As SqlDataReader = cmdwc.ExecuteReader
@@ -186,6 +176,9 @@ Public Class frmmachinestart
             con.Close()
             con1.Close()
         End Try
+    End Sub
+    Private Sub txtopernum_TextChanged(sender As Object, e As EventArgs) Handles txtopernum.TextChanged
+        Load_data()
     End Sub
 
     Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click

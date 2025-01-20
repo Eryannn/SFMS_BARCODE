@@ -309,8 +309,8 @@ Partial Class SFMSMENU
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btn_move_mcnum)
-        Me.GroupBox1.Controls.Add(Me.btn_posted)
         Me.GroupBox1.Controls.Add(Me.btn_unposted)
+        Me.GroupBox1.Controls.Add(Me.btn_posted)
         Me.GroupBox1.Controls.Add(Me.btn_machine)
         Me.GroupBox1.Controls.Add(Me.btn_labor)
         Me.GroupBox1.Controls.Add(Me.btn_setup)
@@ -389,7 +389,7 @@ Partial Class SFMSMENU
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(488, 682)
+        Me.ClientSize = New System.Drawing.Size(483, 726)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lbl_site)
         Me.Controls.Add(Me.btn_nooperation)
