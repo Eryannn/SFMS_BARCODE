@@ -381,7 +381,7 @@ Partial Class frm_move_wmcnum
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.White
-        Me.Label23.Location = New System.Drawing.Point(102, 589)
+        Me.Label23.Location = New System.Drawing.Point(102, 631)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(89, 18)
         Me.Label23.TabIndex = 208
@@ -392,7 +392,7 @@ Partial Class frm_move_wmcnum
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.White
-        Me.Label24.Location = New System.Drawing.Point(153, 616)
+        Me.Label24.Location = New System.Drawing.Point(153, 658)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(38, 18)
         Me.Label24.TabIndex = 209
@@ -423,28 +423,29 @@ Partial Class frm_move_wmcnum
         Me.cmb_reasoncode.BackColor = System.Drawing.Color.Yellow
         Me.cmb_reasoncode.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmb_reasoncode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmb_reasoncode.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_reasoncode.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmb_reasoncode.FormattingEnabled = True
         Me.cmb_reasoncode.Location = New System.Drawing.Point(197, 537)
         Me.cmb_reasoncode.Name = "cmb_reasoncode"
-        Me.cmb_reasoncode.Size = New System.Drawing.Size(193, 21)
+        Me.cmb_reasoncode.Size = New System.Drawing.Size(215, 39)
         Me.cmb_reasoncode.TabIndex = 212
         '
         'lbl_reason_desc
         '
         Me.lbl_reason_desc.AutoSize = True
-        Me.lbl_reason_desc.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_reason_desc.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_reason_desc.ForeColor = System.Drawing.Color.White
-        Me.lbl_reason_desc.Location = New System.Drawing.Point(194, 564)
+        Me.lbl_reason_desc.Location = New System.Drawing.Point(194, 586)
         Me.lbl_reason_desc.Name = "lbl_reason_desc"
-        Me.lbl_reason_desc.Size = New System.Drawing.Size(0, 18)
+        Me.lbl_reason_desc.Size = New System.Drawing.Size(0, 23)
         Me.lbl_reason_desc.TabIndex = 213
         '
         'txt_lot
         '
         Me.txt_lot.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_lot.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_lot.Location = New System.Drawing.Point(197, 614)
+        Me.txt_lot.Location = New System.Drawing.Point(197, 656)
         Me.txt_lot.Name = "txt_lot"
         Me.txt_lot.ReadOnly = True
         Me.txt_lot.Size = New System.Drawing.Size(193, 22)
@@ -455,7 +456,7 @@ Partial Class frm_move_wmcnum
         '
         Me.txt_qtymove.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.txt_qtymove.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_qtymove.Location = New System.Drawing.Point(197, 587)
+        Me.txt_qtymove.Location = New System.Drawing.Point(197, 629)
         Me.txt_qtymove.Name = "txt_qtymove"
         Me.txt_qtymove.ReadOnly = True
         Me.txt_qtymove.Size = New System.Drawing.Size(193, 22)
@@ -470,7 +471,7 @@ Partial Class frm_move_wmcnum
         Me.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_exit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_exit.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btn_exit.Location = New System.Drawing.Point(156, 707)
+        Me.btn_exit.Location = New System.Drawing.Point(156, 749)
         Me.btn_exit.Name = "btn_exit"
         Me.btn_exit.Size = New System.Drawing.Size(254, 24)
         Me.btn_exit.TabIndex = 216
@@ -485,7 +486,7 @@ Partial Class frm_move_wmcnum
         Me.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_save.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_save.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btn_save.Location = New System.Drawing.Point(156, 677)
+        Me.btn_save.Location = New System.Drawing.Point(156, 719)
         Me.btn_save.Name = "btn_save"
         Me.btn_save.Size = New System.Drawing.Size(254, 24)
         Me.btn_save.TabIndex = 6
@@ -500,7 +501,7 @@ Partial Class frm_move_wmcnum
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button3.Location = New System.Drawing.Point(158, 739)
+        Me.Button3.Location = New System.Drawing.Point(158, 781)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(254, 24)
         Me.Button3.TabIndex = 218
@@ -585,7 +586,7 @@ Partial Class frm_move_wmcnum
         Me.lbl_um_qtymove.AutoSize = True
         Me.lbl_um_qtymove.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_um_qtymove.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lbl_um_qtymove.Location = New System.Drawing.Point(396, 589)
+        Me.lbl_um_qtymove.Location = New System.Drawing.Point(396, 635)
         Me.lbl_um_qtymove.Name = "lbl_um_qtymove"
         Me.lbl_um_qtymove.Size = New System.Drawing.Size(0, 18)
         Me.lbl_um_qtymove.TabIndex = 227
@@ -606,7 +607,7 @@ Partial Class frm_move_wmcnum
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.White
-        Me.Label33.Location = New System.Drawing.Point(146, 644)
+        Me.Label33.Location = New System.Drawing.Point(146, 686)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(45, 18)
         Me.Label33.TabIndex = 230
@@ -616,7 +617,7 @@ Partial Class frm_move_wmcnum
         '
         Me.txt_mcnum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txt_mcnum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_mcnum.Location = New System.Drawing.Point(197, 642)
+        Me.txt_mcnum.Location = New System.Drawing.Point(197, 684)
         Me.txt_mcnum.Name = "txt_mcnum"
         Me.txt_mcnum.Size = New System.Drawing.Size(193, 22)
         Me.txt_mcnum.TabIndex = 5
