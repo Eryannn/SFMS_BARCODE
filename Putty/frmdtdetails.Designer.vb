@@ -67,7 +67,7 @@ Partial Class frmdtdetails
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(146, 417)
+        Me.Button2.Location = New System.Drawing.Point(176, 509)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(110, 43)
         Me.Button2.TabIndex = 151
@@ -77,7 +77,7 @@ Partial Class frmdtdetails
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(250, 368)
+        Me.Button1.Location = New System.Drawing.Point(280, 460)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(110, 43)
         Me.Button1.TabIndex = 150
@@ -89,7 +89,7 @@ Partial Class frmdtdetails
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(57, 305)
+        Me.Label10.Location = New System.Drawing.Point(57, 346)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(56, 18)
         Me.Label10.TabIndex = 146
@@ -100,7 +100,7 @@ Partial Class frmdtdetails
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(28, 277)
+        Me.Label5.Location = New System.Drawing.Point(28, 306)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(93, 18)
         Me.Label5.TabIndex = 145
@@ -111,7 +111,7 @@ Partial Class frmdtdetails
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(29, 254)
+        Me.Label4.Location = New System.Drawing.Point(29, 265)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(92, 18)
         Me.Label4.TabIndex = 144
@@ -163,11 +163,13 @@ Partial Class frmdtdetails
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightBlue
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Location = New System.Drawing.Point(-1, -1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(629, 25)
+        Me.Panel1.Size = New System.Drawing.Size(668, 25)
         Me.Panel1.TabIndex = 129
         '
         'Label7
@@ -212,7 +214,7 @@ Partial Class frmdtdetails
         Me.dtpstart.Location = New System.Drawing.Point(133, 91)
         Me.dtpstart.Name = "dtpstart"
         Me.dtpstart.ShowUpDown = True
-        Me.dtpstart.Size = New System.Drawing.Size(241, 31)
+        Me.dtpstart.Size = New System.Drawing.Size(257, 31)
         Me.dtpstart.TabIndex = 156
         '
         'dtpend
@@ -223,7 +225,7 @@ Partial Class frmdtdetails
         Me.dtpend.Location = New System.Drawing.Point(134, 133)
         Me.dtpend.Name = "dtpend"
         Me.dtpend.ShowUpDown = True
-        Me.dtpend.Size = New System.Drawing.Size(240, 31)
+        Me.dtpend.Size = New System.Drawing.Size(256, 31)
         Me.dtpend.TabIndex = 157
         '
         'lbltotalhrs
@@ -238,37 +240,43 @@ Partial Class frmdtdetails
         '
         'txtnotes
         '
-        Me.txtnotes.Location = New System.Drawing.Point(127, 305)
+        Me.txtnotes.Location = New System.Drawing.Point(127, 346)
         Me.txtnotes.Multiline = True
         Me.txtnotes.Name = "txtnotes"
-        Me.txtnotes.Size = New System.Drawing.Size(269, 57)
+        Me.txtnotes.Size = New System.Drawing.Size(301, 91)
         Me.txtnotes.TabIndex = 159
         '
         'lblrootcause
         '
         Me.lblrootcause.AutoSize = True
-        Me.lblrootcause.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblrootcause.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblrootcause.ForeColor = System.Drawing.Color.White
-        Me.lblrootcause.Location = New System.Drawing.Point(124, 277)
+        Me.lblrootcause.Location = New System.Drawing.Point(124, 304)
         Me.lblrootcause.Name = "lblrootcause"
-        Me.lblrootcause.Size = New System.Drawing.Size(0, 18)
+        Me.lblrootcause.Size = New System.Drawing.Size(0, 29)
         Me.lblrootcause.TabIndex = 160
         '
         'cmbcategory
         '
+        Me.cmbcategory.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbcategory.DropDownWidth = 240
+        Me.cmbcategory.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcategory.FormattingEnabled = True
-        Me.cmbcategory.Location = New System.Drawing.Point(134, 216)
+        Me.cmbcategory.Location = New System.Drawing.Point(133, 210)
         Me.cmbcategory.Name = "cmbcategory"
-        Me.cmbcategory.Size = New System.Drawing.Size(240, 21)
+        Me.cmbcategory.Size = New System.Drawing.Size(295, 33)
         Me.cmbcategory.TabIndex = 161
         '
         'cmbcause
         '
+        Me.cmbcause.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbcause.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbcause.FormattingEnabled = True
-        Me.cmbcause.Location = New System.Drawing.Point(134, 254)
+        Me.cmbcause.Location = New System.Drawing.Point(134, 256)
         Me.cmbcause.Name = "cmbcause"
-        Me.cmbcause.Size = New System.Drawing.Size(240, 21)
+        Me.cmbcause.Size = New System.Drawing.Size(294, 33)
         Me.cmbcause.TabIndex = 162
         '
         'lblsection
@@ -285,7 +293,7 @@ Partial Class frmdtdetails
         '
         'txtrowpointer
         '
-        Me.txtrowpointer.Location = New System.Drawing.Point(17, 523)
+        Me.txtrowpointer.Location = New System.Drawing.Point(31, 648)
         Me.txtrowpointer.Multiline = True
         Me.txtrowpointer.Name = "txtrowpointer"
         Me.txtrowpointer.Size = New System.Drawing.Size(269, 21)
@@ -295,7 +303,7 @@ Partial Class frmdtdetails
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(42, 368)
+        Me.Button3.Location = New System.Drawing.Point(72, 460)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(110, 43)
         Me.Button3.TabIndex = 165
@@ -315,8 +323,9 @@ Partial Class frmdtdetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(451, 576)
+        Me.ClientSize = New System.Drawing.Size(456, 584)
         Me.Controls.Add(Me.txtempnum)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.txtrowpointer)
@@ -342,8 +351,9 @@ Partial Class frmdtdetails
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Location = New System.Drawing.Point(1400, 535)
+        Me.Location = New System.Drawing.Point(1300, 435)
         Me.Name = "frmdtdetails"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "frmdtdetails"
         Me.Panel1.ResumeLayout(False)

@@ -110,7 +110,8 @@ Public Class frmupdatesetup
                     txtwc.Text = readitems("wc").ToString
                     txtwcdesc.Text = readitems("wcdesc").ToString
                     txttotalhrs.Text = readitems("a_hrs").ToString
-                    cmbsetuptype.Text = readitems("Uf_Jobtran_TransactionType").ToString
+                    'cmbsetuptype.Text = readitems("Uf_Jobtran_TransactionType").ToString
+                    txttotalhrs.Text = readitems("Uf_Jobtran_TransactionType").ToString
                     rtbmach.Text = readitems("UF_Jobtran_Machine").ToString
                     dtpstart.Value = readitems("start_datetime").ToString
 
@@ -675,7 +676,17 @@ Public Class frmupdatesetup
     End Sub
 
     Private Sub setupcodewithdescription()
-        Dim cmd As New SqlCommand("Select * from Ptag_Setuptype", con)
+        Dim cmd_offset As New SqlCommand("Select * from Ptag_Setuptype WHERE Code IN ('SMF','SMP','WUP')", con)
+        Dim cmd_nonoffset As New SqlCommand("Select * from Ptag_Setuptype WHERE Code IN ('SMF','SMP')", con)
+
+        Dim cmd As SqlCommand
+
+        If user_section = "OFFSET" Then
+            cmd = cmd_offset
+        Else
+            cmd = cmd_nonoffset
+        End If
+
 
         Try
             con.Open()
@@ -715,23 +726,23 @@ Public Class frmupdatesetup
 
     Private Sub cmbsetuptype_TextChanged(sender As Object, e As EventArgs) Handles cmbsetuptype.TextChanged
 
-        Dim con_desc As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
+        'Dim con_desc As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
 
-        Dim cmdgetdesc As SqlCommand = New SqlCommand("Select code, description, code + ' / ' + description as codeanddesc from Ptag_Setuptype where Code = @code", con_desc)
-        cmdgetdesc.Parameters.AddWithValue("@code", cmbsetuptype.Text)
+        'Dim cmdgetdesc As SqlCommand = New SqlCommand("Select code, description, code + ' / ' + description as codeanddesc from Ptag_Setuptype where Code = @code", con_desc)
+        'cmdgetdesc.Parameters.AddWithValue("@code", cmbsetuptype.Text)
 
-        Try
-            con_desc.Open()
-            Dim read_cmdgetdesc As SqlDataReader = cmdgetdesc.ExecuteReader
-            While read_cmdgetdesc.Read
-                lblsetupdesc.Text = read_cmdgetdesc("description").ToString
-            End While
+        'Try
+        '    con_desc.Open()
+        '    Dim read_cmdgetdesc As SqlDataReader = cmdgetdesc.ExecuteReader
+        '    While read_cmdgetdesc.Read
+        '        lblsetupdesc.Text = read_cmdgetdesc("description").ToString
+        '    End While
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            con_desc.Close()
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'Finally
+        '    con_desc.Close()
+        'End Try
 
     End Sub
 

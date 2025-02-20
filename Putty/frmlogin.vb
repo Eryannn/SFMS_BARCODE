@@ -80,12 +80,14 @@ Public Class frmlogin
         RoundButton(btnlogin)
     End Sub
 
+
     Private Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         check_update()
         If app_prev_version <> app_version Then
             MsgBox("Please Update the SFMS Application")
         Else
             openpallettagdb()
+
 
             login(txtuserid.Text, Encrypt(txtpassword.Text), cmbsite.Text)
             closepallettagdb()

@@ -46,6 +46,38 @@ Public Class frmdtdetails
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        If dtpstart.Value.ToString("HH:mm") > dtpend.Value.ToString("HH:mm") Then
+            MsgBox("Invalid! Check the Start Time", vbExclamation)
+            Exit Sub
+        ElseIf dtpstart.Value.ToString("HH:mm") = dtpend.Value.ToString("HH:mm") Then
+            MsgBox("Invalid! Start and End Time is equal!", vbExclamation)
+            Exit Sub
+        End If
+
+        If login_shift = "NS" AndAlso (dtpstart.Value.ToString("HH:mm") >= "19:00" Or dtpstart.Value.ToString("HH:mm") <= "07:00") Then
+
+        ElseIf login_shift = "DS" AndAlso (dtpstart.Value.ToString("HH:mm") <= "19:00" AndAlso dtpstart.Value.ToString("HH:mm") >= "07:00") Then
+        Else
+            MsgBox("Invalid the time is set outside your shift", vbExclamation)
+            Exit Sub
+        End If
+
+        If login_shift = "NS" AndAlso (dtpend.Value.ToString("HH:mm") >= "19:00" Or dtpend.Value.ToString("HH:mm") <= "07:00") Then
+        ElseIf login_shift = "DS" AndAlso (dtpend.Value.ToString("HH:mm") <= "19:00" AndAlso dtpend.Value.ToString("HH:mm") >= "07:00") Then
+        Else
+            MsgBox("Invalid the time is set outside your shift", vbExclamation)
+            Exit Sub
+        End If
+
+        If cmbcategory.Text = "" Then
+            MsgBox("Downtime Category is Required!", vbExclamation)
+            Exit Sub
+        ElseIf cmbcause.Text = "" Then
+            MsgBox("Cause Code is Required!", vbExclamation)
+            Exit Sub
+        End If
+
         Try
             con1.Open()
             'Dim updateCommandText As String = "UPDATE IT_KPI_DTDetail SET StartTime=@starttime, EndTime=@endtime, Category=@category, CauseCode=@causecode, RecordDate=@recorddate, Notes=@notes WHERE RefRowPointer=@refrowpointer AND Seq=@seq"
@@ -69,12 +101,13 @@ Public Class frmdtdetails
             cmd.Parameters.AddWithValue("@notes", txtnotes.Text)
 
             cmd.ExecuteNonQuery()
-
             MsgBox("Update Successfully!")
             cleartext()
+            new_sequence()
+            Exit Sub
         Catch ex As Exception
             MsgBox(ex.Message)
-            ' MsgBox("debug")
+            'MsgBox("debug")
         Finally
             con1.Close()
         End Try
@@ -98,6 +131,26 @@ Public Class frmdtdetails
 
     End Sub
 
+    Private Function new_sequence()
+
+        Try
+            Dim newsequence As Integer = getlatestsequence()
+            newsequence += 1
+
+            Dim insertcmd As New SqlCommand("INSERT INTO IT_KPI_DTDetail (RefRowPointer,Seq) values (@refrowpointer,@seq)", con1)
+            insertcmd.Parameters.AddWithValue("@refrowpointer", txtrowpointer.Text)
+            insertcmd.Parameters.AddWithValue("@seq", newsequence)
+
+            lblseq.Text = newsequence
+            insertcmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Return 0
+    End Function
+
+
     Private Sub cleartext()
         dtpstart.Value = Now
         dtpend.Value = Now
@@ -105,8 +158,10 @@ Public Class frmdtdetails
         cmbcategory.SelectedItem = -1
         cmbcategory.Text = ""
         cmbcause.SelectedItem = -1
+        cmbcause.Text = ""
         lblrootcause.Text = ""
         txtnotes.Clear()
+        lblseq.Text = ""
     End Sub
     Private Sub cmbcause_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcause.SelectedIndexChanged
         Dim con1 As New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
@@ -278,6 +333,8 @@ Public Class frmdtdetails
         ' Display the result with at least 6 decimal places
         lbltotalhrs.Text = hoursDifference.ToString("0.######")
     End Sub
+
+
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 

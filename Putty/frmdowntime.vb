@@ -41,6 +41,7 @@ Public Class frmdowntime
 
     Private Sub txtopernum_TextChanged(sender As Object, e As EventArgs) Handles txtopernum.TextChanged
 
+        shiftdate()
 
         If txtopernum.Text.Length <= 0 Then
             lblsection.Text = If(cleartext() = 0, "", cleartext().ToString())
@@ -102,11 +103,15 @@ Public Class frmdowntime
                 INNER JOIN WC on jobroute.wc = wc.wc
                 WHERE dtheader.job = @job AND
                 dtheader.Suffix = @suffix AND
-                dtheader.OperNum = @opernum", con1)
+                dtheader.OperNum = @opernum AND
+				dtheader.Shift = @shift AND
+				CAST(dtheader.DtDate AS DATE) = CAST(@recorddate AS DATE)", con1)
 
             cmdchkhdr.Parameters.AddWithValue("@job", txtjob.Text)
             cmdchkhdr.Parameters.AddWithValue("@suffix", txtsuffix.Text)
             cmdchkhdr.Parameters.AddWithValue("@opernum", txtopernum.Text)
+            cmdchkhdr.Parameters.AddWithValue("@shift", login_shift)
+            cmdchkhdr.Parameters.AddWithValue("@recorddate", currentdate.ToString("MM/dd/yyyy"))
 
             Dim cmdviewwc As SqlCommand = New SqlCommand("SELECT 
                             dtheader.job, 
@@ -239,7 +244,22 @@ Public Class frmdowntime
         Me.Close()
     End Sub
 
+    Private Function shiftdate()
+        Dim todaysdate = DateTime.Today
+        currentdate = DateTime.Today
+        If currentdate.ToString("HH:mm") >= "19:00" AndAlso frmlogin.cmbshift.Text = "NS" Then
+            currentdate = DateTime.Now
+        ElseIf currentdate.ToString("HH:mm") <= "07:00" AndAlso frmlogin.cmbshift.Text = "NS" Then
+            currentdate = currentdate.AddDays(-1)
+        Else
+            currentdate = DateTime.Now
+        End If
+        Return currentdate
+    End Function
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnsave.Click
+        shiftdate()
+
         Try
             con1.Open()
             Dim updatehdr As String = "INSERT INTO IT_KPI_DTHeader (
@@ -250,7 +270,8 @@ Public Class frmdowntime
                         Job,
                         Suffix,
                         OperNum,
-                        CreatedBy)
+                        CreatedBy,
+                        RecordDate)
                  values(
                          @section,
                          @machresc,
@@ -259,18 +280,20 @@ Public Class frmdowntime
                          @job,
                          @suffix,
                          @opernum,
-                         @empnum)"
+                         @empnum,
+                         @recorddate)"
 
             Dim cmd As New SqlCommand(updatehdr, con1)
 
             cmd.Parameters.AddWithValue("@section", lblsection.Text)
             cmd.Parameters.AddWithValue("@machresc", lblmachine.Text)
-            cmd.Parameters.AddWithValue("@dtdate", lbldtdate.Text)
+            cmd.Parameters.AddWithValue("@dtdate", currentdate)
             cmd.Parameters.AddWithValue("@shift", lblshift.Text)
             cmd.Parameters.AddWithValue("@job", txtjob.Text)
             cmd.Parameters.AddWithValue("@suffix", txtsuffix.Text)
             cmd.Parameters.AddWithValue("@opernum", txtopernum.Text)
             cmd.Parameters.AddWithValue("@empnum", lblempnum.Text)
+            cmd.Parameters.AddWithValue("@recorddate", DateTime.Today)
 
             If txtopernum.Text = "" Then
                 MsgBox("Invalid")

@@ -395,7 +395,16 @@ Public Class frmsetupstart
     End Sub
 
     Private Sub setupcodewithdescription()
-        Dim cmd As New SqlCommand("Select * from Ptag_Setuptype", con)
+        Dim cmd_offset As New SqlCommand("Select * from Ptag_Setuptype WHERE Code IN ('SMF','SMP','WUP')", con)
+        Dim cmd_nonoffset As New SqlCommand("Select * from Ptag_Setuptype WHERE Code IN ('SMF','SMP')", con)
+
+        Dim cmd As SqlCommand
+
+        If user_section = "OFFSET" Then
+            cmd = cmd_offset
+        Else
+            cmd = cmd_nonoffset
+        End If
 
         Try
             con.Open()
