@@ -219,6 +219,10 @@ Public Class frmmove
                             readum.Close()
 
                         End If
+                    Else
+                        readnextop.Close()
+                        lblnextop.Text = ""
+                        txt_cntrl_pt.Clear()
                     End If
                 End If
             Else
@@ -313,9 +317,15 @@ Public Class frmmove
             End If
         End If
 
-        If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+        'If (lblnextop.Text <> "" OrElse lblnextop.Text IsNot Nothing) AndAlso txt_cntrl_pt.Text = 0 Then
+        '    MsgBox("qty is 0")
+        'Else
+        '    MsgBox("qty is equal to qtycomplete")
+        'End If
+
+        If lblnextop.Text = "" OrElse lblnextop.Text = "0" AndAlso txt_cntrl_pt.Text = 1 Then
             txtqtymoved.Text = "0"
-        ElseIf txt_cntrl_pt.text = 1
+        ElseIf txt_cntrl_pt.Text = 1
             txtqtymoved.Text = totalqtycompleted
         Else
             txtqtymoved.Text = "0"
