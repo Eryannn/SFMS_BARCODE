@@ -6,7 +6,7 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public app_version As String = "2.5" ' Change this everytime modifying this system 2.3 to 2.4
+    Public app_version As String = "2.6" ' Change this everytime modifying this system 2.5 to 2.6
     Public app_name As String = "BARCODE"
 
     Public app_prev_version As String

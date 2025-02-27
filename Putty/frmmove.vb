@@ -322,14 +322,19 @@ Public Class frmmove
         'Else
         '    MsgBox("qty is equal to qtycomplete")
         'End If
-
-        If lblnextop.Text = "" OrElse lblnextop.Text = "0" AndAlso txt_cntrl_pt.Text = 1 Then
-            txtqtymoved.Text = "0"
-        ElseIf txt_cntrl_pt.Text = 1
+        If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
             txtqtymoved.Text = totalqtycompleted
         Else
-            txtqtymoved.Text = "0"
+            txtqtymoved.Text = 0
         End If
+
+        'If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+        '    txtqtymoved.Text = "0"
+        'ElseIf txt_cntrl_pt.Text = 1
+        '    txtqtymoved.Text = totalqtycompleted
+        'Else
+        '    txtqtymoved.Text = "0"
+        'End If
 
     End Sub
 
@@ -375,12 +380,18 @@ Public Class frmmove
         total = CInt(txtqtygood.Text) + CInt(txtqtyrework.Text)
         txtqtycompleted.Text = total
 
-        If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
-            txtqtymoved.Text = "0"
-        ElseIf txt_cntrl_pt.Text = 1
+        'If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+        '    txtqtymoved.Text = "0"
+        'ElseIf txt_cntrl_pt.Text = 1
+        '    txtqtymoved.Text = total
+        'Else
+        '    txtqtymoved.Text = "0"
+        'End If
+
+        If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
             txtqtymoved.Text = total
         Else
-            txtqtymoved.Text = "0"
+            txtqtymoved.Text = 0
         End If
 
     End Sub
