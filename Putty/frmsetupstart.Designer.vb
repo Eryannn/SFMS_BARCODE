@@ -199,7 +199,7 @@ Partial Class frmsetupstart
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Location = New System.Drawing.Point(-1, -1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(834, 19)
+        Me.Panel1.Size = New System.Drawing.Size(613, 19)
         Me.Panel1.TabIndex = 18
         '
         'Label8
@@ -488,7 +488,7 @@ Partial Class frmsetupstart
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(829, 723)
+        Me.ClientSize = New System.Drawing.Size(608, 660)
         Me.Controls.Add(Me.txtwcdesc)
         Me.Controls.Add(Me.lblwhse)
         Me.Controls.Add(Me.cmbsetuptype)

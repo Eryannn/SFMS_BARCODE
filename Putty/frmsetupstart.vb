@@ -9,6 +9,7 @@ Public Class frmsetupstart
     'Dim con As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=Pallet_Tagging;User ID=sa;Password=pi_dc_2011")
     'Dim con1 As SqlConnection = New SqlConnection("Data Source=ERP-SVR;Initial Catalog=PI-SP_App;User ID=sa;Password=pi_dc_2011")
     'Dim userid As String = frmlogin.txtuserid.Text
+
     Dim startTime As DateTime
     Dim starttimeint As Integer
 

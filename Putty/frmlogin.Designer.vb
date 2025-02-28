@@ -176,7 +176,7 @@ Partial Class frmlogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.MidnightBlue
-        Me.ClientSize = New System.Drawing.Size(381, 290)
+        Me.ClientSize = New System.Drawing.Size(389, 293)
         Me.Controls.Add(Me.lbl_ver)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnlogin)

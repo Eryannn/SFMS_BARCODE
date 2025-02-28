@@ -147,6 +147,8 @@ Public Class frmupdatemove
 
         If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
+        ElseIf txtwc.Text = "P610" Then
+            txtqtymoved.Text = "0"
         Else
             txtqtymoved.Text = totalqtycompleted
         End If
@@ -172,6 +174,8 @@ Public Class frmupdatemove
         txtqtycompleted.Text = total
 
         If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+            txtqtymoved.Text = "0"
+        ElseIf txtwc.Text = "P610" Then
             txtqtymoved.Text = "0"
         Else
             txtqtymoved.Text = total

@@ -6,11 +6,10 @@ Imports System.Configuration
 Imports System.Security.Cryptography
 
 Module globalvariable
-    Public app_version As String = "2.6" ' Change this everytime modifying this system 2.5 to 2.6
+    Public app_version As String = "2.7" ' Change this everytime modifying this system 2.6 to 2.7
     Public app_name As String = "BARCODE"
 
     Public app_prev_version As String
-
     Public job_posted As Boolean
     Public checkupdate As Boolean
     Public user_position As String
@@ -139,6 +138,7 @@ Module Module1
 
     Function login(ByVal userid As String, ByVal password As String, ByVal site As String)
         Try
+
             Dim query As String = "SELECT * FROM Employee WHERE Emp_num=@userid AND Password=@password AND Site=@site"
             Dim cmdquery As New SqlCommand(query, con)
 

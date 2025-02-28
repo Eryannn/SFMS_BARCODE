@@ -324,6 +324,8 @@ Public Class frmmove
         'End If
         If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
             txtqtymoved.Text = totalqtycompleted
+        ElseIf txtwc.Text = "P610" Then
+            txtqtymoved.Text = 0
         Else
             txtqtymoved.Text = 0
         End If
@@ -390,6 +392,8 @@ Public Class frmmove
 
         If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
             txtqtymoved.Text = total
+        ElseIf txtwc.Text = "P610" Then
+            txtqtymoved.Text = 0
         Else
             txtqtymoved.Text = 0
         End If
