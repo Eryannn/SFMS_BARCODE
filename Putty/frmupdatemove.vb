@@ -144,10 +144,9 @@ Public Class frmupdatemove
         'Else
         '    txtqtymoved.Text = totalqtycompleted
         'End If
-
-        If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+        If txtwc.Text = "P610" Then
             txtqtymoved.Text = "0"
-        ElseIf txtwc.Text = "P610" Then
+        ElseIf lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
         Else
             txtqtymoved.Text = totalqtycompleted
@@ -173,9 +172,9 @@ Public Class frmupdatemove
         total = CInt(txtqtygood.Text) + CInt(txtqtyrework.Text)
         txtqtycompleted.Text = total
 
-        If lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
+        If txtwc.Text = "P610" Then
             txtqtymoved.Text = "0"
-        ElseIf txtwc.Text = "P610" Then
+        ElseIf lblnextop.Text = "" OrElse lblnextop.Text = "0" Then
             txtqtymoved.Text = "0"
         Else
             txtqtymoved.Text = total

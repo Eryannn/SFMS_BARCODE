@@ -322,10 +322,12 @@ Public Class frmmove
         'Else
         '    MsgBox("qty is equal to qtycomplete")
         'End If
-        If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
-            txtqtymoved.Text = totalqtycompleted
-        ElseIf txtwc.Text = "P610" Then
+
+
+        If txtwc.Text = "P610" Then
             txtqtymoved.Text = 0
+        ElseIf (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
+            txtqtymoved.Text = totalqtycompleted
         Else
             txtqtymoved.Text = 0
         End If
@@ -389,11 +391,10 @@ Public Class frmmove
         'Else
         '    txtqtymoved.Text = "0"
         'End If
-
-        If (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
-            txtqtymoved.Text = total
-        ElseIf txtwc.Text = "P610" Then
+        If txtwc.Text = "P610" Then
             txtqtymoved.Text = 0
+        ElseIf (lblnextop.Text <> "" OrElse lblnextop.Text = "0") AndAlso txt_cntrl_pt.Text = 1 Then
+            txtqtymoved.Text = total
         Else
             txtqtymoved.Text = 0
         End If
